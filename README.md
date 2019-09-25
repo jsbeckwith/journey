@@ -1,1 +1,2 @@
-# cs121-project
+# journey
+cs 121 project
