@@ -1,10 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
-// import css
+import './App.css';
 
 function App() {
   return (
-    <title>asdf</title>
+    <div>asdf</div>
   );
 }
 
