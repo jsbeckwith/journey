@@ -18,10 +18,32 @@ class TextEditor extends React.Component {
         this.setState({ text: value })
     }
 
+    modules = {
+        toolbar: [
+            [{ 'header': [1, 2, false] }],
+            ['bold', 'italic', 'underline','strike'],
+            [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+            [{ 'color': [] }, { 'background': [] }],
+            ['link', 'image'],
+            ['clean']
+        ],
+    }
+    
+    formats = [
+        'header',
+        'bold', 'italic', 'underline', 'strike',
+        'list', 'bullet', 'indent',
+        'color', 'background',
+        'link', 'image'
+    ]
+
     render() {
         return (
-            <ReactQuill value={this.state.text}
-                        onChange={this.handleChange}/>
+            <ReactQuill placeholder="What are you grateful for today?"
+                        value={this.state.text}
+                        onChange={this.handleChange}
+                        theme="snow"
+                        modules={this.modules}/>
         )
     }
 }
