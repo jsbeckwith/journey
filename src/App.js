@@ -13,7 +13,9 @@ class App extends React.Component {
 			// for now the app just renders the homepage body but later
 			// we'll add logic to determine which page should be loaded i think
 			// navbar will also go here
-			<NewEntryPage/>
+			<div>
+				<NewEntryPage/>
+			</div>
 		);
 	}
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from '../logo.svg';
+import './newEntryPage.css';
 import TextEditor from './textEditor.js'
+import SubmitSaveButton from './submitSaveButton.js'
 
 class NewEntryPage extends React.Component {
 	constructor (props) {
@@ -9,7 +11,10 @@ class NewEntryPage extends React.Component {
 
 	render () {
 		return (
-			<TextEditor/>
+			<div>
+				<TextEditor/>
+				<SubmitSaveButton/>
+			</div>
 		);
 	}
 }
