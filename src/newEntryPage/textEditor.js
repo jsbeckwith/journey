@@ -28,7 +28,7 @@ class TextEditor extends React.Component {
             ['clean']
         ],
     }
-    
+
     formats = [
         'header',
         'bold', 'italic', 'underline', 'strike',
@@ -43,7 +43,8 @@ class TextEditor extends React.Component {
                         value={this.state.text}
                         onChange={this.handleChange}
                         theme="snow"
-                        modules={this.modules}/>
+                        modules={this.modules}
+                        />
         )
     }
 }
