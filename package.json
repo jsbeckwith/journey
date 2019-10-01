@@ -8,26 +8,30 @@
     "react-scripts": "3.1.2"
   },
   "contributors": [
-    { "name": "Julia Lohman",
+    {
+      "name": "Julia Lohman",
       "email": "juliaslohman@gmail.com",
       "url": "https://github.com/juliaslohman"
     },
-    { "name": "Julia Beckwith",
+    {
+      "name": "Julia Beckwith",
       "email": "jbeckwith@g.hmc.edu",
       "url": "https://github.com/jsbeckwith"
     },
-    { "name": "Hava Parker",
+    {
+      "name": "Hava Parker",
       "email": "hava.xinhua@gmail.com",
       "url": ""
     },
-    { "name": "Mimi Louie",
+    {
+      "name": "Mimi Louie",
       "email": "angeline.louie@gmail.com",
       "url": ""
     }
   ],
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/jsbeckwith/journey"
+    "type": "git",
+    "url": "https://github.com/jsbeckwith/journey"
   },
   "scripts": {
     "start": "react-scripts start",
