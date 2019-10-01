@@ -1,0 +1,15 @@
+.submitSaveButton {
+  background-color: #ffffff;
+  border: 2px solid #a498d3;
+  color: #a498d3;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 8px;
+  transition-duration: 0.4s;
+  margin-top: 3px;
+}
+
+.submitSaveButton:hover {
+  background-color: #a498d3;
+  color: #ffffff;
+}
