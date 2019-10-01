@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import NewEntryPage from './newEntryPage/newEntryPage';
+import SingleEntryPage from './viewSingleEntry/singleEntryPage.js';
 
 class App extends React.Component {
 	constructor (props) {
@@ -14,7 +15,7 @@ class App extends React.Component {
 			// we'll add logic to determine which page should be loaded i think
 			// navbar will also go here
 			<div>
-				<NewEntryPage/>
+				<SingleEntryPage/>
 			</div>
 		);
 	}

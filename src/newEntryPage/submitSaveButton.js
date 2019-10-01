@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../logo.svg';
+import logo from './logo.svg';
 
 class SubmitSaveButton extends React.Component {
 
@@ -9,9 +9,11 @@ class SubmitSaveButton extends React.Component {
 
   render() {
     return (
-      <button className="submitSaveButton" onClick={() => alert('click')}>
+      <div>
+      <button className="submitSaveButton" onClick={() => alert(Date())}>
         Submit
       </button>
+      </div>
     );
   }
 
