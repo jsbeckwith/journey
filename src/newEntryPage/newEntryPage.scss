@@ -1,0 +1,33 @@
+.submitSaveButton {
+    background-color: #fff;
+    color: #a498d3;
+    border: 2px solid #a498d3;
+    text-align: center;
+    border-radius: 5px;
+    transition-duration: 0.4s;
+    margin: 10px;
+    height: 40px;
+    width: 40px;
+    float: right;
+
+    
+
+    svg {
+        width: 20px;
+        height: 20px;
+        stroke: none;
+        fill: #a498d3;
+
+        .cls-1 {
+            fill-rule: evenodd;
+        }
+    }
+}
+
+.submitSaveButton:hover {
+    background-color: #a498d3;
+
+    svg {
+        fill: #fff;
+    }
+}
