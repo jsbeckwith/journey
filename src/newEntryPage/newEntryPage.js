@@ -19,19 +19,19 @@ class NewEntryPage extends React.Component {
 	}
 
 	putDataToDB = message => {
-		let currentIds = this.state.data.map(data => data.id);
+	  /*let currentIds = this.state.data.map(data => data.id);
 		let idToBeAdded = 0;
 		while (currentIds.includes(idToBeAdded)) {
 		  ++idToBeAdded;
-	}
+	}*/
 
 		axios.post("http://localhost:3001/api/putData", { 
-		  id: idToBeAdded,
+		  //id: idToBeAdded,
 		  message: message
 		});
 	}
 
-	getDataFromDb = () => {
+	getDataFromDB = () => {
 		fetch("http://localhost:3001/api/getData")
 		.then(data => data.json())
 		.then(res => this.setState({ data: res.data }));
@@ -42,7 +42,7 @@ class NewEntryPage extends React.Component {
 			<div>
 				{/* header component will go here */}
 				<TextEditor callbackFromParent = {this.myCallback}/>
-				<SubmitSaveButton qText = {this.state.textFromChild}/>
+				<SubmitSaveButton qText = {this.state.textFromChild} store = {this.putDataToDB} get = {this.getDataFromDB}/>
 			</div>
 		);
 	}
