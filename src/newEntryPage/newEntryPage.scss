@@ -1,0 +1,31 @@
+@import '../vars.scss';
+
+.new-entry-header {
+    display: block;
+    height: 100%;
+    border-bottom: 1px solid $journey-grey;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+
+    h2 {
+        font-size: 30px;
+        font-family: "PT Sans";
+        font-weight: 300;
+        color: $journey-grey;
+        display: inline;
+    }
+
+    h3 {
+        font-size: 20px;
+        font-family: "PT Sans";
+        font-weight: 200;
+        color: $journey-grey;
+        display: inline;
+    }
+
+    button {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+    }
+}
