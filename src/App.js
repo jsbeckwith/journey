@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
 import NewEntryPage from './newEntryPage/newEntryPage';
+import './universalStyle.scss';
 
 class App extends React.Component {
 	constructor (props) {

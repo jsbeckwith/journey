@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import './textEditor.scss';
 import logo from '../logo.svg';
 
 /** using the Quill rich text editor

@@ -12,6 +12,7 @@ class NewEntryPage extends React.Component {
 	render () {
 		return (
 			<div>
+				{/* header component will go here */}
 				<TextEditor/>
 				<SubmitSaveButton/>
 			</div>
