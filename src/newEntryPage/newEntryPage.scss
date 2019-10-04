@@ -3,14 +3,15 @@
 .new-entry-header {
     display: block;
     height: 100%;
-    border-bottom: 1px solid $journey-grey;
-    margin-bottom: 10px;
     box-sizing: border-box;
+    height: 100px;
 
     h2 {
-        font-size: 30px;
+        font-size: 35px;
         font-family: "PT Sans";
-        font-weight: 300;
+        font-weight: 400;
+        padding: 10px;
+        line-height: 60px;
         color: $journey-grey;
         display: inline;
     }
@@ -21,11 +22,12 @@
         font-weight: 200;
         color: $journey-grey;
         display: inline;
+        padding: 10px;
     }
 
     button {
         position: absolute;
-        top: 0px;
+        top: 50px;
         right: 0px;
     }
 }

@@ -7,7 +7,7 @@ class NewEntryHeader extends React.Component {
 	}
 
 	render () {
-        console.log(this.props);
+        console.log("date:", this.props);
 
 		return (
 			<div className="new-entry-header">
