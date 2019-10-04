@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../logo.svg';
-import './newEntryPage.css';
+import './newEntryPage.scss';
 import TextEditor from './textEditor.js'
 import SubmitSaveButton from './submitSaveButton.js'
 

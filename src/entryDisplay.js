@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
-import './entryDisplay.css';
+import './entryDisplay.scss';
 
 class EntryDisplay extends React.Component {
 	constructor (props) {
@@ -8,12 +8,9 @@ class EntryDisplay extends React.Component {
 	}
 
 	render () {
-		var date = new Date().toDateString();
-
 		return (
       <div>
-        <p class="date"> {date} </p>
-				<p class="postText"> text </p>
+				<p class="entryText"> here is some text :^) </p>
 			</div>
 		);
 	}
