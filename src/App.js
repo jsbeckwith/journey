@@ -11,7 +11,12 @@ class App extends React.Component {
 	}
 
 	render() {
-		let todayDate = new Date().toDateString();
+		let date = new Date();
+		const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+		const months = ["January", "February", "March", "April", "May", "June",
+  											"July", "August", "September", "October", "November", "December"];
+		let todayDate = days[date.getDay()] + ", " + months[date.getMonth()] + " " + date.getDate()
+										+ ", " + date.getFullYear();
 
 		return (
 			// for now the app just renders the homepage body but later

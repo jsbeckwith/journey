@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './singleEntryPage.scss';
+import '../universalStyle.scss';
 import EditButton from './editButton.js';
 import EntryDisplay from '../entryDisplay.js';
 import SingleEntryHeader from "./singleEntryHeader.js";

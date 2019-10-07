@@ -10,7 +10,7 @@ class SubmitSaveButton extends React.Component {
   render() {
     return (
       <div>
-      <button className="submitSaveButton" onClick={() => alert(Date())}>
+      <button className="submitSaveButton, journey-button" onClick={() => alert(Date())}>
         Submit
       </button>
       </div>

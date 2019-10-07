@@ -1,4 +1,5 @@
 import React from 'react';
+import Tooltip from '@material-ui/core/Tooltip';
 import logo from '../logo.svg';
 
 class EditButton extends React.Component {
@@ -9,9 +10,11 @@ class EditButton extends React.Component {
 
   render() {
     return (
-      <button className="editButton" onClick={() => alert('let\'s edit!!')}>
-        Edit Entry
-      </button>
+      <Tooltip title="edit entry">
+        <button className="editButton, journey-button" onClick={() => alert('let\'s edit baby!!')}>
+          Edit Entry
+          </button>
+      </Tooltip>
     );
   }
 
