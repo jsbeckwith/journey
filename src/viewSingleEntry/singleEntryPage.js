@@ -3,7 +3,6 @@ import React from 'react';
 import './singleEntryPage.scss';
 import '../universalStyle.scss';
 import EditButton from './editButton.js';
-import EntryDisplay from '../entryDisplay.js';
 import SingleEntryHeader from "./singleEntryHeader.js";
 
 class SingleEntryPage extends React.Component {
@@ -15,7 +14,7 @@ class SingleEntryPage extends React.Component {
 		return (
 			<div>
 				<SingleEntryHeader date={this.props.date}/>
-        <EntryDisplay/>
+        <p class="entry-text"> here is some text :^) </p>
 			</div>
 		);
 	}

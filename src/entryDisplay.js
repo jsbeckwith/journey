@@ -10,7 +10,10 @@ class EntryDisplay extends React.Component {
 	render () {
 		return (
       <div>
-				<p class="entryText"> here is some text :^) </p>
+				<header class="date"> {this.props.date} </header>
+				<br/>
+				<header class="author"> {this.props.author} </header>
+				<p class="entry-text"> {this.props.entryText} </p>
 			</div>
 		);
 	}

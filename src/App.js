@@ -1,9 +1,10 @@
 import React from 'react';
 
 import './App.scss';
-import NewEntryPage from './newEntryPage/newEntryPage';
+import NewEntryPage from './newEntryPage/newEntryPage.js';
 import Base from './base.js';
-import SingleEntryPage from './viewSingleEntry/singleEntryPage.js';
+//import SingleEntryPage from './viewSingleEntry/singleEntryPage.js';
+import MultipleEntriesPage from './viewMultipleEntries/multipleEntriesPage.js';
 
 class App extends React.Component {
 	constructor (props) {
@@ -23,7 +24,7 @@ class App extends React.Component {
 			// we'll add logic to determine which page should be loaded i think
 			// navbar will also go here
 			<div>
-				<SingleEntryPage date={todayDate}/>
+				<MultipleEntriesPage/>
 			</div>
 		);
 	}
