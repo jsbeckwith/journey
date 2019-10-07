@@ -1,13 +1,19 @@
 import React from 'react';
 import logo from '../logo.svg';
 import './newEntryPage.scss';
+<<<<<<< HEAD
 import TextEditor from './textEditor.js'
 import SubmitSaveButton from './submitSaveButton.js'
 import axios from "axios";
+=======
+import TextEditor from './textEditor.js';
+import NewEntryHeader from './newEntryHeader.js';
+>>>>>>> origin/master
 
 class NewEntryPage extends React.Component {
 	constructor (props) {
 		super(props);
+<<<<<<< HEAD
 		this.state = {
 			textFromChild: '',
 			data: '',
@@ -43,6 +49,18 @@ class NewEntryPage extends React.Component {
 				{/* header component will go here */}
 				<TextEditor callbackFromParent = {this.myCallback}/>
 				<SubmitSaveButton qText = {this.state.textFromChild} store = {this.putDataToDB} get = {this.getDataFromDB}/>
+=======
+		// at some point this will have a prop that determines if the page is
+		// editing an existing entry or making an entirely new one
+		// which changes discard/delete and the title
+	}
+
+	render () {
+		return (
+			<div>
+				<NewEntryHeader date={this.props.date}/>
+				<TextEditor/>
+>>>>>>> origin/master
 			</div>
 		);
 	}

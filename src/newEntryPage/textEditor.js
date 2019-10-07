@@ -15,8 +15,12 @@ class TextEditor extends React.Component {
     }
 
     handleChange(value) {
+<<<<<<< HEAD
         this.setState({ text: value });
         this.props.callbackFromParent(this.state.text);
+=======
+        this.setState({ text: value })
+>>>>>>> origin/master
     }
 
     modules = {
@@ -50,4 +54,8 @@ class TextEditor extends React.Component {
     }
 }
 
+<<<<<<< HEAD
 export default TextEditor;
+=======
+export default TextEditor;
+>>>>>>> origin/master
