@@ -9,12 +9,14 @@ class App extends React.Component {
 	}
 
 	render() {
+		let todayDate = new Date().toDateString();
+
 		return (
 			// for now the app just renders the homepage body but later
 			// we'll add logic to determine which page should be loaded i think
 			// navbar will also go here
 			<div>
-				<NewEntryPage/>
+				<NewEntryPage date={todayDate}/>
 			</div>
 		);
 	}
