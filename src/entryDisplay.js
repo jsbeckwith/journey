@@ -9,7 +9,7 @@ class EntryDisplay extends React.Component {
 
 	render () {
 		return (
-      <div>
+      <div class="entry">
 				<header class="author"> {this.props.author} </header>
 				<br/>
 				<header class="date"> {this.props.date} </header>

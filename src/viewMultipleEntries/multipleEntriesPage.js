@@ -26,31 +26,31 @@ class MultipleEntriesPage extends React.Component {
 	  //  ]
 
     var entries = [ {'author': 'Hava',
-		 								 'text': 'uwu uwu uwu uwu uwu uwu uwu ',
+		 								 'text': 'uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu ',
 		 							 	 'date': '10/2/19'},
 
 										 {'author': 'Mimi',
-                     'text': 'bloop bloop bloop bloop bloop ',
+                     'text': 'bloop bloop bloop bloop bloop bloop bloop bloop bloop bloop bloop bloop bloop bloop bloop ',
                      'date': '9/31/19'},
 
 										 {'author': 'Julia B.',
-                     'text': ':) :) :) :) :) :) :) :) ',
+                     'text': ':) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) ',
                      'date': '9/17/19'},
 
 										 {'author': 'Julia L.',
-                     'text': 'wow wow wow wow wow wow wow ',
+                     'text': 'wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow ',
                      'date': '9/6/19'},
 
 										 {'author': 'Mimi',
-                     'text': 'bloop',
+                     'text': 'bloopbloopbloopbloopbloopbloopbloop wow wow wow wow wow wow wow ',
                      'date': '9/31/19'},
 
 										 {'author': 'Mimi',
-                     'text': 'bloop',
+                     'text': 'bloopbloopwow wow wow wow wow wow wow ',
                      'date': '9/31/19'},
 
 										 {'author': 'Mimi',
-                     'text': 'bloop',
+                     'text': 'bloopbloopbloopbloopwow wow wow wow wow wow wow ',
                      'date': '9/31/19'},
     ]
 

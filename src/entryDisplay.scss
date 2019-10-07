@@ -1,6 +1,6 @@
 @import './vars.scss';
 
-body{
+.entry{
   font-family: "PT Sans";
 }
 
@@ -24,6 +24,7 @@ body{
 .text {
   font-family: "PT Sans";
   padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 40px;
+  padding-left: 10px;
+  padding-right: 40px;
+  width: 400px;
 }
