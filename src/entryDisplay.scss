@@ -1,25 +1,29 @@
 @import './vars.scss';
 
-.author {
-  font-size: 35px;
+body{
   font-family: "PT Sans";
+}
+
+.author {
+  font-size: 25px;
   font-weight: 400;
   padding: 10px;
-  line-height: 60px;
+  line-height: 40px;
   color: $journey-grey;
   display: inline;
 }
 
 .date {
-  font-size: 20px;
-  font-family: "PT Sans";
+  font-size: 17px;
   font-weight: 200;
   color: $journey-grey;
   display: inline;
   padding: 10px;
 }
 
-.entry-text {
+.text {
   font-family: "PT Sans";
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 40px;
 }

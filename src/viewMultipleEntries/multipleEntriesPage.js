@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './multipleEntriesPage.scss';
+import EntryDisplay from '../entryDisplay.js';
 
 class MultipleEntriesPage extends React.Component {
 	constructor (props) {
@@ -9,20 +10,35 @@ class MultipleEntriesPage extends React.Component {
 
 	render () {
 
+		// Another possible way to organize the entries:
+		// var toDisplay = [ {date: '',
+	  //                      {entries: { author: '',
+		//                                 text: ''},
+    //
+    //                               { author: '',
+		//                                 text: ''},
+		//
+		//															 { author: '',
+		//                                  text: ''}
+	  //                      }
+		//                   }
+
+	  //  ]
+
     var entries = [ {'author': 'Hava',
-		 								 'text': 'uwu',
+		 								 'text': 'uwu uwu uwu uwu uwu uwu uwu ',
 		 							 	 'date': '10/2/19'},
 
 										 {'author': 'Mimi',
-                     'text': 'bloop',
+                     'text': 'bloop bloop bloop bloop bloop ',
                      'date': '9/31/19'},
 
 										 {'author': 'Julia B.',
-                     'text': ':)',
+                     'text': ':) :) :) :) :) :) :) :) ',
                      'date': '9/17/19'},
 
 										 {'author': 'Julia L.',
-                     'text': 'wow',
+                     'text': 'wow wow wow wow wow wow wow ',
                      'date': '9/6/19'},
 
 										 {'author': 'Mimi',
@@ -39,20 +55,21 @@ class MultipleEntriesPage extends React.Component {
     ]
 
 		return (
-			<div>
-        <ul>
+			<div class="entries">
+
 					{entries.map((entry) => {
 						return (
-							<div class="entry-display">
-								<h1 class="author"> {entry.author} </h1>
-								<br/>
-								<h1 class="date"> {entry.date} </h1>
-								<br/>
-								<p class="text"> {entry.text} </p>
-							</div>
+							<EntryDisplay author={entry.author} date={entry.date} text={entry.text}/>
+							// <div class="entry-display">
+							// 	<h1 class="author"> {entry.author} </h1>
+							// 	<br/>
+							// 	<h1 class="date"> {entry.date} </h1>
+							// 	<br/>
+							// 	<p class="text"> {entry.text} </p>
+							// </div>
 						)
 					})}
-				</ul>
+
 			</div>
 		);
 	}
