@@ -11,7 +11,9 @@ class SingleEntryHeader extends React.Component {
 	render () {
 		return (
 			<div class="singleEntryHeader">
-        <header> {this.props.date} </header>
+				<header class="headerAuthor"> {this.props.author} </header>
+				<br/>
+        <header class="headerDate"> {this.props.date} </header>
 				<EditButton/>
         <DeleteButton/>
 			</div>

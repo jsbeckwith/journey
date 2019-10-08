@@ -13,8 +13,9 @@ class SingleEntryPage extends React.Component {
 	render () {
 		return (
 			<div>
-				<SingleEntryHeader date={this.props.date}/>
-        <p class="entry-text"> here is some text :^) </p>
+				<SingleEntryHeader date={this.props.entry.date} author={this.props.entry.author}/>
+				<br/>
+				<p class="text"> {this.props.entry.text} </p>
 			</div>
 		);
 	}
