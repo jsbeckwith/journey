@@ -5,12 +5,9 @@
  * Copyright (c) 2013, salesforce.com
  * minor changes by Journey team
  */
-<<<<<<< HEAD
-=======
 
-  @import '../vars.scss';
+@import '../vars.scss';
 
->>>>>>> origin/master
  .ql-container {
     box-sizing: border-box;
     font-family: Helvetica, Arial, sans-serif;
@@ -40,11 +37,7 @@
     box-sizing: border-box;
     line-height: 1.42;
     height: 100%;
-<<<<<<< HEAD
     min-height: 600px;
-=======
-    min-height: 150px;
->>>>>>> origin/master
     outline: none;
     overflow-y: auto;
     padding: 12px 15px;
@@ -453,11 +446,7 @@
   .ql-snow .ql-toolbar .ql-picker-item:hover,
   .ql-snow.ql-toolbar .ql-picker-item.ql-selected,
   .ql-snow .ql-toolbar .ql-picker-item.ql-selected {
-<<<<<<< HEAD
-    color: #a498d3;
-=======
     color: $journey-purple;
->>>>>>> origin/master
   }
   .ql-snow.ql-toolbar button:hover .ql-fill,
   .ql-snow .ql-toolbar button:hover .ql-fill,
@@ -487,11 +476,7 @@
   .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill,
   .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill,
   .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill {
-<<<<<<< HEAD
-    fill: #a498d3;
-=======
     fill: $journey-purple;
->>>>>>> origin/master
   }
   .ql-snow.ql-toolbar button:hover .ql-stroke,
   .ql-snow .ql-toolbar button:hover .ql-stroke,
@@ -521,11 +506,7 @@
   .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke-miter,
   .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter,
   .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter {
-<<<<<<< HEAD
-    stroke: #a498d3;
-=======
     stroke: $journey-purple;
->>>>>>> origin/master
   }
   @media (pointer: coarse) {
     .ql-snow.ql-toolbar button:hover:not(.ql-active),
@@ -970,16 +951,8 @@
     content: "Enter video:";
   }
   .ql-snow a {
-<<<<<<< HEAD
-    color: #a498d3;
-=======
     color: $journey-purple;
->>>>>>> origin/master
   }
   .ql-container.ql-snow {
     border: 1px solid #ccc;
   }
-<<<<<<< HEAD
-  
-=======
->>>>>>> origin/master

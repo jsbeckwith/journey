@@ -35,7 +35,7 @@ postRoutes.route('/:id').get(function(req, res) {
     });
 });
 
-postRoutes.route('/:id').post(function(req, res) {
+postRoutes.route('/update/:id').post(function(req, res) {
     Post.findById(req.params.id, function(err, post) {
         if (!post)
             res.status(404).send("data is not found");
