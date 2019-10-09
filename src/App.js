@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
-import NewEntryPage from './newEntryPage/newEntryPage';
+import NewEntryPage from './newEntryPage/newEntryPage.js';
+import Ribbon from './ribbon.js';
 import './universalStyle.scss';
 
 class App extends React.Component {
@@ -20,9 +21,8 @@ class App extends React.Component {
 		return (
 			// for now the app just renders the homepage body but later
 			// we'll add logic to determine which page should be loaded i think
-			// navbar will also go here
 			<div>
-				// pass todayDate as a prop to NewEntryPage
+				<Ribbon/>
 				<NewEntryPage date={todayDate}/>
 			</div>
 		);
