@@ -2,7 +2,6 @@ import React from 'react';
 
 import './App.scss';
 //import NewEntryPage from './newEntryPage/newEntryPage.js';
-//import Base from './base.js';
 import SingleEntryPage from './viewSingleEntry/singleEntryPage.js';
 //import MultipleEntriesPage from './viewMultipleEntries/sidescrollEntries.js';
 
