@@ -3,7 +3,7 @@ import React from 'react';
 import './sidescrollEntries.scss';
 import EntryDisplay from '../entryDisplay.js';
 
-class sidescrollEntries extends React.Component {
+class SidescrollEntries extends React.Component {
 	constructor (props) {
 		super(props);
 	}

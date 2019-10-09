@@ -1,10 +1,10 @@
 import React from 'react';
 
 import './App.scss';
-import NewEntryPage from './newEntryPage/newEntryPage.js';
-import Base from './base.js';
-//import SingleEntryPage from './viewSingleEntry/singleEntryPage.js';
-import MultipleEntriesPage from './viewMultipleEntries/multipleEntriesPage.js';
+//import NewEntryPage from './newEntryPage/newEntryPage.js';
+//import Base from './base.js';
+import SingleEntryPage from './viewSingleEntry/singleEntryPage.js';
+//import MultipleEntriesPage from './viewMultipleEntries/sidescrollEntries.js';
 
 class App extends React.Component {
 	constructor (props) {
@@ -19,12 +19,16 @@ class App extends React.Component {
 		let todayDate = days[date.getDay()] + ", " + months[date.getMonth()] + " " + date.getDate()
 										+ ", " + date.getFullYear();
 
+		let entry = {'author': 'Hava',
+		 						 'text': 'uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu ',
+		 						 'date': todayDate }
+
 		return (
 			// for now the app just renders the homepage body but later
 			// we'll add logic to determine which page should be loaded i think
 			// navbar will also go here
 			<div>
-				<MultipleEntriesPage/>
+				<SingleEntryPage entry={entry}/>
 			</div>
 		);
 	}
