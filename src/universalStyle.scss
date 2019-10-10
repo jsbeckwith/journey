@@ -1,5 +1,24 @@
 @import './vars.scss';
 
+body {
+    margin: 0;
+}
+
+div .ribbon {
+    display: block;
+    width: 100vw;
+    height: 100%;
+    background-color: $journey-purple;
+    z-index: 1;
+    margin: 0;
+
+    svg {
+        fill: white;
+        height: 40px;
+        padding: 8px 0px 8px 20px; /* top | right | bottom | left */
+    }
+}
+
 .journey-button {
     background-color: #fff;
     color: $journey-purple;
