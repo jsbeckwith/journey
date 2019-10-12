@@ -2,6 +2,7 @@
 
 body {
     margin: 0;
+    width: 100vw;
 }
 
 div .ribbon {
@@ -9,7 +10,7 @@ div .ribbon {
     width: 100vw;
     height: 100%;
     background-color: $journey-purple;
-    z-index: 1;
+    z-index: 2;
     margin: 0;
 
     svg {
@@ -17,6 +18,34 @@ div .ribbon {
         height: 40px;
         padding: 8px 0px 8px 20px; /* top | right | bottom | left */
     }
+}
+
+nav {
+    background-color: white;
+    height: 100vw;
+    width: $nav-width;
+    position: fixed;
+    left: 0;
+    top: 60px;
+    z-index: 2;
+    border-right: 3px solid $journey-purple;
+
+    svg {
+        fill: white;
+        padding: 20px 15px;
+        display: block;
+        width: 25px;
+        height: 25px;
+
+        :hover {
+            fill: $journey-purple-light;
+        }
+    }
+}
+
+.page-body {
+    padding: 20px;
+    padding-left: 77px;
 }
 
 .journey-button {
