@@ -1,5 +1,5 @@
 import React from 'react';
-import SubmitSaveButton from './newEntryPage/submitSaveButton.js'
+import SubmitSaveButton from '../newEntryPage/submitSaveButton.js'
 
 class HomepageHeader extends React.Component {
 	constructor (props) {

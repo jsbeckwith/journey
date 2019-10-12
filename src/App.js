@@ -4,16 +4,16 @@ import Ribbon from './ribbon.js';
 import Nav from './nav.js';
 import NewEntryPage from './newEntryPage/newEntryPage.js';
 import SingleEntryPage from './viewSingleEntry/singleEntryPage.js';
-import SidescrollEntries from './viewMultipleEntries/sidescrollEntries.js';
-import HomePage from './homepage';
+import HomePage from './homepage/homepage.js';
 import './universalStyle.scss';
+import {Route, Switch} from 'react-router-dom';
 
 class App extends React.Component {
 	constructor (props) {
 		super(props);
 	}
 
-	render() {
+	createDate() {
 		let date = new Date();
 		const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 		const months = ["January", "February", "March", "April", "May", "June",
@@ -21,20 +21,42 @@ class App extends React.Component {
 		// create a string with the full day of the week, month, day of the month, and year
 		let todayDate = days[date.getDay()] + ", " + months[date.getMonth()] + " " + date.getDate()
 						+ ", " + date.getFullYear();
+		return (
+			todayDate
+		);
+	}
+
+	createRoutes(entry) {
+		return(
+			<Switch>
+				<Route exact path="/homepage">
+					<HomePage entry={entry}/>
+				</Route>
+				<Route exact path="/newEntryPage">
+					<NewEntryPage/>
+				</Route>
+				<Route exact path="/singleEntryPage">
+					<SingleEntryPage/>
+				</Route>
+			</Switch>
+		);
+	}
+
+	render() {
+		let todayDate = this.createDate();
 
 		let entry = {'author': 'Hava',
 					 'text': 'uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu ',
 					 'date': todayDate }
 
+		let routes = this.createRoutes(entry);
 		
 		return (
-			// for now the app just renders the homepage body but later
-			// we'll add logic to determine which page should be loaded i think
 			<div>
 				<Nav/>
 				<Ribbon/>
 				<div class="page-body">
-					<HomePage entry={entry}/>
+					{routes}
 				</div>
 			</div>
 		);

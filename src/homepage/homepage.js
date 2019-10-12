@@ -1,9 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from '../logo.svg';
 import './homepage.scss';
-import TextEditor from './newEntryPage/textEditor.js';
+import TextEditor from '../newEntryPage/textEditor.js';
 import HomepageHeader from './homepageHeader.js';
-import SidescrollEntries from './viewMultipleEntries/sidescrollEntries.js';
+import SidescrollEntries from '../viewMultipleEntries/sidescrollEntries.js';
 
 class HomePage extends React.Component {
 	constructor (props) {
