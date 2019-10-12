@@ -14,7 +14,7 @@ class NewEntryPage extends React.Component {
 
 	render () {
 		return (
-			<div>
+			<div class="newEntry">
 				<NewEntryHeader date={this.props.date}/>
 				<TextEditor/>
 			</div>
