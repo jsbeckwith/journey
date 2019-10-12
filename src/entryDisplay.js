@@ -14,7 +14,7 @@ class EntryDisplay extends React.Component {
 				<br/>
 				<header class="date"> {this.props.date} </header>
 				<br/>
-				<p class="text"> {this.props.text} </p>
+				<p class="text-sidescroll"> {this.props.text} </p>
 			</div>
 		);
 	}

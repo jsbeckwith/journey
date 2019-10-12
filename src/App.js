@@ -3,6 +3,9 @@ import logo from './logo.svg';
 import Ribbon from './ribbon.js';
 import Nav from './nav.js';
 import NewEntryPage from './newEntryPage/newEntryPage.js';
+import SingleEntryPage from './viewSingleEntry/singleEntryPage.js';
+import SidescrollEntries from './viewMultipleEntries/sidescrollEntries.js';
+import HomePage from './homepage';
 import './universalStyle.scss';
 
 class App extends React.Component {
@@ -18,6 +21,11 @@ class App extends React.Component {
 		// create a string with the full day of the week, month, day of the month, and year
 		let todayDate = days[date.getDay()] + ", " + months[date.getMonth()] + " " + date.getDate()
 						+ ", " + date.getFullYear();
+
+		let entry = {'author': 'Hava',
+					 'text': 'uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu ',
+					 'date': todayDate }
+
 		
 		return (
 			// for now the app just renders the homepage body but later
@@ -26,7 +34,7 @@ class App extends React.Component {
 				<Nav/>
 				<Ribbon/>
 				<div class="page-body">
-					<NewEntryPage date={todayDate}/>
+					<HomePage entry={entry}/>
 				</div>
 			</div>
 		);

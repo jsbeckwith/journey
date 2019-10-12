@@ -12,18 +12,17 @@ class SidescrollEntries extends React.Component {
 
 		// Another possible way to organize the entries:
 		// var toDisplay = [ {date: '',
-	  //                      {entries: { author: '',
+	    //                      {entries: { author: '',
 		//                                 text: ''},
-    //
-    //                               { author: '',
+        //
+        //                               { author: '',
 		//                                 text: ''},
 		//
 		//															 { author: '',
 		//                                  text: ''}
-	  //                      }
+	    //                      }
 		//                   }
-
-	  //  ]
+	    //  ]
 
     var entries = [ {'author': 'Hava',
 		 								 'text': 'uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu ',
@@ -56,7 +55,7 @@ class SidescrollEntries extends React.Component {
 
 		return (
 			<div class="entries">
-					// loop through all entries and pass info as props to EntryDisplay
+					{/* loop through all entries and pass info as props to EntryDisplay */}
 					{entries.map((entry) => {
 						return (
 							<EntryDisplay author={entry.author} date={entry.date} text={entry.text}/>

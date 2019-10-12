@@ -1,0 +1,33 @@
+@import './vars.scss';
+
+.homepage-header {
+    display: block;
+    box-sizing: border-box;
+    height: 100px;
+    width: 100%;
+
+    h2 {
+        font-size: 35px;
+        font-family: "PT Sans";
+        font-weight: 400;
+        padding: 10px;
+        line-height: 60px;
+        color: $journey-grey;
+        display: inline;
+    }
+
+    h3 {
+        font-size: 20px;
+        font-family: "PT Sans";
+        font-weight: 200;
+        color: $journey-grey;
+        display: inline;
+        padding: 10px;
+    }
+
+    button {
+        position: absolute;
+        top: 50px;
+        right: 0px;
+    }
+}
