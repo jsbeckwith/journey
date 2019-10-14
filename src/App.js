@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import Ribbon from './ribbon.js';
 import Nav from './nav.js';
 import NewEntryPage from './newEntryPage/newEntryPage.js';

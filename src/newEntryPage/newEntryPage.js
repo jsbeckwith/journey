@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from '../logo.svg';
 import './newEntryPage.scss';
 import TextEditor from './textEditor.js';
 import NewEntryHeader from './newEntryHeader.js';
