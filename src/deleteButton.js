@@ -1,6 +1,5 @@
 import React from 'react';
 import Tooltip from '@material-ui/core/Tooltip';
-import logo from './logo.svg';
 
 class DeleteButton extends React.Component {
 

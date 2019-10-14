@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from '../logo.svg';
 import './homepage.scss';
 import TextEditor from '../newEntryPage/textEditor.js';
 import HomepageHeader from './homepageHeader.js';

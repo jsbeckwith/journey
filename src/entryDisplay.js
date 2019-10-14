@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './entryDisplay.scss';
 
 class EntryDisplay extends React.Component {
