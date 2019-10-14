@@ -1,8 +1,8 @@
 @import '../vars.scss';
 
-.singleEntryHeader {
+.single-entry-header {
   display: block;
-  height: 100%;
+  width: 100%;
   box-sizing: border-box;
   height: 100px;
   font-family: "PT Sans";
@@ -16,10 +16,10 @@
   font-family: "PT Sans";
 }
 
-.headerAuthor {
+.header-author {
   font-size: 35px;
 }
 
-.headerDate {
+.header-date {
   font-size: 20px;
 }

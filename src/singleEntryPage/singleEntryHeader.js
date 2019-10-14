@@ -9,12 +9,15 @@ class SingleEntryHeader extends React.Component {
 
 	render () {
 		return (
-			<div class="singleEntryHeader">
-				<header class="headerAuthor"> {this.props.author} </header>
+			<div class="single-entry-header">
+				<header class="header-author"> {this.props.author} </header>
 				<br/>
-        		<header class="headerDate"> {this.props.date} </header>
-        		<DeleteButton/>
-				<EditButton/>
+        		<header class="header-date"> {this.props.date} </header>
+        		<div className="header-button-container">
+					<EditButton/>
+					{/* <DeleteButton/> something about having more than one button
+					in this div causes a fatal error, so commenting out for now */}
+				</div>
 			</div>
 		);
 	}
