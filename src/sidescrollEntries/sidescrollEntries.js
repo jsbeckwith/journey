@@ -1,6 +1,6 @@
 import React from 'react';
 import './sidescrollEntries.scss';
-import EntryDisplay from '../entryDisplay.js';
+import SidescrollPanel from './sidescrollPanel.js';
 
 class SidescrollEntries extends React.Component {
 	constructor (props) {
@@ -54,10 +54,10 @@ class SidescrollEntries extends React.Component {
 
 		return (
 			<div class="entries">
-					{/* loop through all entries and pass info as props to EntryDisplay */}
+					{/* loop through all entries and pass info as props to sidescrollPanel */}
 					{entries.map((entry) => {
 						return (
-							<EntryDisplay author={entry.author} date={entry.date} text={entry.text}/>
+							<SidescrollPanel author={entry.author} date={entry.date} text={entry.text}/>
 						)
 					})}
 
