@@ -2,7 +2,7 @@ import React from 'react';
 import Ribbon from './ribbon.js';
 import Nav from './nav.js';
 import NewEntryPage from './newEntryPage/newEntryPage.js';
-import SingleEntryPage from './viewSingleEntry/singleEntryPage.js';
+import SingleEntryPage from './singleEntryPage/singleEntryPage.js';
 import HomePage from './homepage/homepage.js';
 import './universalStyle.scss';
 import {Route, Switch} from 'react-router-dom';
@@ -20,19 +20,19 @@ class App extends React.Component {
 		// create a string with the full day of the week, month, day of the month, and year
 		let todayDate = days[date.getDay()] + ", " + months[date.getMonth()] + " " + date.getDate()
 						+ ", " + date.getFullYear();
-		return (
-			todayDate
-		);
+		return todayDate;
 	}
 
 	createRoutes(entry) {
+		let todayDate = this.createDate();
+
 		return(
 			<Switch>
 				<Route exact path="/homepage">
-					<HomePage entry={entry}/>
+					<HomePage entry={entry} todayDate={todayDate}/>
 				</Route>
 				<Route exact path="/newEntryPage">
-					<NewEntryPage/>
+					<NewEntryPage todayDate={todayDate}/>
 				</Route>
 				<Route exact path="/singleEntryPage">
 					<SingleEntryPage/>

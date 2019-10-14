@@ -1,5 +1,4 @@
 import React from 'react';
-
 import EditButton from './editButton.js';
 import DeleteButton from '../deleteButton.js';
 

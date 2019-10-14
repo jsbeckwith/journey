@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './sidescrollEntries.scss';
 import EntryDisplay from '../entryDisplay.js';
 

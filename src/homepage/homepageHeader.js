@@ -7,13 +7,12 @@ class HomepageHeader extends React.Component {
 	}
 
 	render () {
-    console.log("date:", this.props);
 
 		return (
 			<div className="homepage-header">
 				<h2>Hello, {this.props.entry.author}!</h2>
                 <br/>
-                <h3>Today is {this.props.entry.date}</h3>
+                <h3>Today is {this.props.todayDate}</h3>
                 <SubmitSaveButton/>
 			</div>
 		);
