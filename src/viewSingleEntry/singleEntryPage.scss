@@ -1,0 +1,26 @@
+@import '../vars.scss';
+
+.singleEntryHeader {
+  display: block;
+  height: 100%;
+  box-sizing: border-box;
+  height: 100px;
+
+  font-family: "PT Sans";
+  font-weight: 200;
+  color: $journey-grey;
+  display: inline;
+  padding: 10px;
+}
+
+.text {
+  font-family: "PT Sans";
+}
+
+.headerAuthor {
+  font-size: 35px;
+}
+
+.headerDate {
+  font-size: 20px;
+}
