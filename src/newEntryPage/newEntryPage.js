@@ -6,16 +6,24 @@ import NewEntryHeader from './newEntryHeader.js';
 class NewEntryPage extends React.Component {
 	constructor (props) {
 		super(props);
-		// at some point this will have a prop that determines if the page is
-		// editing an existing entry or making an entirely new one
-		// which changes discard/delete and the title
+	}
+
+	/* this function determines whether the page is a completely new entry
+	*  or if it is an edit of an entry made earlier that day
+	*  based on if there is already an entry save for the current day.
+	*  The page mode is then passed down to child components as a prop
+	*/
+	determineMode = () => {
+		//? return 'edit' : return 'new';
 	}
 
 	render () {
+		let pageMode = this.determineMode();
+
 		return (
 			<div>
-				<NewEntryHeader date={this.props.date}/>
-				<TextEditor/>
+				<NewEntryHeader date={this.props.date} mode={pageMode}/>
+				<TextEditor mode={pageMode}/>
 			</div>
 		);
 	}
