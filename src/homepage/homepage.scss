@@ -5,6 +5,7 @@
     box-sizing: border-box;
     height: 100px;
     width: 100%;
+    position: relative;
 
     h2 {
         font-size: 35px;
@@ -23,11 +24,5 @@
         color: $journey-grey;
         display: inline;
         padding: 10px;
-    }
-
-    button {
-        position: absolute;
-        top: 50px;
-        right: 0px;
     }
 }

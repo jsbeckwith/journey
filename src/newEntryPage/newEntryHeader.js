@@ -1,5 +1,7 @@
 import React from 'react';
-import SubmitSaveButton from './submitSaveButton.js'
+import SubmitSaveButton from '../buttons/submitSaveButton.js';
+import DeleteButton from '../buttons/deleteButton.js';
+import '../universalStyle.scss';
 
 class NewEntryHeader extends React.Component {
 	constructor (props) {
@@ -7,14 +9,17 @@ class NewEntryHeader extends React.Component {
 	}
 
 	render () {
-    console.log("date:", this.props);
 
 		return (
 			<div className="new-entry-header">
 				<h2>New Entry</h2>
                 <br/>
-                <h3>Today is {this.props.date}</h3>
-                <SubmitSaveButton/>
+                <h3>Today is {this.props.todayDate}</h3>
+				<div className="header-button-container">
+					<SubmitSaveButton/>
+					{/* <DeleteButton/> something about having more than one button
+					in this div causes a fatal error, so commenting out for now */}
+				</div>
 			</div>
 		);
 	}

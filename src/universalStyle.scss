@@ -3,6 +3,8 @@
 body {
     margin: 0;
     width: 100vw;
+    font-family: 'PT-Sans';
+    color: $journey-grey;
 }
 
 div .ribbon {
@@ -48,6 +50,25 @@ nav {
     padding-left: 77px;
 }
 
+h2 {
+    font-family: 'PT-Sans';
+    font-size: 35px;
+    font-weight: 400;
+    padding: 10px;
+    line-height: 60px;
+    color: $journey-grey;
+    display: inline;
+}
+
+h3 {
+    font-family: 'PT-Sans';
+    font-size: 20px;
+    font-weight: 200;
+    color: $journey-grey;
+    display: inline;
+    padding: 10px;
+}
+
 .journey-button {
     background-color: #fff;
     color: $journey-purple;
@@ -79,8 +100,12 @@ nav {
     }
 }
 
-.header-button {
+.header-button-container {
     position: absolute;
     top: 10px;
     right: 0px;
+
+    .header-button {
+        margin-left: 10px;
+    }
 }

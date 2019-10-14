@@ -1,6 +1,13 @@
-@import './vars.scss';
+@import '../vars.scss';
 
-.entry{
+.entries {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.entry {
   font-family: "PT Sans";
 }
 

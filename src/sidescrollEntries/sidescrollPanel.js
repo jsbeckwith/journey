@@ -1,7 +1,6 @@
 import React from 'react';
-import './entryDisplay.scss';
 
-class EntryDisplay extends React.Component {
+class SidescrollPanel extends React.Component {
 	constructor (props) {
 		super(props);
 	}
@@ -19,4 +18,4 @@ class EntryDisplay extends React.Component {
 	}
 }
 
-export default EntryDisplay;
+export default SidescrollPanel;

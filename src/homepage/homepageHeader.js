@@ -1,5 +1,5 @@
 import React from 'react';
-import SubmitSaveButton from '../newEntryPage/submitSaveButton.js'
+import SubmitSaveButton from '../buttons/submitSaveButton.js'
 
 class HomepageHeader extends React.Component {
 	constructor (props) {
@@ -7,14 +7,15 @@ class HomepageHeader extends React.Component {
 	}
 
 	render () {
-    console.log("date:", this.props);
 
 		return (
 			<div className="homepage-header">
 				<h2>Hello, {this.props.entry.author}!</h2>
                 <br/>
-                <h3>Today is {this.props.entry.date}</h3>
-                <SubmitSaveButton/>
+                <h3>Today is {this.props.todayDate}</h3>
+				<div className="header-button-container">
+					<SubmitSaveButton/>
+				</div>
 			</div>
 		);
 	}

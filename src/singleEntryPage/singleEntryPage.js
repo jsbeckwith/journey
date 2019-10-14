@@ -2,7 +2,7 @@ import React from 'react';
 
 import './singleEntryPage.scss';
 import '../universalStyle.scss';
-import EditButton from './editButton.js';
+import EditButton from '../buttons/editButton.js';
 import SingleEntryHeader from "./singleEntryHeader.js";
 
 class SingleEntryPage extends React.Component {
