@@ -19,7 +19,7 @@ class SubmitSaveButton extends React.Component {
 		this.setState({content: this.props.txt});
 		return this.state.content;
 	}
-
+	
 	post = () => {
 		var c = this.refreshText();
 		const newPost = {

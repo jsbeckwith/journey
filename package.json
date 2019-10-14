@@ -9,25 +9,13 @@
     "concurrently": "^4.1.2",
     "node-sass": "^4.12.0",
     "quill": "^1.3.7",
-    "react": "^16.9.0",
+    "react": "^16.10.1",
     "react-dom": "^16.9.0",
     "react-quill": "^1.3.3",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.1.2",
     "react-tooltip": "^3.11.1",
-    "typescript": "^3.6.3",
-    "react-scripts": "3.1.2",
-    "react-tooltip": "^3.11.1"
-  },
-  "contributors": [
-    "Julia Lohman <juliaslohman@gmail.com> (https://github.com/juliaslohman)",
-    "Julia Beckwith <jbeckwith@g.hmc.edu> (https://github.com/jsbeckwith)",
-    "Hava Parker <hava.xinhua@gmail.com> (https://auhnix.github.com)",
-    "Mimi Louie <angeline.louie@gmail.com>"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jsbeckwith/journey.git"
+    "typescript": "^3.6.3"
   },
   "contributors": [
     {
@@ -51,6 +39,10 @@
       "url": ""
     }
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsbeckwith/journey.git"
+  },
   "scripts": {
     "start": "concurrently \"react-scripts start\" \"cd backend && nodemon server\"",
     "build": "react-scripts build",
