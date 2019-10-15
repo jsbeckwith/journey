@@ -37,6 +37,10 @@ class TextEditor extends React.Component {
     ]
 
     render() {
+        if (/* can fetch entry */) {
+            this.state.text = //entry;
+        }
+
         return (
             <ReactQuill placeholder="What are you grateful for today?"
                         value={this.state.text}
