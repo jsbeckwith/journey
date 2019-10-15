@@ -6,16 +6,20 @@ import NewEntryHeader from './newEntryHeader.js';
 class NewEntryPage extends React.Component {
 	constructor (props) {
 		super(props);
-		// at some point this will have a prop that determines if the page is
-		// editing an existing entry or making an entirely new one
-		// which changes discard/delete and the title
+		this.state = {
+			textFromChild: ''
+		}
 	}
+
+	receiveText = (textFromQuill) => {
+		this.setState({textFromChild: textFromQuill});
+	} 
 
 	render () {
 		return (
 			<div>
-				<NewEntryHeader date={this.props.date}/>
-				<TextEditor/>
+				<NewEntryHeader date={this.props.date} qText={this.state.textFromChild}/>
+				<TextEditor giveText={this.receiveText}/>
 			</div>
 		);
 	}

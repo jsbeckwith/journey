@@ -1,14 +1,15 @@
 import React from 'react';
+import {Route, Switch} from 'react-router-dom';
+import axios from 'axios';
+import './universalStyle.scss';
 import Ribbon from './ribbon.js';
 import Nav from './nav.js';
 import NewEntryPage from './newEntryPage/newEntryPage.js';
 import SingleEntryPage from './singleEntryPage/singleEntryPage.js';
 import HomePage from './homepage/homepage.js';
-import './universalStyle.scss';
-import {Route, Switch} from 'react-router-dom';
 
 class App extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 	}
 

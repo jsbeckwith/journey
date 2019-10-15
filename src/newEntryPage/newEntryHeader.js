@@ -17,7 +17,7 @@ class NewEntryHeader extends React.Component {
                 <h3>Today is {this.props.todayDate}</h3>
 				<div className="header-button-container">
 					<SubmitSaveButton/>
-					{/* <DeleteButton/> something about having more than one button
+					{/* <DeleteButton deleteTooltipText={deleteTooltipText}/> something about having more than one button
 					in this div causes a fatal error, so commenting out for now */}
 				</div>
 			</div>
