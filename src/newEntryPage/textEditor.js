@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactQuill from 'react-quill';
 import './textEditor.scss';
-import logo from '../logo.svg';
 
 /** using the Quill rich text editor
  * https://quilljs.com/
