@@ -1,17 +1,12 @@
 import React from 'react';
+import {Route, Switch} from 'react-router-dom';
+import axios from 'axios';
+import './universalStyle.scss';
 import Ribbon from './ribbon.js';
 import Nav from './nav.js';
 import NewEntryPage from './newEntryPage/newEntryPage.js';
 import SingleEntryPage from './singleEntryPage/singleEntryPage.js';
 import HomePage from './homepage/homepage.js';
-import './universalStyle.scss';
-<<<<<<< HEAD
-import './App.scss';
-import SingleEntryPage from './viewSingleEntry/singleEntryPage.js';
-//import MultipleEntriesPage from './viewMultipleEntries/sidescrollEntries.js';
-=======
-import {Route, Switch} from 'react-router-dom';
->>>>>>> 3ac53c610331a0feef6edd172451c1929b2ce2ee
 
 class App extends React.Component {
 	constructor (props) {
