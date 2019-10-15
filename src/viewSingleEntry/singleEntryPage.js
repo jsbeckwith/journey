@@ -11,23 +11,25 @@ class SingleEntryPage extends React.Component {
 		super(props);
 		this.state = {
 			author: '',
-			date: 0,
+			date: 123,
 			content: ''
 		}
 	}
 
-	
+	getPromise = () => {
+		return axios.get("http://localhost:4000/posts/" + this.props.id).then(response => {
+		    return response.data
+	  	});
+	}
 
 	parsePost = () => {
-		axios.get("http://localhost:4000/posts/{this.props.id}")
-			.then(post => 
-				  {
-				  	this.setState({
-						author: post.author,
-						date: post.date,
-						content: post.content
-					});
-				  });
+		this.getPromise().then(data => {
+			this.setState({
+				author: data.author,
+				date: data.date,
+				content: data.content
+			});
+		})
 	}
 
 	componentDidMount() {
