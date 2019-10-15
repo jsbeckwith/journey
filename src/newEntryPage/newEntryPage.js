@@ -1,6 +1,6 @@
 import React from 'react';
 import './newEntryPage.scss';
-import TextEditor from './textEditor.js'
+import TextEditor from './textEditor.js';
 import NewEntryHeader from './newEntryHeader.js';
 
 class NewEntryPage extends React.Component {

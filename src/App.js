@@ -9,8 +9,8 @@ import SingleEntryPage from './singleEntryPage/singleEntryPage.js';
 import HomePage from './homepage/homepage.js';
 
 class App extends React.Component {
-	constructor (props) {
-		super (props);
+	constructor(props) {
+		super(props);
 	}
 
 	createDate() {
