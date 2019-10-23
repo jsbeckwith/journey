@@ -8,9 +8,10 @@ body {
 }
 
 div .ribbon {
+    position: fixed;
     display: block;
     width: 100vw;
-    height: 100%;
+    height: 60px;
     background-color: $journey-purple;
     z-index: 2;
     margin: 0;
@@ -48,6 +49,7 @@ nav {
 .page-body {
     padding: 20px;
     padding-left: 77px;
+    padding-top: 77px;
 }
 
 h2 {

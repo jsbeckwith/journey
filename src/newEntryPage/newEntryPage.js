@@ -18,7 +18,7 @@ class NewEntryPage extends React.Component {
 	render () {
 		return (
 			<div>
-				<NewEntryHeader date={this.props.date} qText={this.state.textFromChild}/>
+				<NewEntryHeader todayDate={this.props.todayDate} qText={this.state.textFromChild}/>
 				<TextEditor giveText={this.receiveText}/>
 			</div>
 		);
