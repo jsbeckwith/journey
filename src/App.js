@@ -13,6 +13,7 @@ class App extends React.Component {
 		super(props);
 	}
 
+	// correctly/nicely format our dates as strings (originally: unix epoch format)
 	createDate() {
 		let date = new Date();
 		const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -29,6 +30,7 @@ class App extends React.Component {
 
 		return(
 			<Switch>
+				// set our default path to homepage view
 				<Redirect from="/" exact to="/homepage"/>
 				<Route path="/homepage">
 					<HomePage entry={entry} todayDate={todayDate}/>

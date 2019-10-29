@@ -13,6 +13,8 @@ class SubmitSaveButton extends React.Component {
         }
 	}
 
+	// make sure our state has the most recently-fetched
+	// version of the quill's content
 	refreshText = () => {
 		this.setState({content: this.props.qText});
 		return this.state.content;
@@ -20,12 +22,15 @@ class SubmitSaveButton extends React.Component {
 	
 	post = () => {
 		var c = this.refreshText();
+
+		// create post object to push to database
 		const newPost = {
 			"author": this.state.author,
 			"date": this.state.dt,
 			"content": c
 		}
 
+		// add item to database
 		axios.post("http://localhost:4000/posts/add", newPost)
 			.then(res => console.log(res.data));
 	}

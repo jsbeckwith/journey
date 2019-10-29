@@ -19,9 +19,9 @@ class SidescrollEntries extends React.Component {
 				this.setState({entries: response.data});
 				console.log("after");
 			})
-			/*.catch( (error) => {
+			.catch( (error) => {
                 console.log(error);
-            })*/;
+            });
 	}
 
 	componentDidMount = () => {
@@ -31,34 +31,6 @@ class SidescrollEntries extends React.Component {
 
 	render () {
 
-	    /*var entries = [ {'author': 'Hava',
-						 'text': 'uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu ',
-					 	 'date': '10/2/19'},
-
-						 {'author': 'Mimi',
-	                     'text': 'bloop bloop bloop bloop bloop bloop bloop bloop bloop bloop bloop bloop bloop bloop bloop ',
-	                     'date': '9/31/19'},
-
-											 {'author': 'Julia B.',
-	                     'text': ':) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) ',
-	                     'date': '9/17/19'},
-
-											 {'author': 'Julia L.',
-	                     'text': 'wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow ',
-	                     'date': '9/6/19'},
-
-											 {'author': 'Mimi',
-	                     'text': 'bloopbloopbloopbloopbloopbloopbloop wow wow wow wow wow wow wow ',
-	                     'date': '9/31/19'},
-
-											 {'author': 'Mimi',
-	                     'text': 'bloopbloopwow wow wow wow wow wow wow ',
-	                     'date': '9/31/19'},
-
-											 {'author': 'Mimi',
-	                     'text': 'bloopbloopbloopbloopwow wow wow wow wow wow wow ',
-	                     'date': '9/31/19'},
-	    ]*/
 	    var entries = this.state.entries;
 
 		return (
