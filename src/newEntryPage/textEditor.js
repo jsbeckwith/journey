@@ -37,8 +37,8 @@ class TextEditor extends React.Component {
     ]
 
     render() {
-        if (/* can fetch entry */) {
-            this.state.text = //entry;
+        if (true) {
+            this.state.text = "hello"
         }
 
         return (
