@@ -15,8 +15,7 @@ class SingleEntryHeader extends React.Component {
         		<header class="header-date"> {this.props.date} </header>
         		<div className="header-button-container">
 					<EditButton/>
-					{/* <DeleteButton/> something about having more than one button
-					in this div causes a fatal error, so commenting out for now */}
+					<DeleteButton/>
 				</div>
 			</div>
 		);

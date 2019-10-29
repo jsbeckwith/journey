@@ -6,18 +6,23 @@ const mongoose = require('mongoose');
 const PORT = 4000;
 const postRoutes = express.Router();
 
+// define Post skeleton to be of the structure given
+// in posts.model.js
 let Post = require("./posts.model");
 
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://127.0.0.1:27017/posts', { useNewUrlParser: true });
+// open our connection to the mongodb database!
+mongoose.connect('mongodb://127.0.0.1:27017/posts', { useNewUrlParser: true, useUnifiedTopology: true });
 const connection = mongoose.connection;
 
+// notify (to console) when our mongodb connection is up.
 connection.once('open', function() {
     console.log("MongoDB database connection established successfully");
 })
 
+// GET operation (at index route; get all posts!)
 postRoutes.route('/').get(function(req, res) {
     Post.find(function(err, posts) {
         if (err) {
@@ -28,6 +33,7 @@ postRoutes.route('/').get(function(req, res) {
     });
 });
 
+// GET operation (at specific post id route; get one specific post!)
 postRoutes.route('/:id').get(function(req, res) {
     let id = req.params.id;
     Post.findById(id, function(err, post) {
@@ -35,6 +41,7 @@ postRoutes.route('/:id').get(function(req, res) {
     });
 });
 
+// POST operation (at specific post id route; modify one post!)
 postRoutes.route('/update/:id').post(function(req, res) {
     Post.findById(req.params.id, function(err, post) {
         if (!post)
@@ -53,6 +60,7 @@ postRoutes.route('/update/:id').post(function(req, res) {
     });
 });
 
+// POST operation (at generalized add route; post something!)
 postRoutes.route('/add').post(function(req, res) {
     let post = new Post(req.body);
     post.save()
@@ -64,8 +72,10 @@ postRoutes.route('/add').post(function(req, res) {
         });
 });
 
+// specify where we run our GET/POST operations
 app.use('/posts', postRoutes);
 
+// notify (at console) when our server is up!
 app.listen(PORT, function() {
     console.log("Server is running on Port: " + PORT);
 });

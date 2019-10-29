@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom';
+import {Route, Switch, Redirect} from 'react-router-dom';
 import axios from 'axios';
 import './universalStyle.scss';
 import Ribbon from './ribbon.js';
@@ -29,14 +29,15 @@ class App extends React.Component {
 
 		return(
 			<Switch>
-				<Route exact path="/homepage">
+				<Redirect from="/" exact to="/homepage"/>
+				<Route path="/homepage">
 					<HomePage entry={entry} todayDate={todayDate}/>
 				</Route>
 				<Route exact path="/newEntryPage">
 					<NewEntryPage todayDate={todayDate}/>
 				</Route>
-				<Route exact path="/singleEntryPage">
-					<SingleEntryPage/>
+				<Route exact path="/post/:id">
+					<SingleEntryPage />
 				</Route>
 			</Switch>
 		);
