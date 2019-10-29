@@ -1,6 +1,7 @@
 import React from 'react';
 import './sidescrollEntries.scss';
 import SidescrollPanel from './sidescrollPanel.js';
+import CalendarPanel from './calendarPanel';
 
 class SidescrollEntries extends React.Component {
 	constructor (props) {
@@ -60,6 +61,7 @@ class SidescrollEntries extends React.Component {
 							<SidescrollPanel author={entry.author} date={entry.date} text={entry.text}/>
 						)
 					})}
+					<CalendarPanel/>
 
 			</div>
 		);

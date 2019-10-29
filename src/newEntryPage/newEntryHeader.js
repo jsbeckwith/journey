@@ -14,7 +14,7 @@ class NewEntryHeader extends React.Component {
 			<div className="new-entry-header">
 				<h2>New Entry</h2>
                 <br/>
-                <h3>Today is {this.props.todayDate}</h3>
+                <h3>Today is {this.props.todayDate}.</h3>
 				<div className="header-button-container">
 					<SubmitSaveButton/>
 					<DeleteButton/>
