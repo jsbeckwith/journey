@@ -33,6 +33,16 @@ nav {
     z-index: 2;
     border-right: 3px solid $journey-purple;
 
+    .nav-button {
+        background-color: transparent;
+        border: none;
+        padding: 0px;
+
+        :hover svg {
+            fill: $journey-purple-light;
+        }
+    }
+
     svg {
         fill: white;
         padding: 20px 15px;
