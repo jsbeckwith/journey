@@ -8,14 +8,17 @@ import SingleEntryHeader from "./singleEntryHeader.js";
 class SingleEntryPage extends React.Component {
 	constructor (props) {
 		super(props);
+		this.state = {
+			id: this.props.id,
+		};
 	}
 
 	render () {
 		return (
 			<div>
-				<SingleEntryHeader date={this.props.entry.date} author={this.props.entry.author}/>
+				<SingleEntryHeader id={this.props.id} date={this.props.date} author={this.props.author}/>
 				<br/>
-				<p class="text"> {this.props.entry.text} </p>
+				<p class="text"> hi {this.props.content} </p>
 			</div>
 		);
 	}

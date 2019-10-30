@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom';
+import {Route, Switch, Redirect} from 'react-router-dom';
 import axios from 'axios';
 import './universalStyle.scss';
 import Ribbon from './ribbon.js';
@@ -13,6 +13,7 @@ class App extends React.Component {
 		super(props);
 	}
 
+	// correctly/nicely format our dates as strings (originally: unix epoch format)
 	createDate() {
 		let date = new Date();
 		const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -29,14 +30,15 @@ class App extends React.Component {
 
 		return(
 			<Switch>
-				<Route exact path="/homepage">
+				// set our default path to homepage view
+				<Route exact path="/">
 					<HomePage entry={entry} todayDate={todayDate}/>
 				</Route>
 				<Route exact path="/newEntryPage">
 					<NewEntryPage todayDate={todayDate}/>
 				</Route>
-				<Route exact path="/singleEntryPage">
-					<SingleEntryPage/>
+				<Route exact path="/post/:id">
+					<SingleEntryPage />
 				</Route>
 			</Switch>
 		);
