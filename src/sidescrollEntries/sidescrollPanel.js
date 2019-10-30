@@ -15,10 +15,7 @@ class SidescrollPanel extends React.Component {
       <div class="entry">
 				<header class="author"> {this.props.author} </header>
 				<br/>
-				<Link to = {{pathname: "/post/" + this.stringify(), 
-					date: this.props.date,
-					author: this.props.author,
-					content: this.props.content}}> 
+				<Link to = {{pathname: "/post/" + this.stringify()}}> 
 					<header class="date"> {this.props.date} </header> 
 				</Link>
 				<br/>
