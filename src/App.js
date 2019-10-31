@@ -14,7 +14,7 @@ class App extends React.Component {
 	}
 
 	// correctly/nicely format our dates as strings (originally: unix epoch format)
-	createDate() {
+	createTodayDate() {
 		let date = new Date();
 		const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 		const months = ["January", "February", "March", "April", "May", "June",
@@ -26,12 +26,13 @@ class App extends React.Component {
 	}
 
 	createRoutes(entry) {
-		let todayDate = this.createDate();
+		let todayDate = this.createTodayDate();
 
 		return(
 			<Switch>
 				// set our default path to homepage view
-				<Route exact path="/">
+				<Redirect from="/" exact to="/homepage"/>
+				<Route path="/homepage">
 					<HomePage entry={entry} todayDate={todayDate}/>
 				</Route>
 				<Route exact path="/newEntryPage">
@@ -43,7 +44,7 @@ class App extends React.Component {
 	}
 
 	render() {
-		let todayDate = this.createDate();
+		let todayDate = this.createTodayDate();
 
 		let entry = {'author': 'Hava',
 					 'text': 'uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu ',

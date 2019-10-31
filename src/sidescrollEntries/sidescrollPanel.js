@@ -10,6 +10,13 @@ class SidescrollPanel extends React.Component {
 		return this.props.id.toString();
 	}
 
+	createShortDate(entryDate) {
+		let inputDate = new Date(entryDate);
+		const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+		let shortDate = months[inputDate.getMonth()] + " " + inputDate.getDate();
+		return shortDate;
+	}
+
 	render () {
 		let idString = this.stringify();
 		return (
