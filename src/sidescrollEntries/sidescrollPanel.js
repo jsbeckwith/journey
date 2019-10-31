@@ -24,7 +24,7 @@ class SidescrollPanel extends React.Component {
 				<header class="author"> {this.props.author} </header>
 				<br/>
 				<Link to = {{pathname: "/post/" + idString}}> 
-					<header class="date"> {this.props.date} </header> 
+					<header class="date"> {this.createShortDate(this.props.date)} </header>
 				</Link>
 				<br/>
 				<p class="text-sidescroll"> {this.props.content} </p>
