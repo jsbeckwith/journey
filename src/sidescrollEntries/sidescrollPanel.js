@@ -18,16 +18,13 @@ class SidescrollPanel extends React.Component {
 	}
 
 	render () {
-		let dateText = this.createShortDate(this.props.date);
+		let idString = this.stringify();
 		return (
       <div class="entry">
 				<header class="author"> {this.props.author} </header>
 				<br/>
-				<Link to = {{pathname: "/post/" + this.stringify(), 
-					date: this.props.date,
-					author: this.props.author,
-					content: this.props.content}}> 
-					<header class="date"> {dateText} </header>
+				<Link to = {{pathname: "/post/" + idString}}> 
+					<header class="date"> {this.props.date} </header> 
 				</Link>
 				<br/>
 				<p class="text-sidescroll"> {this.props.content} </p>
