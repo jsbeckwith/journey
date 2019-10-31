@@ -11,11 +11,12 @@ class SidescrollPanel extends React.Component {
 	}
 
 	render () {
+		let idString = this.stringify();
 		return (
       <div class="entry">
 				<header class="author"> {this.props.author} </header>
 				<br/>
-				<Link to = {{pathname: "/post/" + this.stringify()}}> 
+				<Link to = {{pathname: "/post/" + idString}}> 
 					<header class="date"> {this.props.date} </header> 
 				</Link>
 				<br/>

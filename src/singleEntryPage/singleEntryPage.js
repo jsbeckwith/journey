@@ -15,8 +15,15 @@ class SingleEntryPage extends React.Component {
 		};
 	}
 	
+	getStringID() {
+		let jsonString = JSON.stringify(this.state.id);
+		let shortString = jsonString.slice(7, 31);
+		return shortString;
+	}
+
 	getPostByID = () => {
-		axios.get("http://localhost:4000/posts/" + this.state.id)
+		let idString = this.getStringID();
+		axios.get("http://localhost:4000/posts/" + idString)
 			.then((response) => {
 				console.log(response.data)
 				this.setState({entry: response.data});
