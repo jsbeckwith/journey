@@ -31,8 +31,7 @@ class App extends React.Component {
 		return(
 			<Switch>
 				// set our default path to homepage view
-				<Redirect from="/" exact to="/homepage"/>
-				<Route path="/homepage">
+				<Route exact path="/">
 					<HomePage entry={entry} todayDate={todayDate}/>
 				</Route>
 				<Route exact path="/newEntryPage">

@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import './sidescrollEntries.scss';
 import SidescrollPanel from './sidescrollPanel.js';
+import CalendarPanel from './calendarPanel';
 
 class SidescrollEntries extends React.Component {
 	constructor (props) {
@@ -41,6 +42,7 @@ class SidescrollEntries extends React.Component {
 							<SidescrollPanel id={entry._id} author={entry.author} date={entry.date} content={entry.content}/>
 						)
 					})}
+					<CalendarPanel/>
 			</div>
 		);
 	}
