@@ -10,7 +10,7 @@ class NewEntryPage extends React.Component {
 			textFromChild: ''
 		}
 	}
-
+	
 	// callback method; gets content from quill (child component)
 	receiveText = (textFromQuill) => {
 		this.setState({textFromChild: textFromQuill});

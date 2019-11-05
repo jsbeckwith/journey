@@ -1,6 +1,7 @@
 import React from 'react';
 import Tooltip from '@material-ui/core/Tooltip';
 import axios from 'axios';
+import {Route, Switch, Redirect, withRouter} from 'react-router-dom';
 
 class SubmitSaveButton extends React.Component {
 
@@ -9,7 +10,8 @@ class SubmitSaveButton extends React.Component {
 		this.state = {
             author: 'someuser123',
             dt: Date.now(),
-            content: 'hi'
+            content: 'hi',
+            entries: []
         }
 	}
 
@@ -18,6 +20,27 @@ class SubmitSaveButton extends React.Component {
 	refreshText = () => {
 		this.setState({content: this.props.qText});
 		return this.state.content;
+	}
+
+	stringify = (s) => {
+		return s.toString();
+	}
+
+	redirect = (p) => {
+		this.context.router.push({
+			pathname: '/post/' + this.stringify(p._id),
+			state: {id: p._id, author: p.author, date: p.date, content: p.content}
+		});
+	}
+
+	getPosts = () => {
+		axios.get("http://localhost:4000/posts/")
+			.then((response) => {
+				this.setState({entries: response.data});
+			})
+			.catch( (error) => {
+                console.log(error);
+            });
 	}
 	
 	post = () => {
@@ -33,6 +56,26 @@ class SubmitSaveButton extends React.Component {
 		// add item to database
 		axios.post("http://localhost:4000/posts/add", newPost)
 			.then(res => console.log(res.data));
+
+		/* const mongo = require('mongodb').MongoClient;
+		const url = 'mongodb://127.0.0.1:27017/posts';
+		mongo.connect(url, {useNewUrlParser: true, useUnifiedTopology: true},
+			(err, client) => {
+				if (err) throw err;
+				const db = client.db('site');
+				const col = db.collection('posts');
+
+				let mostRecent = db.col.find().sort({"datetime": -1}).limit(1);
+				this.redirect(mostRecent);
+
+				client.close();
+			});*/
+
+		// redirect to post
+		let posts = this.state.entries;
+		let lastPost = posts[posts.length - 1];
+		this.redirect(lastPost);
+
 	}
 
 	render() {
@@ -47,4 +90,4 @@ class SubmitSaveButton extends React.Component {
 		);
 	}
 }
-export default SubmitSaveButton;
+export default withRouter (SubmitSaveButton);

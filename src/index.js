@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {withRouter, BrowserRouter} from 'react-router-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import 'font-awesome/css/font-awesome.min.css';
 
 const AppWithRouter = withRouter(App);
 

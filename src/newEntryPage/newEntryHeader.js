@@ -16,7 +16,7 @@ class NewEntryHeader extends React.Component {
                 <br/>
                 <h3>Today is {this.props.todayDate}.</h3>
 				<div className="header-button-container">
-					<SubmitSaveButton qText={this.props.qText}/>
+					<SubmitSaveButton mode="new" qText={this.props.qText}/>
 					<DeleteButton qText={this.props.qText}/>
 				</div>
 			</div>

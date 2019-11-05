@@ -10,6 +10,10 @@ class SidescrollPanel extends React.Component {
 		return this.props.id.toString();
 	}
 
+	renderHTML = () => {
+		return {__html: this.props.content};
+	}
+
 	createShortDate(entryDate) {
 		let inputDate = new Date(entryDate);
 		const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -27,7 +31,7 @@ class SidescrollPanel extends React.Component {
 					<header class="date"> {this.createShortDate(this.props.date)} </header>
 				</Link>
 				<br/>
-				<p class="text-sidescroll"> {this.props.content} </p>
+				<p class="text-sidescroll"> <div dangerouslySetInnerHTML={this.renderHTML()}/> </p>
 			</div>
 		);
 	}
