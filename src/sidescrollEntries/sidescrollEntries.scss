@@ -11,9 +11,11 @@
 .entry {
   font-family: "PT Sans";
   border: 1px solid $journey-purple;
+  border-radius: 10px;
   width: 20%;
   padding: 1%;
   margin-right: 5%;
+  overflow: none;
 }
 
 .calendar {

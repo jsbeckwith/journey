@@ -14,6 +14,10 @@ class SingleEntryPage extends React.Component {
 			entry: []
 		};
 	}
+
+	renderHTML = (text) => {
+		return {__html: text};
+	}
 	
 	getStringID() {
 		let jsonString = JSON.stringify(this.state.id);
@@ -43,7 +47,7 @@ class SingleEntryPage extends React.Component {
 		return (
 			<div>
 				<SingleEntryHeader id={entry._id} date={entry.date} author={entry.author}/>
-				<p class="text"> {entry.content} </p>
+				<p class="text"> <div dangerouslySetInnerHTML={this.renderHTML(entry.content)}/> </p>
 			</div>
 		);
 	}
