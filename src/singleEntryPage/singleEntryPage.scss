@@ -14,6 +14,19 @@
 
 .text {
   font-family: "PT Sans";
+  font-size: 1em;
+  border: 1pt solid $journey-purple;
+  padding: 1.3em;
+}
+
+#user {
+  display: inline-block;
+  border-radius: 60px;
+  box-shadow: 0px 0px 2px #888;
+  padding: 0.5em 0.6em;
+  color: #bbb;
+  font-size: 1em;
+  margin-right: 1%;
 }
 
 .header-author {

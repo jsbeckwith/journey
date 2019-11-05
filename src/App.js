@@ -1,9 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
-import {Route, Switch} from 'react-router-dom';
-=======
 import {Route, Switch, Redirect} from 'react-router-dom';
->>>>>>> 307d519ca2b6f4dca54fa81d229ba50df1a6b234
 import axios from 'axios';
 import './universalStyle.scss';
 import Ribbon from './ribbon.js';

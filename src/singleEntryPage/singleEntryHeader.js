@@ -10,7 +10,8 @@ class SingleEntryHeader extends React.Component {
 	render () {
 		return (
 			<div class="single-entry-header">
-				<header class="header-author"> author:  {this.props.author} </header>
+				<header class="header-author"><i class="fa fa-user" id="user"></i>
+										      {this.props.author} </header>
 				<br/>
         		<header class="header-date"> date:  {this.props.date} </header>
         		<div className="header-button-container">
