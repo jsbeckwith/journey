@@ -1,5 +1,9 @@
 import React from 'react';
+<<<<<<< HEAD
 import {Route, Switch} from 'react-router-dom';
+=======
+import {Route, Switch, Redirect} from 'react-router-dom';
+>>>>>>> 307d519ca2b6f4dca54fa81d229ba50df1a6b234
 import axios from 'axios';
 import './universalStyle.scss';
 import Ribbon from './ribbon.js';
@@ -13,7 +17,8 @@ class App extends React.Component {
 		super(props);
 	}
 
-	createDate() {
+	// correctly/nicely format our dates as strings (originally: unix epoch format)
+	createTodayDate() {
 		let date = new Date();
 		const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 		const months = ["January", "February", "March", "April", "May", "June",
@@ -25,25 +30,25 @@ class App extends React.Component {
 	}
 
 	createRoutes(entry) {
-		let todayDate = this.createDate();
+		let todayDate = this.createTodayDate();
 
 		return(
 			<Switch>
-				<Route exact path="/homepage">
+				// set our default path to homepage view
+				<Redirect from="/" exact to="/homepage"/>
+				<Route path="/homepage">
 					<HomePage entry={entry} todayDate={todayDate}/>
 				</Route>
 				<Route exact path="/newEntryPage">
 					<NewEntryPage todayDate={todayDate}/>
 				</Route>
-				<Route exact path="/singleEntryPage">
-					<SingleEntryPage/>
-				</Route>
+				<Route exact path="/post/:id" component={SingleEntryPage}/>
 			</Switch>
 		);
 	}
 
 	render() {
-		let todayDate = this.createDate();
+		let todayDate = this.createTodayDate();
 
 		let entry = {'author': 'Hava',
 					 'text': 'uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu ',
