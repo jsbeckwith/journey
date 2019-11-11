@@ -24,9 +24,6 @@ class SingleEntryHeader extends React.Component {
         		<div className="header-button-container">
 					<EditButton id={this.props.id}/>
 					<DeleteButton id={this.props.id} date={this.props.date} author={this.props.author} content={this.props.content}/>
-        		<div className="header-button-container">
-					<EditButton/>
-					<DeleteButton/>
 				</div>
 			</div>
 		);
