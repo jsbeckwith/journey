@@ -20,14 +20,10 @@ class SingleEntryHeader extends React.Component {
 				<header class="header-author"><i class="fa fa-user" id="user"></i>
 										      {this.props.author} </header>
 				<br/>
-<<<<<<< HEAD
         		<header class="header-date"> date:  {this.createShortDate(this.props.date)} </header>
         		<div className="header-button-container">
 					<EditButton id={this.props.id}/>
 					<DeleteButton id={this.props.id} date={this.props.date} author={this.props.author} content={this.props.content}/>
-=======
->>>>>>> parent of 98a07088... css fixes
-        		<header class="header-date"> date:  {this.props.date} </header>
         		<div className="header-button-container">
 					<EditButton/>
 					<DeleteButton/>
