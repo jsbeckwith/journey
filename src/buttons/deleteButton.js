@@ -1,5 +1,6 @@
 import React from 'react';
 import Tooltip from '@material-ui/core/Tooltip';
+import axios from 'axios';
 
 class DeleteButton extends React.Component {
 
@@ -10,7 +11,14 @@ class DeleteButton extends React.Component {
   handleDiscard = () => {
     if (this.props.qText !== "") { // if the text editor is nonempty
       if (window.confirm("are you sure you want to delete?")) {
-        
+        let thisPost = {
+          "id_": this.props.id,
+          "author": this.props.author,
+          "date": this.props.date,
+          "content": this.props.content,
+          "__v": 0
+        };
+        axios.delete("http://localhost:4000/posts/", thisPost);
         window.location = "/"; // redirect to homepage
       }
     }

@@ -76,8 +76,6 @@ postRoutes.route('/add').post(function(req, res) {
         });
 });
 
-app.use('/posts', postRoutes);
-
 // specify where we run our GET/POST operations
 app.use('/posts', postRoutes);
 
