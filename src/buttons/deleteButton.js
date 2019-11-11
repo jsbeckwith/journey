@@ -11,6 +11,7 @@ class DeleteButton extends React.Component {
   handleDiscard = () => {
     if (this.props.qText !== "") { // if the text editor is nonempty
       if (window.confirm("are you sure you want to delete?")) {
+<<<<<<< HEAD
         let thisPost = {
           "id_": this.props.id,
           "author": this.props.author,
@@ -19,6 +20,8 @@ class DeleteButton extends React.Component {
           "__v": 0
         };
         axios.delete("http://localhost:4000/posts/", thisPost); css fixes
+=======
+>>>>>>> parent of 98a07088... css fixes
         window.location = "/"; // redirect to homepage
       }
     }
