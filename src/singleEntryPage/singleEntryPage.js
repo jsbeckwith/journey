@@ -4,6 +4,7 @@ import React from 'react';
 import './singleEntryPage.scss';
 import '../universalStyle.scss';
 import EditButton from '../buttons/editButton.js';
+import DeleteButton from '../buttons/deleteButton.js'
 import SingleEntryHeader from "./singleEntryHeader.js";
 
 class SingleEntryPage extends React.Component {
@@ -45,9 +46,15 @@ class SingleEntryPage extends React.Component {
 		// variable storing retrieved entry
 		var entry = this.state.entry
 		return (
-			<div>
-				<SingleEntryHeader id={this.getStringID()} date={entry.date} author={entry.author}/>
-				<p class="text"> {entry.content} </p>
+			<div>		
+			    <SingleEntryHeader id={this.getStringID()} date={entry.date} author={entry.author}/>
+				<div class="button-container">
+					<EditButton id={this.props.id}/>
+					<DeleteButton id={this.props.id}/>
+				</div>
+				<div class="text-box">
+					<p class="text"> {entry.content} </p>
+				</div>
 			</div>
 		);
 	}
