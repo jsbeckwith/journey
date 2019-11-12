@@ -41,20 +41,27 @@ class SingleEntryPage extends React.Component {
 	componentDidMount = () => {
 	    this.getPostByID();
 	}
+
 	/* this function determines whether the page is a completely new entry
 	*  or if it is an edit of an entry made earlier that day
 	*  based on if there is already an entry save for the current day.
 	*  The page mode is then passed down to child components as a prop
 	*/
 	determineEdit = () => {
-		return this.props.entry.date == this.props.todayDate
+		let entryDate = new Date(this.state.entry.date);
+		let nowDate = new Date();
+		return ((entryDate.getDate() == nowDate.getDate())
+				&& (entryDate.getMonth() == nowDate.getMonth())
+				&& (entryDate.getFullYear() == nowDate.getFullYear()))
 	}
 
 	render () {
 		// variable storing retrieved entry
 		var entry = this.state.entry
-		return (
-			<div>		
+		var editMode = this.determineEdit()
+		if (editMode) {
+			return(
+				<div>		
 			    <SingleEntryHeader id={this.getStringID()} date={entry.date} author={entry.author}/>
 				<div class="button-container">
 					<EditButton id={this.props.id}/>
@@ -64,7 +71,20 @@ class SingleEntryPage extends React.Component {
 					<p class="text"> {entry.content} </p>
 				</div>
 			</div>
-		);
+			)
+		} else {
+			return (
+				<div>		
+					<SingleEntryHeader id={this.getStringID()} date={entry.date} author={entry.author}/>
+					<div class="button-container">
+						<DeleteButton id={this.props.id}/>
+					</div>
+					<div class="text-box">
+						<p class="text"> {entry.content} </p>
+					</div>
+				</div>
+			)
+		}
 	}
 }
 
