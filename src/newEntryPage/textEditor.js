@@ -14,7 +14,8 @@ class TextEditor extends React.Component {
     }
 
     handleChange(value) {
-        this.setState({ text: value })
+        this.setState({ text: value });
+        this.props.giveText(this.state.text);
     }
 
     modules = {

@@ -1,18 +1,20 @@
 import React from 'react';
+import {Route, Switch, Redirect} from 'react-router-dom';
+import axios from 'axios';
+import './universalStyle.scss';
 import Ribbon from './ribbon.js';
 import Nav from './nav.js';
 import NewEntryPage from './newEntryPage/newEntryPage.js';
 import SingleEntryPage from './singleEntryPage/singleEntryPage.js';
 import HomePage from './homepage/homepage.js';
-import './universalStyle.scss';
-import {Route, Switch} from 'react-router-dom';
 
 class App extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 	}
 
-	createDate() {
+	// correctly/nicely format our dates as strings (originally: unix epoch format)
+	createTodayDate() {
 		let date = new Date();
 		const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 		const months = ["January", "February", "March", "April", "May", "June",
@@ -24,25 +26,25 @@ class App extends React.Component {
 	}
 
 	createRoutes(entry) {
-		let todayDate = this.createDate();
+		let todayDate = this.createTodayDate();
 
 		return(
 			<Switch>
-				<Route exact path="/homepage">
+				// set our default path to homepage view
+				<Redirect from="/" exact to="/homepage"/>
+				<Route path="/homepage">
 					<HomePage entry={entry} todayDate={todayDate}/>
 				</Route>
 				<Route exact path="/newEntryPage">
 					<NewEntryPage todayDate={todayDate}/>
 				</Route>
-				<Route exact path="/singleEntryPage">
-					<SingleEntryPage todayDate={todayDate}/>
-				</Route>
+				<Route exact path="/post/:id" component={SingleEntryPage}/>
 			</Switch>
 		);
 	}
 
 	render() {
-		let todayDate = this.createDate();
+		let todayDate = this.createTodayDate();
 
 		let entry = {'author': 'Hava',
 					 'text': 'uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu ',
