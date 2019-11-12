@@ -10,22 +10,25 @@ class SingleEntryPage extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			id: this.props.match.params,
-			entry: []
+			id: this.props.match.params, // post id
+			entry: [] // initialize to empty list
 		};
 	}
 	
+	// access id object from state and convert to string
 	getStringID() {
 		let jsonString = JSON.stringify(this.state.id);
+		// extract id from JSON string
 		let shortString = jsonString.slice(7, 31);
 		return shortString;
 	}
 
+	// get specific post using string id
 	getPostByID = () => {
 		let idString = this.getStringID();
 		axios.get("http://localhost:4000/posts/" + idString)
 			.then((response) => {
-				console.log(response.data)
+				// set entry state to data received
 				this.setState({entry: response.data});
 			})
 			.catch( (error) => {
@@ -33,16 +36,17 @@ class SingleEntryPage extends React.Component {
             });
 	}
 
+	// get post when page loads
 	componentDidMount = () => {
 	    this.getPostByID();
 	}
 
 	render () {
+		// variable storing retrieved entry
 		var entry = this.state.entry
-		console.log(entry)
 		return (
 			<div>
-				<SingleEntryHeader id={entry._id} date={entry.date} author={entry.author}/>
+				<SingleEntryHeader id={this.getStringID()} date={entry.date} author={entry.author}/>
 				<p class="text"> {entry.content} </p>
 			</div>
 		);

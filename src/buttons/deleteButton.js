@@ -10,7 +10,6 @@ class DeleteButton extends React.Component {
   handleDiscard = () => {
     if (this.props.qText !== "") { // if the text editor is nonempty
       if (window.confirm("are you sure you want to delete?")) {
-        
         window.location = "/"; // redirect to homepage
       }
     }
