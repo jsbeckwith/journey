@@ -32,4 +32,3 @@ class SingleEntryHeader extends React.Component {
 }
 
 export default SingleEntryHeader;
-

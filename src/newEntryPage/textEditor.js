@@ -38,6 +38,10 @@ class TextEditor extends React.Component {
     ]
 
     render() {
+        if (true) {
+            this.state.text = "hello"
+        }
+
         return (
             <ReactQuill placeholder="What are you grateful for today?"
                         value={this.state.text}

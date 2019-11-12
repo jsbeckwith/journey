@@ -41,6 +41,14 @@ class SingleEntryPage extends React.Component {
 	componentDidMount = () => {
 	    this.getPostByID();
 	}
+	/* this function determines whether the page is a completely new entry
+	*  or if it is an edit of an entry made earlier that day
+	*  based on if there is already an entry save for the current day.
+	*  The page mode is then passed down to child components as a prop
+	*/
+	determineEdit = () => {
+		return this.props.entry.date == this.props.todayDate
+	}
 
 	render () {
 		// variable storing retrieved entry
