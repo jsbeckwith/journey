@@ -1,7 +1,6 @@
 @import '../vars.scss';
 
-.entries {
-  margin-top: 2%;
+.homepage-sidescroll-entries {
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
@@ -14,33 +13,49 @@
 
 .entry {
   font-family: "PT Sans";
-  border: 1px solid $journey-purple;
-  width: 20%;
-  padding: 1%;
-  margin-right: 5%;
-  word-wrap: break-word;
+  background-color: $journey-light-grey;
+  width: 250px;
+  padding: 10px;
+  overflow: hidden;
+  border-radius: 15px;
+  min-height: 200px;
 }
 
-.calendar {
+.calendar-panel {
+  background-color: $journey-light-grey;
+  width: 250px;
   font-family: "PT Sans";
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+  border-radius: 15px;
+  line-height: 1.8;
+  min-height: 400px;
+
+  .calendar-panel-text {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
-.author {
+.panel-author {
   font-size: 25px;
   font-weight: 400;
   line-height: 40px;
-  color: $journey-grey;
+  color: $journey-dark-grey;
   display: inline;
 }
 
 .date {
   font-size: 17px;
   font-weight: 200;
-  color: $journey-grey;
-  display: inline;
+  color: white;
+  background-color: $journey-purple;
 }
 
-.text-sidescroll {
+.panel-text {
   font-family: "PT Sans";
   width: 400px;
   margin-top: 2%;

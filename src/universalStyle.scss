@@ -4,7 +4,7 @@ body {
     margin: 0;
     width: 100vw;
     font-family: 'PT-Sans';
-    color: $journey-grey;
+    color: $journey-dark-grey;
 }
 
 div .ribbon {
@@ -62,6 +62,7 @@ nav {
     padding-top: 77px;
     margin-left: 1%;
     margin-right: 2%;
+    max-height: 100vh;
 }
 
 h2 {
@@ -70,7 +71,7 @@ h2 {
     font-weight: 400;
     padding: 10px;
     line-height: 60px;
-    color: $journey-grey;
+    color: $journey-dark-grey;
     display: inline;
 }
 
@@ -78,7 +79,7 @@ h3 {
     font-family: 'PT-Sans';
     font-size: 20px;
     font-weight: 200;
-    color: $journey-grey;
+    color: $journey-dark-grey;
     display: inline;
     padding: 10px;
 }
@@ -116,10 +117,15 @@ h3 {
 
 .header-button-container {
     position: absolute;
-    top: 10px;
+    top: 15px;
     right: 0px;
 
     .header-button {
         margin-left: 10px;
     }
+}
+
+a {
+    color: $journey-purple;
+    text-decoration: none;
 }

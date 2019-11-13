@@ -14,10 +14,6 @@ class HomepageHeader extends React.Component {
 				<h2>Hello, {this.props.entry.author}!</h2>
                 <br/>
                 <h3>Today is {this.props.todayDate}.</h3>
-				<div className="header-button-container">
-					<SubmitSaveButton/>
-					<DeleteButton/>
-				</div>
 			</div>
 		);
 	}

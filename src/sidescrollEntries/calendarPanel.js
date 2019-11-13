@@ -7,8 +7,10 @@ class CalendarPanel extends React.Component {
 
 	render () {
 		return (
-      <div class="calendar">
-				calendar!
+      		<div className="calendar-panel">
+				<div className="panel-text, calendar-panel-text">
+					To see more of your entries, check out your calendar page
+				</div>
 			</div>
 		);
 	}

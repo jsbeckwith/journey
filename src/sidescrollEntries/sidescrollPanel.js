@@ -24,14 +24,14 @@ class SidescrollPanel extends React.Component {
 	render () {
 		let idString = this.stringify();
 		return (
-      <div class="entry">
-				<header class="author"> {this.props.author} </header>
+      		<div className="entry">
+				<div className="panel-author"> {this.props.author} </div>
 				<br/>
 				<Link to = {{pathname: "/post/" + idString}}> 
-					<header class="date"> {this.createShortDate(this.props.date)} </header>
+					<div className="panel-date"> {this.createShortDate(this.props.date)} </div>
 				</Link>
 				<br/>
-				<p class="text-sidescroll"> <div dangerouslySetInnerHTML={this.renderHTML()}/> </p>
+				<p className="panel-text"> <div dangerouslySetInnerHTML={this.renderHTML()}/> </p>
 			</div>
 		);
 	}
