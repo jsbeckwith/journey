@@ -9,8 +9,13 @@ class SingleEntryHeader extends React.Component {
 
 	createShortDate(entryDate) {
 		let inputDate = new Date(entryDate);
-		const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-		let shortDate = months[inputDate.getMonth()] + " " + inputDate.getDate();
+		const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+		const months = ["January", "February", "March", "April", "May", "June",
+  						"July", "August", "September", "October", "November", "December"];
+		let shortDate = days[inputDate.getDay()] + ", " 
+						+ months[inputDate.getMonth()] + " " 
+						+ inputDate.getDate() + ", " 
+						+ inputDate.getFullYear();
 		return shortDate;
 	}
 
@@ -20,15 +25,10 @@ class SingleEntryHeader extends React.Component {
 				<header class="header-author"><i class="fa fa-user" id="user"></i>
 										      {this.props.author} </header>
 				<br/>
-        		<header class="header-date"> date:  {this.createShortDate(this.props.date)} </header>
-        		<div className="header-button-container">
-					<EditButton id={this.props.id}/>
-					<DeleteButton id={this.props.id} date={this.props.date} author={this.props.author} content={this.props.content}/>
-				</div>
+        		<header class="header-date"> {this.createShortDate(this.props.date)} </header>
 			</div>
 		);
 	}
 }
 
 export default SingleEntryHeader;
-

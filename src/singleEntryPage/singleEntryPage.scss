@@ -8,6 +8,20 @@
     position: relative;
 }
 
+.button-container {
+  position: relative;
+  display: inline;
+  float: right;
+    .header-button {
+      margin-left: 10px;
+    }
+}
+
+.text-box {
+  position: relative;
+  padding-top: 30px;
+}
+
 .text {
     font-family: "PT Sans";
     font-size: 1em;
