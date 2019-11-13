@@ -14,12 +14,14 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // open our connection to the mongodb database!
-/*const uri = "mongodb+srv://auhnix:<Db2admin!>@journey-c0-paelm.gcp.mongodb.net/test?retryWrites=true&w=majority";
+const uri = "mongodb+srv://jsb-mba:Journey123@journey-c0-paelm.gcp.mongodb.net/test?retryWrites=true&w=majority";
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-const connection = mongoose.connection;*/
+const connection = mongoose.connection;
 
+/*
 mongoose.connect('mongodb://127.0.0.1:27017/posts', { useNewUrlParser: true, useUnifiedTopology: true });
 const connection = mongoose.connection;
+*/
 
 // notify (to console) when our mongodb connection is up.
 connection.once('open', function() {
@@ -75,8 +77,6 @@ postRoutes.route('/add').post(function(req, res) {
             res.status(400).send('adding new post failed');
         });
 });
-
-app.use('/posts', postRoutes);
 
 // specify where we run our GET/POST operations
 app.use('/posts', postRoutes);
