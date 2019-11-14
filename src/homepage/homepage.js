@@ -1,5 +1,6 @@
 import React from 'react';
 import './homepage.scss';
+import '../universalStyle.scss';
 import TextEditor from '../newEntryPage/textEditor.js';
 import HomepageHeader from './homepageHeader.js';
 import SidescrollEntries from '../sidescrollEntries/sidescrollEntries.js';

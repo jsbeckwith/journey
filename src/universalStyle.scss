@@ -11,14 +11,14 @@ div .ribbon {
     position: fixed;
     display: block;
     width: 100vw;
-    height: 60px;
+    height: 65px;
     background-color: $journey-purple;
     z-index: 2;
     margin: 0;
 
     svg {
         fill: white;
-        height: 40px;
+        height: 50px;
         padding: 8px 0px 8px 20px; /* top | right | bottom | left */
     }
 }
@@ -65,6 +65,8 @@ nav {
     max-height: 100vh;
 }
 
+// HEADERS
+
 h2 {
     font-family: 'PT-Sans';
     font-size: 35px;
@@ -81,6 +83,15 @@ h3 {
     font-weight: 200;
     color: $journey-dark-grey;
     display: inline;
+    padding: 10px;
+}
+
+.page-header {
+    position: relative;
+    display: block;
+    height: 100px;
+    width: 100%;
+    position: relative;
     padding: 10px;
 }
 

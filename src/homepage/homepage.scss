@@ -1,12 +1,6 @@
 @import '../vars.scss';
 
-.homepage-header {
-    position: relative;
-    display: block;
-    height: 100px;
-    width: 100%;
-    position: relative;
-    padding: 10px;
+// header styles in universalStyle.scss
 
     h2 {
         font-size: 35px;
@@ -25,13 +19,11 @@
         color: $journey-dark-grey;
         display: inline;
         padding: 10px;
-    }
-}
+     }
+// }
 
 .homepage-text-editor {
-    .ql-editor {
-        height: 200px !important;
-    }
+    
 }
 
 .your-past-entries-title {
