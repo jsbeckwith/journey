@@ -55,7 +55,12 @@ class SubmitSaveButton extends React.Component {
 
 		// add item to database
 		axios.post("http://localhost:4000/posts/add", newPost)
-			.then(res => console.log(res.data));
+			.then(res => {
+				console.log(res.data)
+			})
+			.catch( (error) => {
+				console.log(error);
+			});
 
 		/* const mongo = require('mongodb').MongoClient;
 		const url = 'mongodb://127.0.0.1:27017/posts';
@@ -74,7 +79,7 @@ class SubmitSaveButton extends React.Component {
 		// redirect to post
 		let posts = this.state.entries;
 		let lastPost = posts[posts.length - 1];
-		this.redirect(lastPost);
+		//this.redirect(lastPost);
 
 	}
 

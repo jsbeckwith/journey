@@ -15,6 +15,10 @@ class SingleEntryPage extends React.Component {
 			entry: [] // initialize to empty list
 		};
 	}
+
+	renderHTML = (txt) => {
+		return {__html: txt};
+	}
 	
 	// access id object from state and convert to string
 	getStringID() {
@@ -68,7 +72,7 @@ class SingleEntryPage extends React.Component {
 					<DeleteButton id={this.props.id}/>
 				</div>
 				<div class="text-box">
-					<p class="text"> {entry.content} </p>
+					<p class="text"> <div dangerouslySetInnerHTML={this.renderHTML(entry.content)}/> </p>
 				</div>
 			</div>
 			)
@@ -80,7 +84,7 @@ class SingleEntryPage extends React.Component {
 						<DeleteButton id={this.props.id}/>
 					</div>
 					<div class="text-box">
-						<p class="text"> {entry.content} </p>
+						<p class="text"> <div dangerouslySetInnerHTML={this.renderHTML(entry.content)}/> </p>
 					</div>
 				</div>
 			)

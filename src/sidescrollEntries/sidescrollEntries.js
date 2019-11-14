@@ -26,7 +26,6 @@ class SidescrollEntries extends React.Component {
 	}
 
 	componentDidMount = () => {
-		console.log("HI!!!!!!");
 	    this.getPosts();
 	}
 
