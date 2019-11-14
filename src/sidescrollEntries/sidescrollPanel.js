@@ -14,21 +14,13 @@ class SidescrollPanel extends React.Component {
 		return {__html: this.props.content};
 	}
 
-	createShortDate(entryDate) {
-		let inputDate = new Date(entryDate);
-		const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-		let shortDate = months[inputDate.getMonth()] + " " + inputDate.getDate();
-		return shortDate;
-	}
-
 	render () {
 		let idString = this.stringify();
 		return (
-      		<div className="entry">
-				<div className="panel-author"> {this.props.author} </div>
+      		<div className="sidescroll-panel">
 				<br/>
 				<Link to = {{pathname: "/post/" + idString}}> 
-					<div className="panel-date"> {this.createShortDate(this.props.date)} </div>
+					<div className="panel-date-header"> {this.props.date} </div>
 				</Link>
 				<br/>
 				<p className="panel-text"> <div dangerouslySetInnerHTML={this.renderHTML()}/> </p>

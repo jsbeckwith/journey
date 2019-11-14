@@ -11,29 +11,37 @@
   width: 0px;
 }
 
-.entry {
+.sidescroll-panel {
   font-family: "PT Sans";
   background-color: $journey-light-grey;
   width: 250px;
   padding: 10px;
   overflow: hidden;
+  text-overflow: ellipsis;
   border-radius: 15px;
-  min-height: 200px;
+  height: 100%;
+  min-height: 300px;
+
+  .panel-date-header {
+    display: block;
+    position: relative;
+    font-family: "PT Sans";
+    font-size: 25px;
+    color: white;
+    background-color: $journey-purple;
+    height: 50px;
+    border-radius: 15px 15px 0px 0px;
+  }
 }
 
-.calendar-panel {
-  background-color: $journey-light-grey;
-  width: 250px;
-  font-family: "PT Sans";
+#calendar-panel {
   font-size: 20px;
   padding: 30px;
   text-align: center;
-  border-radius: 15px;
   line-height: 1.8;
-  height: 100%;
-  //min-height: 370px;
 
   .calendar-panel-text {
+    font-size: 18px;
     position: relative;
     top: 50%;
     left: 50%;
@@ -41,24 +49,8 @@
   }
 }
 
-.panel-author {
-  font-size: 25px;
-  font-weight: 400;
-  line-height: 40px;
-  color: $journey-dark-grey;
-  display: inline;
-}
-
-.date {
-  font-size: 17px;
-  font-weight: 200;
-  color: white;
-  background-color: $journey-purple;
-}
-
 .panel-text {
   font-family: "PT Sans";
-  width: 400px;
   margin-top: 2%;
   padding-right: 40px;
 }
