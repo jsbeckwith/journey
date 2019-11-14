@@ -13,7 +13,9 @@ class HomePage extends React.Component {
 		return (
 			<div>
 				<HomepageHeader entry={this.props.entry} todayDate={this.props.todayDate}/>
-				<TextEditor className="homepage-text-editor"/>
+				<div className="homepage-text-editor">
+					<TextEditor/>
+				</div>
 				<h3 className="your-past-entries-title">Your past entries</h3>
                 <SidescrollEntries/>
 			</div>

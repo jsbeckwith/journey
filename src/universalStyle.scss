@@ -29,7 +29,7 @@ nav {
     width: 55px;
     position: fixed;
     left: 0;
-    top: 60px;
+    top: 65px;
     z-index: 2;
     border-right: 3px solid $journey-purple;
 
@@ -57,12 +57,12 @@ nav {
 }
 
 .page-body {
-    padding: 20px;
-    padding-left: 77px;
-    padding-top: 77px;
-    margin-left: 1.5%;
-    margin-right: 2%;
-    max-height: 100vh;
+    // not scrollable!
+    position: fixed;
+    padding: 90px 20px 20px 85px;
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
 }
 
 // HEADERS
@@ -92,7 +92,6 @@ h3 {
     height: 100px;
     width: 100%;
     position: relative;
-    padding: 10px;
 }
 
 .journey-button {
