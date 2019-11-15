@@ -14,13 +14,28 @@ class SidescrollPanel extends React.Component {
 		return {__html: this.props.content};
 	}
 
+	// correctly/nicely format dates as strings (originally: unix epoch format)
+	// does not include year
+	formatEntryDate(entryDate) {
+		let dateProp = new Date(entryDate);
+
+		const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+		const months = ["January", "February", "March", "April", "May", "June",
+  						"July", "August", "September", "October", "November", "December"];
+		// create a string with the full day of the week, month, day of the month, and year
+		let formattedDate = days[dateProp.getDay()] + ", " + months[dateProp.getMonth()] + " " + dateProp.getDate();
+		return formattedDate;
+	}
+	
 	render () {
 		let idString = this.stringify();
+		let formattedEntryDate = this.formatEntryDate(this.props.date);
+
 		return (
       		<div className="sidescroll-panel">
 				<br/>
 				<Link to = {{pathname: "/post/" + idString}}> 
-					<div className="panel-date-header"> {this.props.date} </div>
+					<div className="panel-date-header"> {formattedEntryDate} </div>
 				</Link>
 				<br/>
 				<p className="panel-text"> <div dangerouslySetInnerHTML={this.renderHTML()}/> </p>

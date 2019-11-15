@@ -4,7 +4,6 @@
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
-  overflow-y: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -14,17 +13,21 @@
 .sidescroll-panel {
   font-family: "PT Sans";
   background-color: $journey-light-grey;
-  width: 250px;
+  width: 300px;
   padding: 10px;
   overflow: hidden;
   text-overflow: ellipsis;
   border-radius: 15px;
-  height: 100%;
+  height: 45vh;
   min-height: 300px;
+  margin-right: 15px;
+  box-shadow: 2px 2px 3px $journey-mid-grey;
 
   .panel-date-header {
     display: block;
     position: relative;
+    top: 0;
+    left: 0;
     font-family: "PT Sans";
     font-size: 25px;
     color: white;
