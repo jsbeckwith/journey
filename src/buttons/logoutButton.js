@@ -10,7 +10,7 @@ class LogoutButton extends React.Component {
   render() {
     return (
       <Tooltip title="logout">
-        <button className="logoutButton log-button" onClick={() => {alert('logout'); window.location = "http://localhost:3000/"}}>
+        <button className="logoutButton" onClick={() => {alert('logout'); window.location = "http://localhost:3000/"}}>
           Logout
         </button>
       </Tooltip>
