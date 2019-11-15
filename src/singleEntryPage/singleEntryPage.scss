@@ -10,7 +10,8 @@
 
 .button-container {
   position: relative;
-  display: inline;
+  display: flex;
+  flex-direction: row;
   float: right;
     .header-button {
       margin-left: 10px;
