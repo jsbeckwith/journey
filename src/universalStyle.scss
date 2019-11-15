@@ -34,12 +34,15 @@ div .ribbon {
     transition-duration: 0.4s;
     height: 40px;
     width: 70px;
-    margin-top: -10px;
+    float: right;
+    margin-top: 9px;
+    margin-right: 9px;
 }
 
-.logout-Button:hover {
+.logoutButton:hover {
     background-color: #ffffff;
     color: $journey-purple;
+    border-color: $journey-purple;
 }
 
 nav {
