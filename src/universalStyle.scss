@@ -123,3 +123,21 @@ h3 {
         margin-left: 10px;
     }
 }
+
+.logoutButton {
+    font-family: 'PT-Sans';
+    background-color: #ffffff;
+    font-size: 15px;
+    border: 2px solid $journey-purple;
+    text-align: center;
+    border-radius: 5px;
+    transition-duration: 0.4s;
+    margin-top: 10px;
+    height: 40px;
+    width: 80px;
+}
+
+.logoutButton:hover {
+    background-color: $journey-purple-light;
+    color: #fff;
+}

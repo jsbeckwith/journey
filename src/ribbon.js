@@ -1,5 +1,6 @@
 import React from 'react';
 import './universalStyle.scss';
+import LogoutButton from './buttons/logoutButton.js';
 
 class Ribbon extends React.Component {
 	constructor (props) {
@@ -14,6 +15,7 @@ class Ribbon extends React.Component {
 						<text id="journey" transform="translate(19 64)" fill="#fff" font-size="60" font-family="Magnolia-Script, Magnolia Script"><tspan x="0" y="0">journey</tspan></text>
 					</svg>
 				</a>
+				<LogoutButton/>
 			</div>
 		);
 	}
