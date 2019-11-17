@@ -76,11 +76,10 @@ class SingleEntryPage extends React.Component {
 			return (
 				<div>		
 					<SingleEntryHeader id={this.getStringID()} date={entry.date} author={entry.author}/>
-					<div class="button-container">
-						<DeleteButton id={this.props.id}/>
-					</div>
-					<div class="text-box">
-						<p class="text"> <div dangerouslySetInnerHTML={this.renderHTML(entry.content)}/> </p>
+					<div className="single-entry-text-box">
+						<div className="text-wrapper">
+							<div className="text"> <div dangerouslySetInnerHTML={this.renderHTML(entry.content)}/></div>
+						</div>
 					</div>
 				</div>
 			)

@@ -29,6 +29,7 @@ class SingleEntryHeader extends React.Component {
 						/*add in profile pics later-- probably as separate component*/}
 					{this.props.author}
 				</h2>
+				<br/>
         		<h3 className="header-date"> {this.createShortDate(this.props.date)} </h3>
 				<div class="header-button-container">
 					<EditButton id={this.props.id}/>
