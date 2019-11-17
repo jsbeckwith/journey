@@ -44,6 +44,7 @@ class TextEditor extends React.Component {
                         onChange={this.handleChange}
                         theme="snow"
                         modules={this.modules}
+                        className={this.props.textEditorType}
                         />
         )
     }

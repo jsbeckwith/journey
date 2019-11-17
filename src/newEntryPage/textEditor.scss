@@ -12,10 +12,18 @@
     box-sizing: border-box;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 13px;
-    height: 100%;
     margin: 0px;
     position: relative;
   }
+
+  .homepage-text-editor > .ql-container {
+    height: 100%;
+  }
+
+  .new-entry-text-editor > .ql-container {
+    height: 65vh;
+  }
+
   .ql-container.ql-disabled .ql-tooltip {
     visibility: hidden;
   }
@@ -33,6 +41,7 @@
     margin: 0;
     padding: 0;
   }
+
   .ql-editor {
     box-sizing: border-box;
     line-height: 1.42;
@@ -45,13 +54,6 @@
     white-space: pre-wrap;
     word-wrap: break-word;
   }
-
-  :host-context(.homepage-text-editor) {
-    .ql-editor {
-      height: 400px;
-    }
-  }
-
 
   .ql-editor > * {
     cursor: text;

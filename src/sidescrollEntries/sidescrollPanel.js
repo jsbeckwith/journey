@@ -26,20 +26,20 @@ class SidescrollPanel extends React.Component {
 		let formattedDate = days[dateProp.getDay()] + ", " + months[dateProp.getMonth()] + " " + dateProp.getDate();
 		return formattedDate;
 	}
-	
+
 	render () {
 		let idString = this.stringify();
 		let formattedEntryDate = this.formatEntryDate(this.props.date);
 
 		return (
-      		<div className="sidescroll-panel">
-				<br/>
-				<Link to = {{pathname: "/post/" + idString}}> 
-					<div className="panel-date-header"> {formattedEntryDate} </div>
-				</Link>
-				<br/>
-				<p className="panel-text"> <div dangerouslySetInnerHTML={this.renderHTML()}/> </p>
-			</div>
+			<Link to = {{pathname: "/post/" + idString}}>
+				<div className="sidescroll-panel">
+					<div>
+						<div className="panel-date-header"> {formattedEntryDate} </div>
+						<p className="panel-text"> <div dangerouslySetInnerHTML={this.renderHTML()}/> </p>
+					</div>
+				</div>
+			</Link>
 		);
 	}
 }

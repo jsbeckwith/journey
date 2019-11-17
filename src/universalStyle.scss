@@ -37,8 +37,10 @@ nav {
         background-color: transparent;
         border: none;
         padding: 0px;
+    }
 
-        :hover svg {
+    .nav-button:hover {
+        svg {
             fill: $journey-purple-light;
         }
     }

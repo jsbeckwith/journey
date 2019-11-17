@@ -3,7 +3,8 @@
 .homepage-sidescroll-entries {
   display: flex;
   flex-direction: row;
-  overflow-x: scroll;
+  overflow-x: auto;
+  margin-right: -30px;  // to cancel out page-body padding
 }
 
 ::-webkit-scrollbar {
@@ -11,10 +12,12 @@
 }
 
 .sidescroll-panel {
+  flex: 0 0 auto;
+  display: inline-block;
   font-family: "PT Sans";
   background-color: $journey-light-grey;
-  width: 300px;
-  padding: 10px;
+  width: 225px;
+  padding: 20px;
   overflow: hidden;
   text-overflow: ellipsis;
   border-radius: 15px;
@@ -29,19 +32,29 @@
     top: 0;
     left: 0;
     font-family: "PT Sans";
-    font-size: 25px;
+    font-size: 20px;
     color: white;
     background-color: $journey-purple;
-    height: 50px;
+    height: 22px;
     border-radius: 15px 15px 0px 0px;
+    margin: -20px;  // to cancel out panel padding
+    padding: 10px;
+  }
+
+  .panel-text {
+    font-family: "PT Sans";
+    color: $journey-dark-grey;
+    padding-top: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
 #calendar-panel {
   font-size: 20px;
-  padding: 30px;
   text-align: center;
   line-height: 1.8;
+  margin-right: 60px;
 
   .calendar-panel-text {
     font-size: 18px;
@@ -50,10 +63,4 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
-}
-
-.panel-text {
-  font-family: "PT Sans";
-  margin-top: 2%;
-  padding-right: 40px;
 }

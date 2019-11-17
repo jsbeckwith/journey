@@ -1,25 +1,6 @@
 @import '../vars.scss';
 
-#single-entry-header {
-  display: block;
-  width: 100%;
-  box-sizing: border-box;
-  height: 100px;
-  font-family: "PT Sans";
-  font-weight: 200;
-  color: $journey-dark-grey;
-  display: inline;
-  padding: 10px;
-}
-
-.button-container {
-  position: relative;
-  display: inline;
-
-    .header-button {
-      margin-left: 10px;
-    }
-}
+// most header styles implemented in universalStyle.scss
 
 .text-box {
   position: relative;
@@ -34,24 +15,15 @@
     padding-top: .5em;
     padding-bottom: .5em;
     margin-top: -.5%;
-    box-shadow: 5px 5px 5px rgba(200, 200, 200, .5);
+    box-shadow: 5px 5px 5px $journey-light-grey;
 }
 
-#user {
+#user-pic {
     display: inline-block;
     border-radius: 60px;
-    box-shadow: 0px 0px 2px #888;
+    box-shadow: 5px 5px 3px $journey-mid-grey;
     padding: 0.5em 0.6em;
-    color: #bbb;
+    color: $journey-light-grey;
     font-size: .7em;
     margin-right: 1%;
-}
-
-.header-author {
-    font-size: 35px;
-}
-
-.header-date {
-    margin-top: -1%;
-    font-size: 20px;
 }
