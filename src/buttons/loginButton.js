@@ -10,8 +10,8 @@ class LoginButton extends React.Component {
   render() {
     return (
       <Tooltip title="login">
-        <button className="loginButton log-button" onClick={() => {alert('login'); window.location = "http://localhost:3000/homepage"}}>
-          Login
+        <button className="login-button log-button" onClick={() => {alert('login'); window.location = "http://localhost:3000/homepage"}}>
+          login
         </button>
       </Tooltip>
     );
