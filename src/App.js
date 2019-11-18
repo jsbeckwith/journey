@@ -8,7 +8,6 @@ import NewEntryPage from './newEntryPage/newEntryPage.js';
 import SingleEntryPage from './singleEntryPage/singleEntryPage.js';
 import HomePage from './homepage/homepage.js';
 import LoginPage from './login/loginPage.js';
-import CreateAccountPage from './createAccountPage/createAccountPage.js';
 
 class App extends React.Component {
 	constructor(props) {
@@ -56,9 +55,6 @@ class App extends React.Component {
 			<Switch>
 				<Route exact path="/">
 					<LoginPage/>
-				</Route>
-				<Route exact path="/createAccount">
-					<CreateAccountPage/>
 				</Route>
 				<Route>
 					<div>

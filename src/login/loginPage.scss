@@ -6,7 +6,7 @@
     align-items: center;
 }
 
-.loginHeader {
+.header {
     margin-top: 0px;
     height: 150px;
     width: 100%;
@@ -33,12 +33,4 @@
 .loginButton:hover {
     background-color: $journey-purple;
     color: #fff;
-}
-
-.createAccount {
-    margin-top: 5px;
-}
-
-.createAccountLink {
-    margin-left: 4px;
 }
