@@ -6,17 +6,22 @@
     align-items: center;
 }
 
-.header {
+.login-header {
     margin-top: 0px;
-    height: 150px;
+    height: 200px;
     width: 100%;
     background-color: $journey-purple;
     color: #ffffff;
     font-size: 40px;
-    padding-top: 75px;
+    padding-top: 50px;
 }
 
-.loginButton {
+.journey-logo-login {
+    fill: white;
+    height: 150px;
+}
+
+.login-button {
     font-family: 'PT-Sans';
     background-color: #ffffff;
     font-size: 20px;
@@ -30,7 +35,7 @@
     width: 80px;
 }
 
-.loginButton:hover {
+.login-button:hover {
     background-color: $journey-purple;
     color: #fff;
 }
