@@ -11,7 +11,7 @@ class NewEntryHeader extends React.Component {
 	render () {
 
 		return (
-			<div className="new-entry-header">
+			<div className="page-header" id="new-entry-header">
 				<h2>New Entry</h2>
                 <br/>
                 <h3>Today is {this.props.todayDate}.</h3>

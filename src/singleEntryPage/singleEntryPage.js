@@ -65,30 +65,21 @@ class SingleEntryPage extends React.Component {
 		var editMode = this.determineEdit()
 		if (editMode) {
 			return(
-				<div>
-					<div class="headerAndButton">	
-						<SingleEntryHeader id={this.getStringID()} date={entry.date} author={entry.author}/>
-						<div class="button-container">
-							<EditButton id={this.props.id}/>
-							<DeleteButton id={this.props.id}/>
-						</div>
-					</div>	
-				<div class="text-box">
-					<p class="text"> <div dangerouslySetInnerHTML={this.renderHTML(entry.content)}/> </p>
-				</div>
-			</div>
+				<div>		
+			    <SingleEntryHeader id={this.getStringID()} date={entry.date} author={entry.author}/
+          <div class="text-box">
+            <div class="text"> <div dangerouslySetInnerHTML={this.renderHTML(entry.content)}/> </div>
+          </div>
+        </div>
 			)
 		} else {
 			return (
-				<div>
-					<div class="headerAndButton">		
-						<SingleEntryHeader id={this.getStringID()} date={entry.date} author={entry.author}/>
-						<div class="button-container">
-							<DeleteButton id={this.props.id}/>
+				<div>		
+					<SingleEntryHeader id={this.getStringID()} date={entry.date} author={entry.author}/>
+					<div className="single-entry-text-box">
+						<div className="text-wrapper">
+							<div className="text"> <div dangerouslySetInnerHTML={this.renderHTML(entry.content)}/></div>
 						</div>
-					</div>
-					<div class="text-box">
-						<p class="text"> <div dangerouslySetInnerHTML={this.renderHTML(entry.content)}/> </p>
 					</div>
 				</div>
 			)

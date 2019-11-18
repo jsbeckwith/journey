@@ -14,25 +14,32 @@ class SidescrollPanel extends React.Component {
 		return {__html: this.props.content};
 	}
 
-	createShortDate(entryDate) {
-		let inputDate = new Date(entryDate);
-		const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-		let shortDate = months[inputDate.getMonth()] + " " + inputDate.getDate();
-		return shortDate;
+	// correctly/nicely format dates as strings (originally: unix epoch format)
+	// does not include year
+	formatEntryDate(entryDate) {
+		let dateProp = new Date(entryDate);
+
+		const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+		const months = ["January", "February", "March", "April", "May", "June",
+  						"July", "August", "September", "October", "November", "December"];
+		// create a string with the full day of the week, month, day of the month, and year
+		let formattedDate = days[dateProp.getDay()] + ", " + months[dateProp.getMonth()] + " " + dateProp.getDate();
+		return formattedDate;
 	}
 
 	render () {
 		let idString = this.stringify();
+		let formattedEntryDate = this.formatEntryDate(this.props.date);
+
 		return (
-      <div class="entry">
-				<header class="author"> {this.props.author} </header>
-				<br/>
-				<Link to = {{pathname: "/post/" + idString}}> 
-					<header class="date"> {this.createShortDate(this.props.date)} </header>
-				</Link>
-				<br/>
-				<p class="text-sidescroll"> <div dangerouslySetInnerHTML={this.renderHTML()}/> </p>
-			</div>
+			<Link to = {{pathname: "/post/" + idString}}>
+				<div className="sidescroll-panel">
+					<div>
+						<div className="panel-date-header"> {formattedEntryDate} </div>
+						<p className="panel-text"> <div dangerouslySetInnerHTML={this.renderHTML()}/> </p>
+					</div>
+				</div>
+			</Link>
 		);
 	}
 }

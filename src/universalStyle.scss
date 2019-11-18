@@ -4,21 +4,21 @@ body {
     margin: 0;
     width: 100vw;
     font-family: 'PT-Sans';
-    color: $journey-grey;
+    color: $journey-dark-grey;
 }
 
 div .ribbon {
     position: fixed;
     display: block;
     width: 100vw;
-    height: 60px;
+    height: 65px;
     background-color: $journey-purple;
     z-index: 2;
     margin: 0;
 
     svg {
         fill: white;
-        height: 40px;
+        height: 50px;
         padding: 8px 0px 8px 20px; /* top | right | bottom | left */
     }
 }
@@ -51,7 +51,7 @@ nav {
     width: 55px;
     position: fixed;
     left: 0;
-    top: 60px;
+    top: 65px;
     z-index: 2;
     border-right: 3px solid $journey-purple;
 
@@ -59,8 +59,10 @@ nav {
         background-color: transparent;
         border: none;
         padding: 0px;
+    }
 
-        :hover svg {
+    .nav-button:hover {
+        svg {
             fill: $journey-purple-light;
         }
     }
@@ -79,12 +81,15 @@ nav {
 }
 
 .page-body {
-    padding: 20px;
-    padding-left: 77px;
-    padding-top: 77px;
-    margin-left: 1.5%;
-    margin-right: 2%;
+    // not scrollable!
+    position: fixed;
+    padding: 90px 20px 20px 85px;
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
 }
+
+// HEADERS
 
 h2 {
     font-family: 'PT-Sans';
@@ -92,7 +97,7 @@ h2 {
     font-weight: 400;
     padding: 10px;
     line-height: 60px;
-    color: $journey-grey;
+    color: $journey-dark-grey;
     display: inline;
 }
 
@@ -100,9 +105,17 @@ h3 {
     font-family: 'PT-Sans';
     font-size: 20px;
     font-weight: 200;
-    color: $journey-grey;
+    color: $journey-dark-grey;
     display: inline;
     padding: 10px;
+}
+
+.page-header {
+    position: relative;
+    display: block;
+    height: 115px;
+    width: 100%;
+    position: relative;
 }
 
 .journey-button {
@@ -138,10 +151,15 @@ h3 {
 
 .header-button-container {
     position: absolute;
-    top: 10px;
+    top: 15px;
     right: 0px;
 
     .header-button {
         margin-left: 10px;
     }
+}
+
+a {
+    color: $journey-purple;
+    text-decoration: none;
 }

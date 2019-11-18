@@ -1,6 +1,7 @@
 import React from 'react';
 import SubmitSaveButton from '../buttons/submitSaveButton.js'
 import DeleteButton from '../buttons/deleteButton.js';
+import '../universalStyle.scss';
 
 class HomepageHeader extends React.Component {
 	constructor (props) {
@@ -10,14 +11,10 @@ class HomepageHeader extends React.Component {
 	render () {
 
 		return (
-			<div className="homepage-header">
+			<div className="page-header" id="homepage-header">
 				<h2>Hello, {this.props.entry.author}!</h2>
                 <br/>
                 <h3>Today is {this.props.todayDate}.</h3>
-				<div className="header-button-container">
-					<SubmitSaveButton/>
-					<DeleteButton/>
-				</div>
 			</div>
 		);
 	}

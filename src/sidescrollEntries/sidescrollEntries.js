@@ -34,7 +34,7 @@ class SidescrollEntries extends React.Component {
 	    var entries = this.state.entries;
 
 		return (
-			<div class="entries">
+			<div className="homepage-sidescroll-entries">
 					{/* loop through all entries and pass info as props to sidescrollPanel */}
 					{entries.slice(0).reverse().map((entry) => {
 						return (

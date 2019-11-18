@@ -1,28 +1,28 @@
 @import '../vars.scss';
 
-.homepage-header {
+// header styles in universalStyle.scss
+
+h2 {
+    font-size: 35px;
+    font-family: "PT Sans";
+    font-weight: 400;
+    padding: 10px;
+    line-height: 60px;
+    color: $journey-dark-grey;
+    display: inline;
+}
+
+h3 {
+    font-size: 20px;
+    font-family: "PT Sans";
+    font-weight: 200;
+    color: $journey-dark-grey;
+    display: inline;
+    padding: 10px;
+    }
+
+.your-past-entries-title {
     display: block;
-    box-sizing: border-box;
-    height: 100px;
-    width: 100%;
-    position: relative;
-
-    h2 {
-        font-size: 35px;
-        font-family: "PT Sans";
-        font-weight: 400;
-        padding: 10px;
-        line-height: 60px;
-        color: $journey-grey;
-        display: inline;
-    }
-
-    h3 {
-        font-size: 20px;
-        font-family: "PT Sans";
-        font-weight: 200;
-        color: $journey-grey;
-        display: inline;
-        padding: 10px;
-    }
+    margin: 30px 0px 15px 10px;
+    padding: 0;
 }

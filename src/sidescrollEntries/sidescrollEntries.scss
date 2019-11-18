@@ -1,48 +1,70 @@
 @import '../vars.scss';
 
-.entries {
-  margin-top: 2%;
+.homepage-sidescroll-entries {
   display: flex;
   flex-direction: row;
-  overflow-x: scroll;
-  overflow-y: hidden;
+  overflow-x: auto;
+  margin-right: -30px;  // to cancel out page-body padding
+  overscroll-behavior-x: auto;
 }
 
 ::-webkit-scrollbar {
   width: 0px;
 }
 
-.entry {
+.sidescroll-panel {
+  flex: 0 0 auto;
+  display: inline-block;
   font-family: "PT Sans";
-  border: 1px solid $journey-purple;
-  width: 20%;
-  padding: 1%;
-  margin-right: 5%;
-  word-wrap: break-word;
+  background-color: $journey-light-grey;
+  width: 225px;
+  padding: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 15px;
+  height: 45vh;
+  min-height: 300px;
+  margin-right: 15px;
+  box-shadow: 2px 2px 3px $journey-mid-grey;
+
+  .panel-date-header {
+    display: block;
+    position: relative;
+    top: 0;
+    left: 0;
+    font-family: "PT Sans";
+    font-size: 20px;
+    color: white;
+    background-color: $journey-purple;
+    height: 22px;
+    border-radius: 15px 15px 0px 0px;
+    margin: -20px;  // to cancel out panel padding
+    padding: 10px;
+  }
+
+  .panel-text {
+    font-family: "PT Sans";
+    color: $journey-dark-grey;
+    white-space: pre-line;
+    padding-top: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 14; // max nb lines to show
+    -webkit-box-orient: vertical;
+  }
 }
 
-.calendar {
-  font-family: "PT Sans";
-}
+#calendar-panel {
+  font-size: 20px;
+  text-align: center;
+  line-height: 1.8;
 
-.author {
-  font-size: 25px;
-  font-weight: 400;
-  line-height: 40px;
-  color: $journey-grey;
-  display: inline;
-}
-
-.date {
-  font-size: 17px;
-  font-weight: 200;
-  color: $journey-grey;
-  display: inline;
-}
-
-.text-sidescroll {
-  font-family: "PT Sans";
-  width: 400px;
-  margin-top: 2%;
-  padding-right: 40px;
+  .calendar-panel-text {
+    font-size: 18px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
