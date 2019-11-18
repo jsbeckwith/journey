@@ -1,0 +1,57 @@
+const express = require('express');
+const postModel = require('./posts.model.js');
+const app = express();
+
+app.get('/posts', async (req, res) => {
+    const posts = await postModel.find({});
+
+    try {
+        res.send(posts);
+    } catch (err) {
+        res.status(500).send(err);
+    }
+});
+
+app.get('/:id', async (req, res)  => {
+    const post = await postModel.findById(req.params.id);
+
+    try {
+        res.send(post);
+    } catch (err) {
+        res.status(500).send(err);
+    }
+});
+
+app.post('/post', async (req, res) => {
+    const post = new postModel(req.body);
+  
+    try {
+      await post.save();
+      res.send(post);
+    } catch (err) {
+      res.status(500).send(err);
+    }
+});
+
+app.patch('/update/:id', async (req, res) => {
+    try {
+      await postModel.findByIdAndUpdate(req.params.id, req.body)
+      await postModel.save()
+      res.send(food)
+    } catch (err) {
+      res.status(500).send(err)
+    }
+  })
+
+app.delete('/delete/:id', async (req, res) => {
+    try {
+      const post = await postModel.findByIdAndDelete(req.params.id)
+  
+      if (!post) res.status(404).send("No item found")
+      res.status(200).send()
+    } catch (err) {
+      res.status(500).send(err)
+    }
+})
+
+module.exports = app

@@ -18,7 +18,7 @@ class DeleteButton extends React.Component {
           "content": this.props.content,
           "__v": 0
         };
-        axios.delete("http://localhost:4000/posts/", thisPost);
+        axios.delete("http://localhost:4000/delete/", thisPost);
         window.location = "/homepage"; // redirect to homepage
       }
     }

@@ -8,9 +8,9 @@ class SubmitSaveButton extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-            author: 'someuser123',
+            author: 'user',
             dt: Date.now(),
-            content: 'hi',
+            content: '',
             entries: []
         }
 	}
@@ -54,7 +54,7 @@ class SubmitSaveButton extends React.Component {
 		}
 
 		// add item to database
-		axios.post("http://localhost:4000/posts/add", newPost)
+		axios.post("http://localhost:4000/post", newPost)
 			.then(res => {
 				console.log(res.data)
 			})
