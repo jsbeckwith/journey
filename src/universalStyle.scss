@@ -23,6 +23,28 @@ div .ribbon {
     }
 }
 
+.logoutButton {
+    font-family: 'PT-Sans';
+    color: #ffffff;
+    background-color: $journey-purple;
+    font-size: 15px;
+    border: 2px solid #ffffff;
+    text-align: center;
+    border-radius: 5px;
+    transition-duration: 0.4s;
+    height: 40px;
+    width: 70px;
+    float: right;
+    margin-top: 9px;
+    margin-right: 9px;
+}
+
+.logoutButton:hover {
+    background-color: #ffffff;
+    color: $journey-purple;
+    border-color: $journey-purple;
+}
+
 nav {
     background-color: white;
     height: 100vw;

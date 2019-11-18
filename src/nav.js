@@ -10,7 +10,7 @@ class Nav extends React.Component {
 	render() {
 		return (
 			<nav>
-				<a href="/">
+				<a href="/homepage">
 				<Tooltip title="Home" placement="right">
 					<button className="nav-button">
 							<svg id="home" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 39.994">

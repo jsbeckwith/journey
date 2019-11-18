@@ -7,6 +7,7 @@ import Nav from './nav.js';
 import NewEntryPage from './newEntryPage/newEntryPage.js';
 import SingleEntryPage from './singleEntryPage/singleEntryPage.js';
 import HomePage from './homepage/homepage.js';
+import LoginPage from './login/loginPage.js';
 
 class App extends React.Component {
 	constructor(props) {
@@ -30,9 +31,7 @@ class App extends React.Component {
 
 		return(
 			<Switch>
-				// set our default path to homepage view
-				<Redirect from="/" exact to="/homepage"/>
-				<Route path="/homepage">
+				<Route exact path="/homepage">
 					<HomePage entry={entry} todayDate={todayDate}/>
 				</Route>
 				<Route exact path="/newEntryPage">
@@ -53,13 +52,20 @@ class App extends React.Component {
 		let routes = this.createRoutes(entry);
 		
 		return (
-			<div>
-				<Nav/>
-				<Ribbon/>
-				<div class="page-body">
-					{routes}
-				</div>
-			</div>
+			<Switch>
+				<Route exact path="/">
+					<LoginPage/>
+				</Route>
+				<Route>
+					<div>
+						<Nav/>
+						<Ribbon/>
+						<div class="page-body">
+							{routes}
+						</div>
+					</div>
+				</Route>
+			</Switch>
 		);
 	}
 }

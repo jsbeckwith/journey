@@ -66,11 +66,11 @@ class SingleEntryPage extends React.Component {
 		if (editMode) {
 			return(
 				<div>		
-			    <SingleEntryHeader id={this.getStringID()} date={entry.date} author={entry.author}/>
-				<div class="text-box">
-					<div class="text"> <div dangerouslySetInnerHTML={this.renderHTML(entry.content)}/> </div>
-				</div>
-			</div>
+			    <SingleEntryHeader id={this.getStringID()} date={entry.date} author={entry.author}/
+          <div class="text-box">
+            <div class="text"> <div dangerouslySetInnerHTML={this.renderHTML(entry.content)}/> </div>
+          </div>
+        </div>
 			)
 		} else {
 			return (

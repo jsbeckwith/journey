@@ -5,6 +5,9 @@ let Posts = new Schema({
     author: {
         type: String
     },
+    username: {
+        type: String
+    },
     date: {
         type: Date
     },

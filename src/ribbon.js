@@ -1,5 +1,6 @@
 import React from 'react';
 import './universalStyle.scss';
+import LogoutButton from './buttons/logoutButton.js';
 
 class Ribbon extends React.Component {
 	constructor (props) {
@@ -50,6 +51,7 @@ class Ribbon extends React.Component {
 						</g>
 					</svg>
 				</a>
+				<LogoutButton/>
 			</div>
 		);
 	}
