@@ -45,9 +45,13 @@
   .panel-text {
     font-family: "PT Sans";
     color: $journey-dark-grey;
+    white-space: pre-line;
     padding-top: 15px;
     overflow: hidden;
     text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 14; // max nb lines to show
+    -webkit-box-orient: vertical;
   }
 }
 
