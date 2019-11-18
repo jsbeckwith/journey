@@ -6,25 +6,20 @@
     align-items: center;
 }
 
-.login-header {
+.createAccountHeader {
     margin-top: 0px;
-    height: 200px;
+    height: 70px;
     width: 100%;
     background-color: $journey-purple;
     color: #ffffff;
     font-size: 40px;
-    padding-top: 50px;
+    padding-top: 30px;
 }
 
-.journey-logo-login {
-    fill: white;
-    height: 150px;
-}
-
-.login-button {
+.createAccountButton {
     font-family: 'PT-Sans';
     background-color: #ffffff;
-    font-size: 20px;
+    font-size: 16px;
     color: $journey-purple;
     border: 2px solid $journey-purple;
     text-align: center;
@@ -32,18 +27,10 @@
     transition-duration: 0.4s;
     margin-top: 10px;
     height: 40px;
-    width: 80px;
+    width: 130px;
 }
 
-.login-button:hover {
+.createAccountButton:hover {
     background-color: $journey-purple;
     color: #fff;
-}
-
-.createAccount {
-    margin-top: 5px;
-}
-
-.createAccountLink {
-    margin-left: 4px;
 }

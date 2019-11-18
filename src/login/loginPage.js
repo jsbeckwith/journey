@@ -56,12 +56,18 @@ class LoginPage extends React.Component {
                 </div>
                 <br/>
                 <form className="form">
-                    <TextField className="fields" label="Username" variant="outlined" margin="normal"/>
+                    {/* <TextField class="fields" label="Username" variant="outlined" margin="normal"/> */}
+                    <TextField label="Username" variant="outlined" margin="normal"/>
                     <br/>
-                    <TextField className="fields" label="Password" variant="outlined" margin="normal"/>
+                    <TextField label="Password" variant="outlined" margin="normal"/>
                 </form>
                 <br/>
                 <LoginButton/>
+                <div class="createAccount">
+                    Don't have an account yet?
+                    <a class="createAccountLink" href="/createAccount">Sign up</a>
+                    !
+                </div>
             </div>
         );
     }
