@@ -2,6 +2,7 @@ const express = require('express');
 const postModel = require('./posts.model.js');
 const app = express();
 
+// get all posts
 app.get('/posts', async (req, res) => {
     const posts = await postModel.find({});
 
@@ -12,6 +13,7 @@ app.get('/posts', async (req, res) => {
     }
 });
 
+// get specific post
 app.get('/:id', async (req, res)  => {
     const post = await postModel.findById(req.params.id);
 
@@ -22,6 +24,7 @@ app.get('/:id', async (req, res)  => {
     }
 });
 
+// add new post
 app.post('/post', async (req, res) => {
     const post = new postModel(req.body);
   
@@ -33,6 +36,7 @@ app.post('/post', async (req, res) => {
     }
 });
 
+// edit existing post
 app.patch('/post/:id', async (req, res) => {
   try {
       const post = await postModel.findById(req.params.id);
@@ -44,6 +48,7 @@ app.patch('/post/:id', async (req, res) => {
     }
   })
 
+// delete specific post
 app.delete('/post/:id', async (req, res) => {
     try {
       const post = await postModel.findByIdAndDelete(req.params.id)

@@ -24,6 +24,8 @@ connection.once('open', function() {
 })
 
 app.use(postRouter);
+
+app.listen(4000, () => { console.log('Server is running...') });
 /* 
 // GET operation (at index route; get all posts!)
 postRoutes.route('/').get(function(req, res) {
@@ -83,4 +85,3 @@ app.listen(PORT, function() {
     console.log("Server is running on Port: " + PORT);
 });
 */
-app.listen(4000, () => { console.log('Server is running...') });
