@@ -12,11 +12,10 @@ class EditHeader extends React.Component {
 
 		return (
 			<div className="page-header" id="edit-header">
-				<h2>New Entry</h2>
+				<h2>Edit Entry</h2>
                 <br/>
-                <h3>Today is {this.props.todayDate}.</h3>
 				<div className="header-button-container">
-					<SubmitSaveButton mode="new" qText={this.props.qText}/>
+					<SubmitSaveButton mode={false} id={this.props.id} qText={this.props.qText}/>
 					<DeleteButton qText={this.props.qText}/>
 				</div>
 			</div>

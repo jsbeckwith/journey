@@ -19,7 +19,7 @@ class EditPage extends React.Component {
 	render () {
 		return (
 			<div>
-				<EditHeader todayDate={this.props.todayDate} qText={this.state.textFromChild}/>
+				<EditHeader todayDate={this.props.todayDate} id={this.props.id} qText={this.state.textFromChild}/>
 				<TextEditor giveText={this.receiveText} textEditorType="new-entry-text-editor"/>
 			</div>
 		);

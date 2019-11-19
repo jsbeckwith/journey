@@ -40,7 +40,7 @@ class App extends React.Component {
 					<NewEntryPage todayDate={todayDate}/>
 				</Route>
 				<Route exact path="/post/:id" component={SingleEntryPage}/>
-				<Route exact path="/edit/post:id" component={EditPage}/>
+				<Route exact path="/post/edit/:id" component={EditPage}/>
 			</Switch>
 		);
 	}

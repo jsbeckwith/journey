@@ -11,7 +11,7 @@ class SubmitSaveButton extends React.Component {
             author: 'user',
             dt: Date.now(),
             content: '',
-            entries: []
+			entries: [],
         }
 	}
 
@@ -63,6 +63,28 @@ class SubmitSaveButton extends React.Component {
 			});
 
 		// TODO: redirect to new post
+	}
+
+	updatePost = () => {
+		var c = this.refreshText();
+		var id = this.props.id;
+		var stringID = id.toString();
+
+		const updatePost = {
+			"author": this.state.author,
+			"date": this.state.dt,
+			"content": c
+		}
+
+		axios.patch("http://localhost:4000/post" + stringID, updatePost);
+	}
+
+	clickfunction = () => {
+		if (this.props.mode == true) {
+			this.post();
+		} else {
+			this.updatePost();
+		}
 	}
 
 	render() {

@@ -37,7 +37,7 @@ app.patch('/post/:id', async (req, res) => {
     try {
       await postModel.findByIdAndUpdate(req.params.id, req.body)
       await postModel.save()
-      res.send(food)
+      res.send(post)
     } catch (err) {
       res.status(500).send(err)
     }
