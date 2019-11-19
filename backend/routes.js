@@ -34,10 +34,11 @@ app.post('/post', async (req, res) => {
 });
 
 app.patch('/post/:id', async (req, res) => {
-    try {
-      await postModel.findByIdAndUpdate(req.params.id, req.body)
-      await postModel.save()
-      res.send(post)
+  try {
+      const post = await postModel.findById(req.params.id);
+      await post.updateOne(req.body);
+      await post.save();
+      res.send(post);
     } catch (err) {
       res.status(500).send(err)
     }

@@ -7,7 +7,8 @@ class EditPage extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			textFromChild: ''
+            textFromChild: '',
+            id: this.props.match.params
 		}
 	}
 	
@@ -19,7 +20,7 @@ class EditPage extends React.Component {
 	render () {
 		return (
 			<div>
-				<EditHeader todayDate={this.props.todayDate} id={this.props.id} qText={this.state.textFromChild}/>
+				<EditHeader todayDate={this.props.todayDate} id={this.state.id} qText={this.state.textFromChild}/>
 				<TextEditor giveText={this.receiveText} textEditorType="new-entry-text-editor"/>
 			</div>
 		);

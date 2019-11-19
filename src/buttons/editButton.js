@@ -10,9 +10,8 @@ class EditButton extends React.Component {
 
   render() {
     let id = this.props.id;
-    let idString = id.toString();
     return (
-      <Link to = {{pathname: "edit/" + idString}}>
+      <Link to = {{pathname: "edit/" + id}}>
       <Tooltip title="edit">
         <button className="edit-button journey-button header-button">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
