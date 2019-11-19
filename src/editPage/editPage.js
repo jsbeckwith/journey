@@ -1,9 +1,9 @@
 import React from 'react';
-import './newEntryPage.scss';
+import './editPage.scss';
 import TextEditor from '../textEditor.js';
-import NewEntryHeader from './newEntryHeader.js';
+import EditHeader from './editHeader.js';
 
-class NewEntryPage extends React.Component {
+class EditPage extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
@@ -19,11 +19,11 @@ class NewEntryPage extends React.Component {
 	render () {
 		return (
 			<div>
-				<NewEntryHeader todayDate={this.props.todayDate} qText={this.state.textFromChild}/>
+				<EditHeader todayDate={this.props.todayDate} qText={this.state.textFromChild}/>
 				<TextEditor giveText={this.receiveText} textEditorType="new-entry-text-editor"/>
 			</div>
 		);
 	}
 }
 
-export default NewEntryPage;
+export default EditPage;

@@ -61,30 +61,17 @@ class SingleEntryPage extends React.Component {
 	}
 
 	render () {
-		// variable storing retrieved entry
-		var entry = this.state.entry
-		var editMode = this.determineEdit()
-		if (editMode) {
-			return(
-				<div>		
-			    <SingleEntryHeader id={this.getStringID()} date={entry.date} author={entry.author}/>
-				<div className="single-entry-text-box">
-            		<div class="text" dangerouslySetInnerHTML={this.renderHTML(entry.content)}></div>
-				</div>
-				</div>
-			)
-		} else {
-			return (
-				<div>		
-					<SingleEntryHeader id={this.getStringID()} date={entry.date} author={entry.author}/>
-					<div className="single-entry-text-box">
-						<div className="text-wrapper">
-							<div className="text"> <div dangerouslySetInnerHTML={this.renderHTML(entry.content)}/></div>
-						</div>
-					</div>
-				</div>
-			)
-		}
+	// variable storing retrieved entry
+	var entry = this.state.entry
+	var editMode = this.determineEdit()
+		return(
+			<div>		
+			<SingleEntryHeader id={this.getStringID()} date={entry.date} author={entry.author} editMode={editMode}/>
+			<div className="single-entry-text-box">
+				<div class="text" dangerouslySetInnerHTML={this.renderHTML(entry.content)}></div>
+			</div>
+			</div>
+		)
 	}
 }
 

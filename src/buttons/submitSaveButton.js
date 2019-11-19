@@ -62,25 +62,7 @@ class SubmitSaveButton extends React.Component {
 				console.log(error);
 			});
 
-		/* const mongo = require('mongodb').MongoClient;
-		const url = 'mongodb://127.0.0.1:27017/posts';
-		mongo.connect(url, {useNewUrlParser: true, useUnifiedTopology: true},
-			(err, client) => {
-				if (err) throw err;
-				const db = client.db('site');
-				const col = db.collection('posts');
-
-				let mostRecent = db.col.find().sort({"datetime": -1}).limit(1);
-				this.redirect(mostRecent);
-
-				client.close();
-			});*/
-
-		// redirect to post
-		let posts = this.state.entries;
-		let lastPost = posts[posts.length - 1];
-		//this.redirect(lastPost);
-
+		// TODO: redirect to new post
 	}
 
 	render() {
