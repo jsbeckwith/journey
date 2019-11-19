@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const PORT = 4000;
+// const PORT = 4000;
 const postRouter = require('./routes.js');
 const app = express();
 
@@ -77,9 +77,10 @@ postRoutes.route('/add').post(function(req, res) {
 
 // specify where we run our GET/POST operations
 app.use('/posts', postRoutes);
-*/
 
 // notify (at console) when our server is up!
 app.listen(PORT, function() {
     console.log("Server is running on Port: " + PORT);
 });
+*/
+app.listen(4000, () => { console.log('Server is running...') });

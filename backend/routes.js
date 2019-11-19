@@ -33,7 +33,7 @@ app.post('/post', async (req, res) => {
     }
 });
 
-app.patch('/update/:id', async (req, res) => {
+app.patch('/post/:id', async (req, res) => {
     try {
       await postModel.findByIdAndUpdate(req.params.id, req.body)
       await postModel.save()
@@ -43,7 +43,7 @@ app.patch('/update/:id', async (req, res) => {
     }
   })
 
-app.delete('/delete/:id', async (req, res) => {
+app.delete('/post/:id', async (req, res) => {
     try {
       const post = await postModel.findByIdAndDelete(req.params.id)
   

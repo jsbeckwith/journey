@@ -31,7 +31,8 @@ class SingleEntryPage extends React.Component {
 	// get specific post using string id
 	getPostByID = () => {
 		let idString = this.getStringID();
-		axios.get("http://localhost:4000/posts/" + idString)
+		console.log(idString);
+		axios.get("http://localhost:4000/" + idString)
 			.then((response) => {
 				// set entry state to data received
 				this.setState({entry: response.data});
