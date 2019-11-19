@@ -20,6 +20,7 @@ class SingleEntryPage extends React.Component {
 		return {__html: txt};
 	}
 	
+	// TODO - clean this up???
 	// access id object from state and convert to string
 	getStringID() {
 		let jsonString = JSON.stringify(this.state.id);
@@ -31,7 +32,8 @@ class SingleEntryPage extends React.Component {
 	// get specific post using string id
 	getPostByID = () => {
 		let idString = this.getStringID();
-		axios.get("http://localhost:4000/posts/" + idString)
+		console.log(idString);
+		axios.get("http://localhost:4000/" + idString)
 			.then((response) => {
 				// set entry state to data received
 				this.setState({entry: response.data});
@@ -60,30 +62,17 @@ class SingleEntryPage extends React.Component {
 	}
 
 	render () {
-		// variable storing retrieved entry
-		var entry = this.state.entry
-		var editMode = this.determineEdit()
-		if (editMode) {
-			return(
-				<div>		
-			    <SingleEntryHeader id={this.getStringID()} date={entry.date} author={entry.author}/>
-				<div className="single-entry-text-box">
-            		<div class="text" dangerouslySetInnerHTML={this.renderHTML(entry.content)}></div>
-				</div>
-				</div>
-			)
-		} else {
-			return (
-				<div>		
-					<SingleEntryHeader id={this.getStringID()} date={entry.date} author={entry.author}/>
-					<div className="single-entry-text-box">
-						<div className="text-wrapper">
-							<div className="text"> <div dangerouslySetInnerHTML={this.renderHTML(entry.content)}/></div>
-						</div>
-					</div>
-				</div>
-			)
-		}
+	// variable storing retrieved entry
+	var entry = this.state.entry
+	var editMode = this.determineEdit()
+		return(
+			<div>		
+			<SingleEntryHeader id={this.getStringID()} date={entry.date} author={entry.author} editMode={editMode}/>
+			<div className="single-entry-text-box">
+				<div class="text" dangerouslySetInnerHTML={this.renderHTML(entry.content)}></div>
+			</div>
+			</div>
+		)
 	}
 }
 

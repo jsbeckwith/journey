@@ -9,6 +9,7 @@ import SingleEntryPage from './singleEntryPage/singleEntryPage.js';
 import HomePage from './homepage/homepage.js';
 import LoginPage from './login/loginPage.js';
 import CreateAccountPage from './createAccountPage/createAccountPage.js';
+import EditPage from './editPage/editPage.js';
 
 class App extends React.Component {
 	constructor(props) {
@@ -39,6 +40,7 @@ class App extends React.Component {
 					<NewEntryPage todayDate={todayDate}/>
 				</Route>
 				<Route exact path="/post/:id" component={SingleEntryPage}/>
+				<Route exact path="/post/edit/:id" component={EditPage}/>
 			</Switch>
 		);
 	}

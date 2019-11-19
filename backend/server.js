@@ -1,10 +1,10 @@
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const PORT = 4000;
-const postRoutes = express.Router();
+// const PORT = 4000;
+const postRouter = require('./routes.js');
+const app = express();
 
 // define Post skeleton to be of the structure given
 // in posts.model.js
@@ -18,16 +18,13 @@ const uri = "mongodb+srv://jsb-mba:Journey123@journey-c0-paelm.gcp.mongodb.net/t
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 const connection = mongoose.connection;
 
-/*
-mongoose.connect('mongodb://127.0.0.1:27017/posts', { useNewUrlParser: true, useUnifiedTopology: true });
-const connection = mongoose.connection;
-*/
-
 // notify (to console) when our mongodb connection is up.
 connection.once('open', function() {
     console.log("MongoDB database connection established successfully");
 })
 
+app.use(postRouter);
+/* 
 // GET operation (at index route; get all posts!)
 postRoutes.route('/').get(function(req, res) {
     Post.find(function(err, posts) {
@@ -76,7 +73,7 @@ postRoutes.route('/add').post(function(req, res) {
         .catch(err => {
             res.status(400).send('adding new post failed');
         });
-});
+}); 
 
 // specify where we run our GET/POST operations
 app.use('/posts', postRoutes);
@@ -85,3 +82,5 @@ app.use('/posts', postRoutes);
 app.listen(PORT, function() {
     console.log("Server is running on Port: " + PORT);
 });
+*/
+app.listen(4000, () => { console.log('Server is running...') });
