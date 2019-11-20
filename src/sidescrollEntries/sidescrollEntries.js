@@ -30,20 +30,34 @@ class SidescrollEntries extends React.Component {
 	}
 
 	render () {
-
-	    var entries = this.state.entries;
-
-		return (
-			<div className="homepage-sidescroll-entries">
-					{/* loop through all entries and pass info as props to sidescrollPanel */}
-					{entries.slice(0).reverse().map((entry) => {
-						return (
-							<SidescrollPanel id={entry._id} author={entry.author} date={entry.date} content={entry.content}/>
-						)
-					})}
-					<CalendarPanel/>
-			</div>
-		);
+		var entries = this.state.entries;
+		let noEntries = this.state.entries.length === 0;
+		
+		if (noEntries) {  // no entries to display in panels
+			return (
+				<div className="homepage-sidescroll-entries">
+					<div className="no-entries-wrapper">
+						<div className="no-entries-text">
+							You don't have any entries to display yet.
+							<br/>
+							Try <a href="/newEntryPage">writing your first entry!</a>
+						</div>
+					</div>
+				</div>
+			);
+		} else {
+			return (
+				<div className="homepage-sidescroll-entries">
+						{/* loop through all entries and pass info as props to sidescrollPanel */}
+						{entries.slice(0).reverse().map((entry) => {
+							return (
+								<SidescrollPanel id={entry._id} author={entry.author} date={entry.date} content={entry.content}/>
+							)
+						})}
+						<CalendarPanel/>
+				</div>
+			);
+		}
 	}
 }
 
