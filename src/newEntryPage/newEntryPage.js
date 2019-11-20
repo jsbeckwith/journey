@@ -20,7 +20,7 @@ class NewEntryPage extends React.Component {
 		return (
 			<div>
 				<NewEntryHeader todayDate={this.props.todayDate} qText={this.state.textFromChild}/>
-				<TextEditor giveText={this.receiveText} textEditorType="new-entry-text-editor"/>
+				<TextEditor editMode={false} giveText={this.receiveText} textEditorType="new-entry-text-editor"/>
 			</div>
 		);
 	}

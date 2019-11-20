@@ -20,7 +20,6 @@ class SingleEntryPage extends React.Component {
 		return {__html: txt};
 	}
 	
-	// TODO - clean this up???
 	// access id object from state and convert to string
 	getStringID() {
 		let jsonString = JSON.stringify(this.state.id);

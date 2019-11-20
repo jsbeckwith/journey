@@ -11,13 +11,6 @@ class SubmitSaveButton extends React.Component {
             id: this.props.id
         }
 	}
-
-	getStringID() {
-		let jsonString = JSON.stringify(this.state.id);
-		// extract id from JSON string
-		let shortString = jsonString.slice(7, 31);
-		return shortString;
-	}
 	
 	post = () => {
 		var c = this.props.qText;
@@ -50,7 +43,10 @@ class SubmitSaveButton extends React.Component {
 			"content": c
 		}
 
-		axios.patch("http://localhost:4000/post/" + id, updatePost);
+		axios.patch("http://localhost:4000/post/" + id, updatePost)
+			.then(res => {
+				window.location = "/post/" + this.state.id;
+			})
 	}
 
 	clickfunction = () => {

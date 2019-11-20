@@ -13,6 +13,13 @@ class TextEditor extends React.Component {
         this.handleChange = this.handleChange.bind(this)
     }
 
+    loadEditText = () => {
+        if (this.props.editMode) {
+            console.log(this.props.editText);
+            this.setState({text: this.props.editText});
+        }
+    }
+
     handleChange(value) {
         this.setState({ text: value });
         this.props.giveText(this.state.text);
@@ -36,6 +43,12 @@ class TextEditor extends React.Component {
         'color', 'background',
         'link', 'image'
     ]
+
+    // get post when page loads
+	componentDidMount = () => {
+        this.loadEditText();
+        console.log(this.props.editText);
+	}
 
     render() {
         return (
