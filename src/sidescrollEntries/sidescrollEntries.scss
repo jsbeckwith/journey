@@ -5,7 +5,32 @@
   flex-direction: row;
   overflow-x: auto;
   margin-right: -30px;  // to cancel out page-body padding
+  margin-bottom: -5px;  // "
   overscroll-behavior-x: auto;
+  font-family: "PT Sans";
+  height: 55vh;
+  min-height: 300px;
+
+  .no-entries-wrapper {
+    display: block;
+    width: 80%;
+    height: 70%;
+    text-align: center;
+    box-sizing: border-box;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .no-entries-text {
+      font-size: 18px;
+      display: block;
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
 }
 
 ::-webkit-scrollbar {
