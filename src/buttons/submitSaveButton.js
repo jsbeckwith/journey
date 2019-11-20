@@ -1,76 +1,52 @@
 import React from 'react';
 import Tooltip from '@material-ui/core/Tooltip';
 import axios from 'axios';
-import {Route, Switch, Redirect, withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 
 class SubmitSaveButton extends React.Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-            author: 'user',
-            dt: Date.now(),
-            content: '',
-			entries: [],
+            id: this.props.id
         }
 	}
 
-	// make sure our state has the most recently-fetched
-	// version of the quill's content
-	refreshText = () => {
-		this.setState({content: this.props.qText});
-		return this.state.content;
-	}
-
-	stringify = (s) => {
-		return s.toString();
-	}
-
-	redirect = (p) => {
-		this.context.router.push({
-			pathname: '/post/' + this.stringify(p._id),
-			state: {id: p._id, author: p.author, date: p.date, content: p.content}
-		});
-	}
-
-	getPosts = () => {
-		axios.get("http://localhost:4000/posts/")
-			.then((response) => {
-				this.setState({entries: response.data});
-			})
-			.catch( (error) => {
-                console.log(error);
-            });
+	getStringID() {
+		let jsonString = JSON.stringify(this.state.id);
+		// extract id from JSON string
+		let shortString = jsonString.slice(7, 31);
+		return shortString;
 	}
 	
 	post = () => {
-		var c = this.refreshText();
+		var c = this.props.qText;
 
 		// create post object to push to database
 		const newPost = {
-			"author": this.state.author,
-			"date": this.state.dt,
+			"author": "username",
+			"date": Date.now(),
 			"content": c
 		}
 
 		// add item to database
 		axios.post("http://localhost:4000/post", newPost)
 			.then(res => {
-				console.log(res.data)
+				this.setState({id: res.data._id});
+				console.log(res.data);
+				window.location = "/post/" + this.state.id;
 			})
 			.catch( (error) => {
 				console.log(error);
 			});
-
-		// TODO: redirect to new post
 	}
 
 	updatePost = () => {
-		var c = this.refreshText();
+		var c = this.props.qText;
 		var id = this.props.id;
 
 		const updatePost = {
-			"date": this.state.dt,
+			"date": Date.now(),
 			"content": c
 		}
 
