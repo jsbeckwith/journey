@@ -6,9 +6,29 @@ import './loginPage.scss'
 class LoginPage extends React.Component {
     constructor (props) {
         super(props);
+        this.state = {
+            email: "",
+            password: "",
+            errors: {}
+        };
     }
 
+    onChange = e => {
+        this.setState({ [e.target.id]: e.target.value });
+      };
+
+    onSubmit = e => {
+        //e.preventDefault();
+        const userData = {
+            email: this.state.email,
+            password: this.state.password
+            };
+        console.log(userData);
+    };
+
     render () {
+        const { errors } = this.state;
+
         return (
             <div className="wrapper">
                 <div className="login-header">
@@ -55,14 +75,15 @@ class LoginPage extends React.Component {
                     </center>
                 </div>
                 <br/>
-                <form className="form">
-                    {/* <TextField class="fields" label="Username" variant="outlined" margin="normal"/> */}
-                    <TextField label="Username" variant="outlined" margin="normal"/>
+                <form className="form" noValidate onSubmit={this.onSubmit}>
+                    <TextField label="Email" variant="outlined" margin="normal" id="email" type="email"
+                               onChange={this.onChange} value={this.state.email} error={errors.email}/>
                     <br/>
-                    <TextField label="Password" variant="outlined" margin="normal"/>
+                    <TextField label="Password" variant="outlined" margin="normal"id="password" type="password"
+                               onChange={this.onChange} value={this.state.password} error={errors.password}/>
                 </form>
-                <br/>
                 <LoginButton/>
+                <br/>
                 <div class="createAccount">
                     Don't have an account yet?
                     <a class="createAccountLink" href="/createAccount">Sign up</a>

@@ -1,6 +1,8 @@
 import React from 'react';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import axios from 'axios';
+import { Provider } from "react-redux";
+import store from "./store";
 import './universalStyle.scss';
 import Ribbon from './ribbon.js';
 import Nav from './nav.js';
@@ -55,23 +57,25 @@ class App extends React.Component {
 		let routes = this.createRoutes(entry);
 		
 		return (
-			<Switch>
-				<Route exact path="/">
-					<LoginPage/>
-				</Route>
-				<Route exact path="/createAccount">
-					<CreateAccountPage/>
-				</Route>
-				<Route>
-					<div>
-						<Nav/>
-						<Ribbon/>
-						<div class="page-body">
-							{routes}
+			<Provider store={store}>
+				<Switch>
+					<Route exact path="/">
+						<LoginPage/>
+					</Route>
+					<Route exact path="/createAccount">
+						<CreateAccountPage/>
+					</Route>
+					<Route>
+						<div>
+							<Nav/>
+							<Ribbon/>
+							<div class="page-body">
+								{routes}
+							</div>
 						</div>
-					</div>
-				</Route>
-			</Switch>
+					</Route>
+				</Switch>
+			</Provider>
 		);
 	}
 }

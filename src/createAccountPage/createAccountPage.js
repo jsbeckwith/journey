@@ -6,9 +6,34 @@ import './createAccountPage.scss';
 class CreateAccountPage extends React.Component {
     constructor (props) {
         super(props);
+        this.state = {
+            name: "",
+            email: "",
+            password: "",
+            password2: "",
+            errors: {}
+          };
     }
 
+    onChange = e => {
+        this.setState({ [e.target.id]: e.target.value });
+      };
+
+    onSubmit = e => {
+        e.preventDefault();
+        
+        const newUser = {
+            name: this.state.name,
+            email: this.state.email,
+            password: this.state.password,
+            password2: this.state.password2
+            };
+
+        console.log(newUser);
+    };
+
     render () {
+        const { errors } = this.state;
         return (
             <div className="wrapper">
                 <h1 className="createAccountHeader">
@@ -55,14 +80,18 @@ class CreateAccountPage extends React.Component {
                     </center>
                 </h1>
                 <br/>
-                <form className="form">
-                    <TextField label="Name" variant="outlined" margin="normal"/>
+                <form className="form" noValidate onSubmit={this.onSubmit}>
+                    <TextField label="Name" variant="outlined" margin="normal" id="name" type="text"
+                               onChange={this.onChange} value={this.state.name} error={errors.name}/>
                     <br/>
-                    <TextField label="Username" variant="outlined" margin="normal"/>
+                    <TextField label="Email" variant="outlined" margin="normal" id="email" type="email"
+                               onChange={this.onChange} value={this.state.email} error={errors.email}/>
                     <br/>
-                    <TextField label="Password" variant="outlined" margin="normal"/>
+                    <TextField label="Password" variant="outlined" margin="normal" id="password" type="password"
+                               onChange={this.onChange} value={this.state.password} error={errors.password}/>
                     <br/>
-                    <TextField label="Confirm Password" variant="outlined" margin="normal"/>
+                    <TextField label="Confirm Password" variant="outlined" margin="normal" id="password2" type="password2"
+                               onChange={this.onChange} value={this.state.password2} error={errors.password2}/>
                 </form>
                 <br/>
                 <CreateAccountButton/>
