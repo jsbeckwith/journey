@@ -7,7 +7,7 @@ body {
     color: $journey-dark-grey;
 }
 
-div .ribbon {
+.ribbon {
     font-family: 'PT-Sans';
     position: fixed;
     display: block;
@@ -120,6 +120,7 @@ h3 {
 }
 
 .journey-button {
+    font-family: 'PT-Sans';
     background-color: #fff;
     color: $journey-purple;
     border: 2px solid $journey-purple;
@@ -144,6 +145,7 @@ h3 {
 
 .journey-button:hover {
     background-color: $journey-purple;
+    color: white;
 
     svg {
         fill: #fff;
@@ -163,4 +165,8 @@ h3 {
 a {
     color: $journey-purple;
     text-decoration: none;
+
+    :hover {
+        color: $journey-purple-dark;
+    }
 }

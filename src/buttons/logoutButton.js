@@ -1,5 +1,6 @@
 import React from 'react';
 import Tooltip from '@material-ui/core/Tooltip';
+import '../auth/auth.scss';
 
 class LogoutButton extends React.Component {
 
@@ -10,7 +11,7 @@ class LogoutButton extends React.Component {
   render() {
     return (
       <Tooltip title="logout">
-        <button className="logout-button" onClick={() => {alert('logout'); window.location = "http://localhost:3000/"}}>
+        <button className="logout-button log-button" onClick={() => {alert('logout'); window.location = "http://localhost:3000/"}}>
           logout
         </button>
       </Tooltip>
