@@ -25,7 +25,7 @@ class HomePage extends React.Component {
 					<TextEditor textEditorType="homepage-text-editor"/>
 				</div>
 				<h3 className="your-past-entries-title">Your past entries</h3>
-                <SidescrollEntries/>
+                <SidescrollEntries sideScrollEntriesType="homepage"/>
 			</div>
 		);
 	}

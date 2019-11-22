@@ -1,6 +1,6 @@
 @import '../vars.scss';
 
-.homepage-sidescroll-entries {
+.sidescroll-entries {
   display: flex;
   flex-direction: row;
   overflow-x: auto;
@@ -8,8 +8,6 @@
   margin-bottom: -5px;  // "
   overscroll-behavior-x: auto;
   font-family: "PT Sans";
-  height: 55vh;
-  min-height: 300px;
 
   .no-entries-wrapper {
     display: block;
@@ -37,18 +35,26 @@
   width: 0px;
 }
 
+
+#homepage-sidescroll-entries {
+  height: 55vh;
+  min-height: 300px;
+}
+
+#calendar-sidescroll-entries {
+  height: 80vh;
+  min-height: 350px;
+}
+
 .sidescroll-panel {
   flex: 0 0 auto;
   display: inline-block;
   font-family: "PT Sans";
   background-color: $journey-light-grey;
-  width: 225px;
   padding: 20px;
   overflow: hidden;
   text-overflow: ellipsis;
   border-radius: 15px;
-  height: 45vh;
-  min-height: 300px;
   margin-right: 15px;
   box-shadow: 2px 2px 3px $journey-mid-grey;
 
@@ -67,7 +73,7 @@
     padding: 10px;
   }
 
-  .panel-text {
+  .panel-content {
     font-family: "PT Sans";
     color: $journey-dark-grey;
     white-space: pre-line;
@@ -80,12 +86,26 @@
   }
 }
 
-#calendar-panel {
+#homepage-sidescroll-panel {
+  width: 225px;
+  height: 45vh;
+  min-height: 300px;
+}
+
+#calendar-sidescroll-panel {
+  width: 300px;
+  height: 70vh;
+  min-height: 300px;
+}
+
+#calendar-link-panel {
+  width: 225px;
+  height: 45vh;
   font-size: 20px;
   text-align: center;
   line-height: 1.8;
 
-  .calendar-panel-text {
+  .calendar-link-panel-text {
     font-size: 18px;
     position: relative;
     top: 50%;

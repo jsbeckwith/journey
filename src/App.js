@@ -10,6 +10,7 @@ import HomePage from './homepage/homepage.js';
 import LoginPage from './login/loginPage.js';
 import CreateAccountPage from './createAccountPage/createAccountPage.js';
 import EditPage from './editPage/editPage.js';
+import CalendarPage from './calendarPage/calendarPage.js';
 
 class App extends React.Component {
 	constructor(props) {
@@ -41,6 +42,9 @@ class App extends React.Component {
 				</Route>
 				<Route exact path="/post/:id" component={SingleEntryPage}/>
 				<Route exact path="/post/edit/:id" component={EditPage}/>
+				<Route exact path="/calendarPage">
+					<CalendarPage/>
+				</Route>
 			</Switch>
 		);
 	}
@@ -66,7 +70,7 @@ class App extends React.Component {
 					<div>
 						<Nav/>
 						<Ribbon/>
-						<div class="page-body">
+						<div className="page-body">
 							{routes}
 						</div>
 					</div>
