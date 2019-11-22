@@ -1,0 +1,56 @@
+@import '../vars.scss';
+
+.auth-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'PT-Sans';
+}
+
+.auth-header {
+    margin-top: 0px;
+    height: 175px;
+    width: 100%;
+    background-color: $journey-purple;
+    color: white;
+    padding-top: 30px;
+
+    .journey-logo-auth {
+        fill: white;
+        height: 150px;
+    }
+}
+
+.auth-content {
+    text-align: center;
+    font-family: 'PT-Sans';
+    margin: 40px;
+}
+
+.auth-button {
+    font-family: 'PT-Sans';
+    font-size: 20px;
+    border: 2px solid $journey-purple;
+    text-align: center;
+    margin-top: 10px;
+    float: none;
+    padding: 5px;
+
+    :hover {
+        background-color: $journey-purple;
+        color: #fff;
+    }
+}
+
+.login-button {
+    width: 70px;
+}
+
+.create-account-button {
+    width: 140px;
+}
+
+.create-account-text {
+    font-family: 'PT-Sans';
+    margin: 20px;
+}

@@ -7,8 +7,8 @@ import Nav from './nav.js';
 import NewEntryPage from './newEntryPage/newEntryPage.js';
 import SingleEntryPage from './singleEntryPage/singleEntryPage.js';
 import HomePage from './homepage/homepage.js';
-import LoginPage from './login/loginPage.js';
-import CreateAccountPage from './createAccountPage/createAccountPage.js';
+import LoginPage from './auth/login/loginPage.js';
+import CreateAccountPage from './auth/createAccountPage/createAccountPage.js';
 import EditPage from './editPage/editPage.js';
 import CalendarPage from './calendarPage/calendarPage.js';
 
