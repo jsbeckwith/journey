@@ -1,5 +1,11 @@
 import React from 'react';
+import axios from 'axios';
 import {TextField} from '@material-ui/core';
+import { withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { registerUser } from "../actions/authActions";
+import classnames from "classnames";
 import CreateAccountButton from '../buttons/createAccountButton.js';
 import './createAccountPage.scss';
 
@@ -15,22 +21,46 @@ class CreateAccountPage extends React.Component {
           };
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.errors) {
+          this.setState({
+            errors: nextProps.errors
+          });
+        }
+    }
+
     onChange = e => {
         this.setState({ [e.target.id]: e.target.value });
       };
 
     onSubmit = e => {
         e.preventDefault();
-        
         const newUser = {
-            name: this.state.name,
+            //state instead of props.auth
+            displayname: this.state.name,
             email: this.state.email,
             password: this.state.password,
             password2: this.state.password2
             };
+        //this.props.registerUser(newUser, this.props.history);
+        console.log("before request");
+        axios.post("http://localhost:4000/register", newUser)
+            .then( res => {
+                console.log(res.data);
+                alert("Account created!");
+            })
+            .catch((error) => {
+             	console.log(error);
+            });
 
-        console.log(newUser);
     };
+
+    componentDidMount() {
+        // If logged in and user navigates to Register page, should redirect them to dashboard
+        if (this.props.auth.isAuthenticated) {
+          this.props.history.push("/homepage");
+        }
+    }
 
     render () {
         const { errors } = this.state;
@@ -81,23 +111,61 @@ class CreateAccountPage extends React.Component {
                 </h1>
                 <br/>
                 <form className="form" noValidate onSubmit={this.onSubmit}>
-                    <TextField label="Name" variant="outlined" margin="normal" id="name" type="text"
-                               onChange={this.onChange} value={this.state.name} error={errors.name}/>
+                    <div>
+                        <TextField label="Name" variant="outlined" id="name" type="text"
+                                onChange={this.onChange} value={this.state.name} error={errors.name}
+                                className={classnames("", {
+                                    invalid: errors.name
+                                })}/>
+                        <span className="red-text">{errors.name}</span>
+                    </div>
                     <br/>
-                    <TextField label="Email" variant="outlined" margin="normal" id="email" type="email"
-                               onChange={this.onChange} value={this.state.email} error={errors.email}/>
+                    <div>
+                        <TextField label="Email" variant="outlined" margin="normal" id="email" type="email"
+                                onChange={this.onChange} value={this.state.email} error={errors.email}
+                                className={classnames("", {
+                                    invalid: errors.email
+                                })}/>
+                        <span className="red-text">{errors.name}</span>
+                    </div>
                     <br/>
-                    <TextField label="Password" variant="outlined" margin="normal" id="password" type="password"
-                               onChange={this.onChange} value={this.state.password} error={errors.password}/>
+                    <div>
+                        <TextField label="Password" variant="outlined" margin="normal" id="password" type="password"
+                                onChange={this.onChange} value={this.state.password} error={errors.password}
+                                className={classnames("", {
+                                    invalid: errors.password
+                                })}/>
+                        <span className="red-text">{errors.password}</span>
+                    </div>
                     <br/>
-                    <TextField label="Confirm Password" variant="outlined" margin="normal" id="password2" type="password2"
-                               onChange={this.onChange} value={this.state.password2} error={errors.password2}/>
+                    <div>
+                        <TextField label="Confirm Password" variant="outlined" margin="normal" id="password2" type="password"
+                                onChange={this.onChange} value={this.state.password2} error={errors.password2}
+                                className={classnames("", {
+                                    invalid: errors.password2
+                                })}/>
+                        <span className="red-text">{errors.password2}</span>
+                    </div>
+                    <CreateAccountButton name={this.state.name} email={this.state.email} password={this.state.password}/>
                 </form>
                 <br/>
-                <CreateAccountButton/>
             </div>
         );
     }
 }
 
-export default CreateAccountPage;
+CreateAccountPage.propTypes = {
+    registerUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
+  };
+
+const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors
+});
+
+export default connect(
+    mapStateToProps,
+    { registerUser }
+  )(withRouter(CreateAccountPage));

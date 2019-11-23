@@ -1,6 +1,7 @@
 import {
     SET_CURRENT_USER,
-    USER_LOADING
+    USER_LOADING,
+    NEW_USER
 } from "../actions/types";
 
 const isEmpty = require("is-empty");
@@ -22,6 +23,11 @@ export default function(state = initialState, action) {
         return {
             ...state,
             loading: true
+        };
+        case NEW_USER:
+            return {
+                ...state,
+                user: action.payload
         };
         default:
         return state;

@@ -2,58 +2,62 @@ import React from 'react';
 import Tooltip from '@material-ui/core/Tooltip';
 import axios from 'axios';
 import {withRouter} from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from "prop-types";
+import {post} from '../actions/postActions.js';
+import {updatePost} from '../actions/postActions.js';
 
 class SubmitSaveButton extends React.Component {
 
-	constructor(props) {
-		super(props);
-		this.state = {
-            id: this.props.id
-        }
-	}
+	// constructor(props) {
+	// 	super(props);
+	// 	this.state = {
+    //         id: this.props.id
+    //     }
+	// }
 	
-	post = () => {
-		var c = this.props.qText;
+	// post = () => {
+	// 	var c = this.props.qText;
 
-		// create post object to push to database
-		const newPost = {
-			"author": "username",
-			"date": Date.now(),
-			"content": c
-		}
+	// 	// create post object to push to database
+	// 	const newPost = {
+	// 		"author": "username",
+	// 		"date": Date.now(),
+	// 		"content": c
+	// 	}
 
-		// add item to database
-		axios.post("http://localhost:4000/post", newPost)
-			.then(res => {
-				this.setState({id: res.data._id});
-				console.log(res.data);
-				window.location = "/post/" + this.state.id;
-			})
-			.catch( (error) => {
-				console.log(error);
-			});
-	}
+	// 	// add item to database
+	// 	axios.post("/post", newPost)
+	// 		.then(res => {
+	// 			this.setState({id: res.data._id});
+	// 			console.log(res.data);
+	// 			window.location = "/post/" + this.state.id;
+	// 		})
+	// 		.catch( (error) => {
+	// 			console.log(error);
+	// 		});
+	// }
 
-	updatePost = () => {
-		var c = this.props.qText;
-		var id = this.props.id;
+	// updatePost = () => {
+	// 	var c = this.props.qText;
+	// 	var id = this.props.id;
 
-		const updatePost = {
-			"date": Date.now(),
-			"content": c
-		}
+	// 	const updatePost = {
+	// 		"date": Date.now(),
+	// 		"content": c
+	// 	}
 
-		axios.patch("http://localhost:4000/post/" + id, updatePost)
-			.then(res => {
-				window.location = "/post/" + this.state.id;
-			})
-	}
+	// 	axios.patch("http://localhost:4000/post/" + id, updatePost)
+	// 		.then(res => {
+	// 			window.location = "/post/" + this.state.id;
+	// 		})
+	// }
 
 	clickfunction = () => {
 		if (this.props.mode == true) {
-			this.post();
+			this.props.post(this.props.qText);
 		} else {
-			this.updatePost();
+			this.props.updatePost(this.props.qText);
 		}
 	}
 
@@ -69,4 +73,21 @@ class SubmitSaveButton extends React.Component {
 		);
 	}
 }
-export default withRouter (SubmitSaveButton);
+
+const mapStateToProps = state => ({
+	//auth: state.auth,
+	newPost: state.posts.post,
+	id: state.posts.id,
+    //errors: state.errors
+});
+
+SubmitSaveButton.propTypes = {
+	post: PropTypes.func.isRequired,
+	updatePost: PropTypes.func.isRequired,
+	newPost: PropTypes.object
+}
+
+export default connect(
+    mapStateToProps,
+    { post, updatePost }
+  )(withRouter(SubmitSaveButton));
