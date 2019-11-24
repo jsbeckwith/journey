@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import './sidescrollEntries.scss';
 import SidescrollPanel from './sidescrollPanel.js';
-import CalendarPanel from './calendarPanel';
+import CalendarLinkPanel from './calendarLinkPanel';
 
 class SidescrollEntries extends React.Component {
 	constructor (props) {
@@ -16,9 +16,7 @@ class SidescrollEntries extends React.Component {
 	getPosts = () => {
 		axios.get("http://localhost:4000/posts/")
 			.then((response) => {
-				console.log("before");
 				this.setState({entries: response.data});
-				console.log("after");
 			})
 			.catch( (error) => {
                 console.log(error);
@@ -30,12 +28,19 @@ class SidescrollEntries extends React.Component {
 	}
 
 	render () {
-		var entries = this.state.entries;
+		let entries = this.state.entries;
 		let noEntries = this.state.entries.length === 0;
+		let wrapperID = this.props.sideScrollEntriesType == "homepage"
+			? "homepage-sidescroll-entries"
+			: "calendar-sidescroll-entries";
+		let shouldRenderCalendarLink = this.props.sideScrollEntriesType == "homepage"
+			// only render calendar link panel if currently on homepage
+			? <CalendarLinkPanel/>
+			: null;
 		
 		if (noEntries) {  // no entries to display in panels
 			return (
-				<div className="homepage-sidescroll-entries">
+				<div className="sidescroll-entries" id={wrapperID}>
 					<div className="no-entries-wrapper">
 						<div className="no-entries-text">
 							You don't have any entries to display yet.
@@ -46,18 +51,22 @@ class SidescrollEntries extends React.Component {
 				</div>
 			);
 		} else {
-			// only show 10 entries
 			let start = entries.length - 10;
-
-			return (
-				<div className="homepage-sidescroll-entries">
+			return (			
+				<div className="sidescroll-entries" id={wrapperID}>
 						{/* loop through all entries and pass info as props to sidescrollPanel */}
 						{entries.slice(start).reverse().map((entry) => {
 							return (
-								<SidescrollPanel id={entry._id} author={entry.author} date={entry.date} content={entry.content}/>
+								<SidescrollPanel
+									sideScrollEntriesType={this.props.sideScrollEntriesType}
+									id={entry._id}
+									author={entry.author}
+									date={entry.date}
+									content={entry.content}
+								/>
 							)
 						})}
-						<CalendarPanel/>
+						{shouldRenderCalendarLink}
 				</div>
 			);
 		}
