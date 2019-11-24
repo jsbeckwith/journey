@@ -46,10 +46,13 @@ class SidescrollEntries extends React.Component {
 				</div>
 			);
 		} else {
+			// only show 10 entries
+			let start = entries.length - 10;
+
 			return (
 				<div className="homepage-sidescroll-entries">
 						{/* loop through all entries and pass info as props to sidescrollPanel */}
-						{entries.slice(0).reverse().map((entry) => {
+						{entries.slice(start).reverse().map((entry) => {
 							return (
 								<SidescrollPanel id={entry._id} author={entry.author} date={entry.date} content={entry.content}/>
 							)
