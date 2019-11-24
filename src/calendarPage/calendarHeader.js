@@ -37,7 +37,8 @@ class CalendarHeader extends React.Component {
 						we should set minDate as the date of the oldest post
 						out of all the users friends or the users self
 					*/}
-					<ModernDatepicker 
+					<ModernDatepicker
+						id={"input-button"}
 						date={this.state.startDate}
 						format={'MM-DD-YYYY'}
 						onChange={(date) => this.handleDateSelect(date)}

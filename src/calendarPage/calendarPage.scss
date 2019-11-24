@@ -4,10 +4,27 @@
 
 .jump-to-date-calendar {
     position: absolute;
-    top: 15px;
-    right: 0px;
-    background-color: $journey-light-grey;
+    top: 20px;
+    right: 25px;
     z-index: 1;
+
+    #input-button {
+        background-color: $journey-light-grey;
+        font-size: 15px;
+        font-weight: 300;
+        width: 130px;
+        padding: 10px;
+        border: 1px solid $journey-purple;
+        box-shadow: 2px 2px 3px $journey-mid-grey;
+        border-radius: 5px;
+    }
+
+    // for some reason this is the classname of the calendar body in the package code
+    // hacky and broken, just to get the 
+    .ivzgtg {
+        position: relative;
+        right: 0;
+    }
 
     // Please  note that, for this class to take the precedence over the
     // default css, we should repeat the class name like below (instead of .color, we are
