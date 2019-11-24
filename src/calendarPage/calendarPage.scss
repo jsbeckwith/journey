@@ -1,3 +1,29 @@
 @import '../vars.scss';
 
 // styles for sidescrollEntries in sideScrollEntries.scss
+
+.jump-to-date-calendar {
+    position: absolute;
+    top: 15px;
+    right: 0px;
+    background-color: $journey-light-grey;
+    z-index: 1;
+
+    // Please  note that, for this class to take the precedence over the
+    // default css, we should repeat the class name like below (instead of .color, we are
+    // using .color.color)
+    .color.color {
+        border-radius: 0;
+        -moz-border-radius: 0;
+        -webkit-border-radius: 0;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 10px 10px 10px 5px;
+        border-bottom: 1px solid #ebebeb !important;
+        border: none;
+        box-sizing: border-box;
+        margin-top: 22px;
+        box-shadow: 2px 2px 3px $journey-mid-grey;
+        font-family: Open Sans, sans-serif;
+    }
+}
