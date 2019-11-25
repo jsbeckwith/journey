@@ -36,12 +36,13 @@ class SidescrollPanel extends React.Component {
 			: "calendar-sidescroll-panel";
 		let panelContent = this.props.sideScrollEntriesType == "homepage"
 			// for homepage, render singular user's entry for this day
-			? <div dangerouslySetInnerHTML={this.renderHTML()}/>
+			?   <Link to = {{pathname: "/post/" + idString}}>
+					<div dangerouslySetInnerHTML={this.renderHTML()}/>
+				</Link>
 			// for calendar, load all friends' entries for this day
 			: <SidescrollCalendarPanelsContent/>;
 
 		return (
-			<Link to = {{pathname: "/post/" + idString}}>
 				<div className="sidescroll-panel" id={panelID}>
 					<div>
 						<div className="panel-date-header"> {formattedEntryDate} </div>
@@ -50,7 +51,6 @@ class SidescrollPanel extends React.Component {
 						</div>
 					</div>
 				</div>
-			</Link>
 		);
 	}
 }

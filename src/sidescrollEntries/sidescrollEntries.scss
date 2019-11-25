@@ -52,8 +52,6 @@
   font-family: "PT Sans";
   background-color: $journey-light-grey;
   padding: 20px;
-  overflow: hidden;
-  text-overflow: ellipsis;
   border-radius: 15px;
   margin-right: 15px;
   box-shadow: 2px 2px 3px $journey-mid-grey;
@@ -81,7 +79,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 14; // max nb lines to show
+    -webkit-line-clamp: 14; // max lines to show
     -webkit-box-orient: vertical;
   }
 }
@@ -90,12 +88,53 @@
   width: 225px;
   height: 45vh;
   min-height: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #calendar-sidescroll-panel {
   width: 300px;
   height: 70vh;
   min-height: 300px;
+
+  .sidescroll-calendar-panel-content {
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .sidescroll-calendar-panel-entry {
+      width: 100%;
+      height: 135px;
+      padding: 15px 15px 10px 15px;
+      border-bottom: 1px solid $journey-purple;
+      box-sizing: border-box;
+      display: inline-block;
+      white-space: pre-line;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 4; // max lines to show
+      -webkit-box-orient: vertical;
+
+      .display-name {
+        font-size: 20px;
+      }
+
+      .username {
+        color: $journey-mid-grey;
+        margin-bottom: 5px;
+      }
+
+      .entry-text {
+        font-size: 14px;
+
+        :after {  // spacer
+          content:'';
+          display: block;
+          height: 20px;
+        }
+      }
+    }
+  }
 }
 
 #calendar-link-panel {
