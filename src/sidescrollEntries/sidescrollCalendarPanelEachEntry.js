@@ -15,9 +15,7 @@ class SidescrollCalendarPanelEachEntry extends React.Component {
                 {/* <Link to = {{pathname: "/post/" + idString}}> */}
                     <div className="display-name">Julia Lohman</div>
                     <div className="username">hypotheticalusername</div>
-                    <div className="entry-text">
-                        
-                    </div>
+                    <div className="entry-text"></div>
                 {/* </Link> */}
             </div>
         );
