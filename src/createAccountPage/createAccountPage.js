@@ -37,10 +37,10 @@ class CreateAccountPage extends React.Component {
         e.preventDefault();
         const newUser = {
             //state instead of props.auth
-            displayname: this.state.name,
-            email: this.state.email,
-            password: this.state.password,
-            password2: this.state.password2
+            "displayname": this.state.name,
+            "email": this.state.email,
+            "password": this.state.password,
+            "password2": this.state.password2
             };
         //this.props.registerUser(newUser, this.props.history);
         console.log("before request");
@@ -51,7 +51,8 @@ class CreateAccountPage extends React.Component {
                 window.location = "http://localhost:3000/homepage";
             })
             .catch((error) => {
-             	console.log(error);
+                 console.log(error);
+                 console.log(newUser);
             });
 
     };
@@ -147,7 +148,9 @@ class CreateAccountPage extends React.Component {
                                 })}/>
                         <span className="red-text">{errors.password2}</span>
                     </div>
-                    <CreateAccountButton name={this.state.name} email={this.state.email} password={this.state.password}/>
+                    <center>
+                        <CreateAccountButton name={this.state.name} email={this.state.email} password={this.state.password}/>
+                    </center>
                 </form>
                 <br/>
             </div>

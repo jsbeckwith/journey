@@ -9,12 +9,12 @@ import {updatePost} from '../actions/postActions.js';
 
 class SubmitSaveButton extends React.Component {
 
-	// constructor(props) {
-	// 	super(props);
-	// 	this.state = {
-    //         id: this.props.id
-    //     }
-	// }
+	constructor(props) {
+		super(props);
+		this.state = {
+            id: this.props.id
+        }
+	}
 	
 	// post = () => {
 	// 	var c = this.props.qText;
@@ -49,7 +49,7 @@ class SubmitSaveButton extends React.Component {
 
 	// 	axios.patch("http://localhost:4000/post/" + id, updatePost)
 	// 		.then(res => {
-	// 			window.location = "/post/" + this.state.id;
+	// 			window.location = "/post/" + id;
 	// 		})
 	// }
 
@@ -57,7 +57,8 @@ class SubmitSaveButton extends React.Component {
 		if (this.props.mode == true) {
 			this.props.post(this.props.qText);
 		} else {
-			this.props.updatePost(this.props.qText);
+			this.props.updatePost(this.props.qText, this.state.id);
+			//this.updatePost();
 		}
 	}
 

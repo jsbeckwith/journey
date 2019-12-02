@@ -1,6 +1,7 @@
 import {
     GET_POSTS,
-    NEW_POST
+    NEW_POST,
+    UPDATE_POST
 } from "../actions/types";
 
 const initialState = {
@@ -20,6 +21,12 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 post: action.payload
+            };
+        case UPDATE_POST:
+            return {
+                ...state,
+                post: action.payload,
+                id: action.id
             };
         default:
             return state;

@@ -1,6 +1,7 @@
 import {
     GET_POSTS,
     NEW_POST,
+    UPDATE_POST
 } from "../actions/types";
 import axios from 'axios';
 
@@ -46,17 +47,22 @@ export const post = (text) => dispatch => {
 			});
 }
 
-export const updatePost = (text) => {
+export const updatePost = (text, id) => dispatch => {
     //var c = this.props.qText;
-		var id = this.state.id;
+		// var iD = id;
 
 		const updatePost = {
 			"date": Date.now(),
 			"content": text
 		}
 
-		axios.patch("http://localhost:4000/post/" + id, updatePost)
-			.then(res => {
-				window.location = "/post/" + this.state.id;
+		axios.patch("http://localhost:4000/post/" + id.toString(), updatePost)
+			.then(response => {
+                dispatch({
+                    type: UPDATE_POST,
+                    payload: response.data,
+                    id: response._id
+                })
+				window.location = "/post/" + response.data._id;
 			})
 }
