@@ -7,7 +7,7 @@ class NewEntryPage extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			textFromChild: ''
+			textFromChild: '',
 		}
 	}
 	
@@ -19,7 +19,7 @@ class NewEntryPage extends React.Component {
 	render () {
 		return (
 			<div>
-				<NewEntryHeader todayDate={this.props.todayDate} qText={this.state.textFromChild}/>
+				<NewEntryHeader editText="" todayDate={this.props.todayDate} qText={this.state.textFromChild}/>
 				<TextEditor editMode={false} giveText={this.receiveText} textEditorType="new-entry-text-editor"/>
 			</div>
 		);

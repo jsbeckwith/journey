@@ -1,7 +1,8 @@
 import {
     GET_POSTS,
     NEW_POST,
-    UPDATE_POST
+    UPDATE_POST,
+    GET_POST_BY_ID
 } from "../actions/types";
 import axios from 'axios';
 
@@ -56,13 +57,32 @@ export const updatePost = (text, id) => dispatch => {
 			"content": text
 		}
 
-		axios.patch("http://localhost:4000/post/" + id.toString(), updatePost)
+		axios.patch("http://localhost:4000/post/" + id, updatePost)
 			.then(response => {
                 dispatch({
                     type: UPDATE_POST,
                     payload: response.data,
-                    id: response._id
+                    id: response.data._id
                 })
 				window.location = "/post/" + response.data._id;
 			})
+}
+
+export const getPostByID = (idString) => dispatch => {
+    //let idString = this.getStringID();
+    console.log(idString);
+    axios.get("http://localhost:4000/" + idString)
+        .then((response) => {
+            // set entry state to data received
+            //this.setState({entry: response.data});
+            console.log(response.data);
+            dispatch({
+                type: GET_POST_BY_ID,
+                payload: response.data,
+                id: response.data._id
+            })
+        })
+        .catch( (error) => {
+            console.log(error);
+        });
 }

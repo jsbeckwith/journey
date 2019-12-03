@@ -1,6 +1,11 @@
 import React from 'react';
 import Tooltip from '@material-ui/core/Tooltip';
 import {Link} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from "prop-types";
+import {updatePost} from '../actions/postActions.js';
+
 
 class EditButton extends React.Component {
 
@@ -8,8 +13,10 @@ class EditButton extends React.Component {
     super(props)
   }
 
+  
+
   render() {
-    let id = this.props.id;
+    var id = this.props.id;
     return (
       <Link to = {{pathname: "edit/" + id}}>
       <Tooltip title="edit">
@@ -25,4 +32,19 @@ class EditButton extends React.Component {
 
 }
 
-export default EditButton;
+const mapStateToProps = state => ({
+	//auth: state.auth,
+	newPost: state.posts.post,
+	id: state.posts.id,
+  //errors: state.errors
+});
+
+EditButton.propTypes = {
+	updatePost: PropTypes.func.isRequired,
+	newPost: PropTypes.object
+}
+
+export default connect(
+    mapStateToProps,
+    { updatePost }
+  )(withRouter(EditButton));

@@ -8,13 +8,13 @@ import SidescrollPanel from './sidescrollPanel.js';
 import CalendarPanel from './calendarPanel';
 
 class SidescrollEntries extends React.Component {
-	// constructor (props) {
-	// 	super(props);
-	// 	this.state = {
-	// 		entries: [],
-	// 		s: "hey"
-	// 	}
-	// }
+	constructor (props) {
+		super(props);
+		this.state = {
+			entries: [],
+			s: "hey"
+		}
+	}
 
 	// getPosts = () => {
 	// 	axios.get("http://localhost:4000/posts/")
@@ -56,7 +56,7 @@ class SidescrollEntries extends React.Component {
 				<div className="homepage-sidescroll-entries">
 						{/* loop through all entries and pass info as props to sidescrollPanel */}
 						{entries.slice(entries.length-10).reverse().map((entry) => {
-							this.state.posts.id = entry._id;
+							//this.state.id = entry._id;
 							return (
 								<SidescrollPanel id={entry._id} author={entry.author} date={entry.date} content={entry.content}/>
 							)

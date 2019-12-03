@@ -61,7 +61,7 @@ class App extends React.Component {
 					<HomePage entry={entry} todayDate={todayDate}/>
 				</Route>
 				<Route exact path="/newEntryPage">
-					<NewEntryPage todayDate={todayDate}/>
+					<NewEntryPage todayDate={todayDate} editText=""/>
 				</Route>
 				<Route exact path="/post/:id" component={SingleEntryPage}/>
 				<Route exact path="/post/edit/:id" component={EditPage}/>

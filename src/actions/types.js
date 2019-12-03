@@ -3,5 +3,7 @@ export const USER_LOADING = "USER_LOADING";
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
 export const NEW_USER = "NEw_USER";
 export const GET_POSTS = "GET_POSTS";
+export const GET_POST = "GET_POST";
+export const GET_POST_BY_ID = "GET_POST_BY_ID";
 export const NEW_POST = "NEW_POST";
 export const UPDATE_POST = "UPDATE_POST";

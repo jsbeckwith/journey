@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React from 'react';
-
+import { connect } from 'react-redux';
+import {getPostByID} from '../actions/postActions.js';
+import PropTypes from "prop-types";
 import './singleEntryPage.scss';
 import '../universalStyle.scss';
 import EditButton from '../buttons/editButton.js';
@@ -35,6 +37,7 @@ class SingleEntryPage extends React.Component {
 		axios.get("http://localhost:4000/" + idString)
 			.then((response) => {
 				// set entry state to data received
+				
 				this.setState({entry: response.data});
 			})
 			.catch( (error) => {
@@ -44,6 +47,7 @@ class SingleEntryPage extends React.Component {
 
 	// get post when page loads
 	componentDidMount = () => {
+		//let idString = this.getStringID();
 	    this.getPostByID();
 	}
 
@@ -75,5 +79,16 @@ class SingleEntryPage extends React.Component {
 	}
 }
 
-export default SingleEntryPage;
+SingleEntryPage.propTypes = {
+	getPostByID: PropTypes.func.isRequired
+}
+
+const mapStateToProps = state => ({
+	auth: state.auth,
+	posts: state.posts.posts,
+	id: state.id,
+    errors: state.errors
+});
+
+export default connect (mapStateToProps, {getPostByID})(SingleEntryPage);
 
