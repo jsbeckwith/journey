@@ -32,19 +32,4 @@ class EditButton extends React.Component {
 
 }
 
-const mapStateToProps = state => ({
-	//auth: state.auth,
-	newPost: state.posts.post,
-	id: state.posts.id,
-  //errors: state.errors
-});
-
-EditButton.propTypes = {
-	updatePost: PropTypes.func.isRequired,
-	newPost: PropTypes.object
-}
-
-export default connect(
-    mapStateToProps,
-    { updatePost }
-  )(withRouter(EditButton));
+export default EditButton;

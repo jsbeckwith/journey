@@ -64,7 +64,7 @@ export const updatePost = (text, id) => dispatch => {
                     payload: response.data,
                     id: response.data._id
                 })
-				window.location = "/post/" + response.data._id;
+				window.location = "/post/" + response.data._id.toString();
 			})
 }
 

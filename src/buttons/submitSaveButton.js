@@ -57,7 +57,7 @@ class SubmitSaveButton extends React.Component {
 		if (this.props.mode == true) {
 			this.props.post(this.props.qText);
 		} else {
-			this.props.updatePost(this.props.qText, this.state.id);
+			this.props.updatePost(this.props.qText, this.props.id.toString());
 			//this.updatePost();
 		}
 	}
@@ -78,7 +78,7 @@ class SubmitSaveButton extends React.Component {
 const mapStateToProps = state => ({
 	//auth: state.auth,
 	newPost: state.posts.post,
-	id: state.posts.id,
+	//id: state.posts.id,
     //errors: state.errors
 });
 
