@@ -23,10 +23,10 @@ export const registerUser = (userData, history) => dispatch => {
     })
     .then(res => history.push("/homepage")) // re-direct to homepage on successful register
     .catch((err) => {
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.data
-      });
+      // dispatch({
+      //   type: GET_ERRORS,
+      //   payload: err.data
+      //});
       console.log(err);
     }
     );

@@ -55,6 +55,7 @@ class CreateAccountPage extends React.Component {
             //      console.log(error);
             //      console.log(newUser);
             // });
+            
             //alert("Account created!");
             
             //window.location = "http://localhost:3000/homepage";
