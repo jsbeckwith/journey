@@ -4,7 +4,7 @@
 
 h2 {
     font-size: 35px;
-    font-family: "PT Sans";
+    font-family: $main-font;
     font-weight: 400;
     padding: 10px;
     line-height: 60px;
@@ -14,7 +14,7 @@ h2 {
 
 h3 {
     font-size: 20px;
-    font-family: "PT Sans";
+    font-family: $main-font;
     font-weight: 200;
     color: $journey-dark-grey;
     display: inline;
