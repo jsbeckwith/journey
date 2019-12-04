@@ -21,6 +21,7 @@ router.post("/register", (req, res) => {
     }
   User.findOne({ email: req.body.email }).then(user => {
       if (user) {
+        alert("There is alrady an account with this email.");
         return res.status(400).json({ email: "Email already exists" });
       } else {
         const newUser = new User({
@@ -37,6 +38,7 @@ router.post("/register", (req, res) => {
               .save()
               .then(user => res.json(user))
               .catch(err => console.log(err));
+            alert("Account created!");
           });
         });
       }

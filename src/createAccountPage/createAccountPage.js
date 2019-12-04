@@ -44,16 +44,20 @@ class CreateAccountPage extends React.Component {
             };
         //this.props.registerUser(newUser, this.props.history);
         console.log("before request");
-        axios.post("http://localhost:4000/register", newUser)
-            .then( res => {
-                console.log(res.data);
-                alert("Account created!");
-                window.location = "http://localhost:3000/homepage";
-            })
-            .catch((error) => {
-                 console.log(error);
-                 console.log(newUser);
-            });
+        //axios.post("http://localhost:4000/register", newUser)
+        this.props.registerUser("http://localhost:4000/register", newUser);
+            // .then( res => {
+            //     console.log(res.data);
+            //     alert("Account created!");
+            //     //window.location = "http://localhost:3000/homepage";
+            // })
+            // .catch((error) => {
+            //      console.log(error);
+            //      console.log(newUser);
+            // });
+            //alert("Account created!");
+            
+            //window.location = "http://localhost:3000/homepage";
 
     };
 

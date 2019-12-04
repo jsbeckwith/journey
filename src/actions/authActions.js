@@ -11,27 +11,31 @@ import {
 // Register User
 export const registerUser = (userData, history) => dispatch => {
   axios
-    //.post("/api/users/register", userData)
-    .post("/register", userData)
+    .post("http://localhost4000/register", userData)
+    //.post("/register", userData)
     .then(res => {
+      console.log(res.data);
       dispatch({
         type: NEW_USER,
         payload: userData
-      })
+      });
+      console.log(res.data);
     })
     .then(res => history.push("/homepage")) // re-direct to homepage on successful register
-    .catch(err =>
+    .catch((err) => {
       dispatch({
         type: GET_ERRORS,
-        payload: err.response.data
-      })
+        payload: err.data
+      });
+      console.log(err);
+    }
     );
 };
 
 // Login - get user token
 export const loginUser = userData => dispatch => {
   axios
-    .post("/api/users/login", userData)
+    .post("http://localhost:4000/login", userData)
     .then(res => {
       // Save to localStorage
 // Set token to localStorage
