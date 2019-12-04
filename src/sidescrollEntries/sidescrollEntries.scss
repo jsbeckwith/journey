@@ -7,7 +7,7 @@
   margin-right: -30px;  // to cancel out page-body padding
   margin-bottom: -5px;  // "
   overscroll-behavior-x: auto;
-  font-family: "PT Sans";
+  font-family: $main-font;
 
   .no-entries-wrapper {
     display: block;
@@ -49,7 +49,7 @@
 .sidescroll-panel {
   flex: 0 0 auto;
   display: inline-block;
-  font-family: "PT Sans";
+  font-family: $main-font;
   background-color: $journey-light-grey;
   padding: 20px;
   border-radius: 15px;
@@ -61,7 +61,7 @@
     position: relative;
     top: 0;
     left: 0;
-    font-family: "PT Sans";
+    font-family: $main-font;
     font-size: 20px;
     color: white;
     background-color: $journey-purple;
@@ -72,7 +72,7 @@
   }
 
   .panel-content {
-    font-family: "PT Sans";
+    font-family: $main-font;
     color: $journey-dark-grey;
     white-space: pre-line;
     padding-top: 15px;

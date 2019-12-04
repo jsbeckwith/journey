@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'PT-Sans';
+    font-family: $main-font;
 }
 
 .auth-header {
@@ -23,12 +23,12 @@
 
 .auth-content {
     text-align: center;
-    font-family: 'PT-Sans';
+    font-family: $main-font;
     margin: 40px;
 }
 
 .auth-button {
-    font-family: 'PT-Sans';
+    font-family: $main-font !important;
     font-size: 20px;
     border: 2px solid $journey-purple;
     text-align: center;
@@ -46,11 +46,21 @@
     width: 70px;
 }
 
+.logout-button {
+    font-family: $main-font;
+    font-size: 15px;
+    width: 60px;
+    height: 30px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
 .create-account-button {
     width: 140px;
 }
 
 .create-account-text {
-    font-family: 'PT-Sans';
+    font-family: $main-font;
     margin: 20px;
 }
