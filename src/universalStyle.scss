@@ -38,6 +38,10 @@ nav {
         background-color: transparent;
         border: none;
         padding: 0px;
+
+        svg {
+            fill: $journey-purple;
+        }
     }
 
     .nav-button:hover {
@@ -112,6 +116,7 @@ h3 {
     transition-duration: 0.4s;
     height: 40px;
     width: 40px;
+    padding-top: 5px;
     float: right;
 
     svg {
