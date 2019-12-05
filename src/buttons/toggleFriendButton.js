@@ -36,7 +36,7 @@ class ToggleFriendButton extends React.Component {
 			return (
 				<div className="toggle-friend-button">
 					<Tooltip title={'remove friend'}>
-						<button className="add-remove-friend-button journey-button remove-friend-button" id={this.props.location} onClick={this.removeFriend()}>
+						<button className="add-remove-friend-button journey-button remove-friend-button" onClick={this.removeFriend()}>
 							-
 						</button>
 					</Tooltip>
@@ -46,7 +46,7 @@ class ToggleFriendButton extends React.Component {
 			return (
 				<div className="toggle-friend-button">
 					<Tooltip title={'add friend'}>
-						<button className="add-remove-friend-button journey-button add-friend-button" id={this.props.location} onClick={this.addFriend()}>
+						<button className="add-remove-friend-button journey-button add-friend-button" onClick={this.addFriend()}>
 							+
 						</button>
 					</Tooltip>

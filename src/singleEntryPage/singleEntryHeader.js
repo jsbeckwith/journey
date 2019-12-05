@@ -26,7 +26,7 @@ class SingleEntryHeader extends React.Component {
 				<h2 className="header-author">
 					{this.props.author}
 				</h2>
-				{/* if author is not self, display <ToggleFriendButton username={this.props.author} location="entry-toggle-friend"/> here */}
+				{/* if author is not self, display <ToggleFriendButton username={this.props.author}/> here */}
 				<br/>
 				<h3 className="header-date"> {this.createShortDate(this.props.date)} </h3>
 				<div class="header-button-container">

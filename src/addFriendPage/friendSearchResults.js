@@ -20,7 +20,7 @@ class FriendSearchResults extends React.Component {
                         <div className="search-result-username">
                             {username}
                         </div>
-                        <ToggleFriendButton username={username} location="search-toggle-friend"/>
+                        <ToggleFriendButton username={username}/>
                     </div>
                 </div>
             );
