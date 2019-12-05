@@ -38,7 +38,7 @@
 
     :hover {
         background-color: $journey-purple;
-        color: #fff;
+        color: white;
     }
 }
 
@@ -47,13 +47,20 @@
 }
 
 .logout-button {
-    font-family: $main-font;
-    font-size: 15px;
     width: 60px;
     height: 30px;
-    position: absolute;
-    top: 10px;
+    position: fixed;
+    top: 20px;
     right: 10px;
+
+    a {
+        font-size: 20px;
+        color: white;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
 }
 
 .create-account-button {
