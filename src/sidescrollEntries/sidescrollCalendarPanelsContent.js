@@ -18,6 +18,8 @@ class SidescrollCalendarPanelsContent extends React.Component {
             <div className="sidescroll-calendar-panel-content">
                 {/* loop and load multiple <SidescrollCalendarPanelEachEntry/>s here */}
                 <SidescrollCalendarPanelEachEntry/>
+                <SidescrollCalendarPanelEachEntry/>
+                <SidescrollCalendarPanelEachEntry/>
             </div>
         );
 	}
