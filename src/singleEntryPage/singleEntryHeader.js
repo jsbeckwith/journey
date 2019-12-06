@@ -1,6 +1,7 @@
 import React from 'react';
 import EditButton from '../buttons/editButton.js';
 import DeleteButton from '../buttons/deleteButton.js';
+import ToggleFriendButton from '../buttons/toggleFriendButton.js';
 
 class SingleEntryHeader extends React.Component {
 	constructor (props) {
@@ -26,7 +27,8 @@ class SingleEntryHeader extends React.Component {
 				<h2 className="header-author">
 					{this.props.author}
 				</h2>
-				{/* if author is not self, display <ToggleFriendButton username={this.props.author}/> here */}
+				{/* TODO: add logic to only display below button if this.props.author is not self */}
+				<ToggleFriendButton username={this.props.author}/>
 				<br/>
 				<h3 className="header-date"> {this.createShortDate(this.props.date)} </h3>
 				<div class="header-button-container">

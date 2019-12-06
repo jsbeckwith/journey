@@ -1,14 +1,18 @@
 import React from 'react';
 import './addFriendPage.scss';
-import ToggleFriendButton from '../buttons/toggleFriendButton.js';
+import SearchResultItem from './searchResultItem.js';
 
 class FriendSearchResults extends React.Component {
 	constructor (props) {
-		super(props);
+        super(props);
+        
+        this.state = {
+            visible: false
+        }
     }
 
 	render () {
-        // for styling purposes, delete later
+        // hardcoding now, figure out how to calculate values later
         let username = 'hypotheticalusername';
         let gotResults = true;
 
@@ -16,12 +20,8 @@ class FriendSearchResults extends React.Component {
             return (
                 <div className="friend-search-results">
                     {/* TODO loop through results here */}
-                    <div className="search-result-item">
-                        <div className="search-result-username">
-                            {username}
-                        </div>
-                        <ToggleFriendButton username={username}/>
-                    </div>
+                    <SearchResultItem username={username}/>
+                    <SearchResultItem username={username}/>
                 </div>
             );
         } else {
