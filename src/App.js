@@ -47,7 +47,7 @@ class App extends React.Component {
 					<CalendarPage/>
 				</Route>
 				<Route exact path="/addFriendPage">
-					<AddFriendPage/>
+					<AddFriendPage resultsVisible={false}/>
 				</Route>
 			</Switch>
 		);

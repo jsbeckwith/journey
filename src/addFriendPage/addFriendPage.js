@@ -10,11 +10,9 @@ class AddFriendPage extends React.Component {
 		this.state = {
 			searchText: ''
 		}
-
-		this.handleChange = this.handleChange.bind(this);
 	}
 
-	handleChange = (e) => {
+	handleInputChange = (e) => {
 		this.setState({ searchText: e.target.value });
 	}
 
@@ -27,7 +25,7 @@ class AddFriendPage extends React.Component {
 							type="text"
 							className="searchbar"
 							placeholder="search for a new friend by username..."
-							onChange={this.handleChange}
+							onChange={this.handleInputChange}
 						/>
                         <SearchButton searchText={this.state.searchText}/>
                     </form>
