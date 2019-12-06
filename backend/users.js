@@ -12,7 +12,7 @@ const User = require("./users.model");
 // @route POST api/users/register
 // @desc Register user
 // @access Public
-router.post("/register", (req, res) => {
+router.post("http://localhost:4000/register", (req, res) => {
     // Form validation
   const { errors, isValid } = validateRegisterInput(req.body);
   // Check validation
