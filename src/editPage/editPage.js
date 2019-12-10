@@ -19,7 +19,7 @@ class EditPage extends React.Component {
 		this.setState({textFromChild: textFromQuill});
 	}
 
-
+	/*
 	// access id object from state and convert to string
 	getStringID() {
 		let jsonString = JSON.stringify(this.state.id);
@@ -34,7 +34,7 @@ class EditPage extends React.Component {
 		axios.get("http://localhost:4000/" + idString)
 			.then((response) => {
 				// set entry state to data received
-				console.log(response.data.content);
+				// console.log(response.data.content);
 				this.setState({textToEdit: response.data.content});
 			})
 			.catch( (error) => {
@@ -46,10 +46,11 @@ class EditPage extends React.Component {
 	componentDidMount = () => {
 		this.getPostByID();
 		console.log(this.state.textToEdit);
-	}
+	} */
 	
 
 	render () {
+		console.log(this.state.textToEdit);
 		return (
 			<div>
 				<EditHeader todayDate={this.props.todayDate} id={this.state.id} qText={this.state.textFromChild}/>
