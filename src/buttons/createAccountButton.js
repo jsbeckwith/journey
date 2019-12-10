@@ -12,7 +12,7 @@ class CreateAccountButton extends React.Component {
   render() {
     return (
       <Tooltip title="create account">
-        <button className="create-account-button auth-button journey-button" onClick={() => {alert('create account'); window.location = "http://localhost:3000/homepage"}}>
+        <button className="create-account-button auth-button journey-button" onClick={() => {alert('create account');}}> 
           create account
         </button>
       </Tooltip>
