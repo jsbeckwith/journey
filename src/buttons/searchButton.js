@@ -22,6 +22,8 @@ class SearchButton extends React.Component {
     }
     
     onSearch = () => {
+        // set state of page component so that results render
+        this.props.handleSearch();
         // search db for usernames that == or contain this.props.searchText
         // try to prioritize closest match?
     }

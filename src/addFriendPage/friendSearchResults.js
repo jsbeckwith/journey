@@ -12,7 +12,7 @@ class FriendSearchResults extends React.Component {
         let username = 'hypotheticalusername';
         let gotResults = true;
 
-        //add in logic to load after search button pressed
+        // add in logic to load after search button pressed
 
         if (gotResults) {
             return (

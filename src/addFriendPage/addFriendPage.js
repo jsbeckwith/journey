@@ -8,7 +8,8 @@ class AddFriendPage extends React.Component {
 		super(props);
 
 		this.state = {
-			searchText: ''
+			searchText: '',
+			hasSearched: false
 		}
 	}
 
@@ -16,9 +17,24 @@ class AddFriendPage extends React.Component {
 		this.setState({ searchText: e.target.value });
 	}
 
+	// called when search button is pressed
+	handleSearch = () => {
+		this.setState({hasSearched: true});
+	}
+
 	render () {
+		let shouldRenderSearchResults = this.state.hasSearched
+			? <FriendSearchResults/>
+			: null;
+
 		return (
 			<div className="add-friend-page">
+				<h2>Add a Friend</h2>
+				<br/>
+				{/* TODO: for agile reasons, we are going to start out with simple one-way follow system (like ig), so the below is true for now.
+				But, in the future we are hoping to implement a two-way friend request system (like fb).
+				We will update copy accordingly*/}
+				<h3>Adding a friend on journey means that you can view their entries, but they can't view yours.</h3>
                 <div className="search">
                     <form>
                         <input
@@ -27,9 +43,9 @@ class AddFriendPage extends React.Component {
 							placeholder="search for a new friend by username..."
 							onChange={this.handleInputChange}
 						/>
-                        <SearchButton searchText={this.state.searchText}/>
+                        <SearchButton searchText={this.state.searchText} handleSearch={this.handleSearch}/>
                     </form>
-					<FriendSearchResults/>
+					{shouldRenderSearchResults}
                 </div>
             </div>
 		);
