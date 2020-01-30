@@ -52,13 +52,14 @@ class TextEditor extends React.Component {
 
     render() {
         return (
-            <ReactQuill placeholder="What are you grateful for today?"
-                        value={this.state.text}
-                        onChange={this.handleChange}
-                        theme="snow"
-                        modules={this.modules}
-                        className={this.props.textEditorType}
-                        />
+            <ReactQuill
+                placeholder="What are you grateful for today?"
+                value={this.state.text}
+                onChange={this.handleChange}
+                theme="snow"
+                modules={this.modules}
+                className={this.props.textEditorType}
+            />
         )
     }
 }

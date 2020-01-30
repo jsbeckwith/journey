@@ -131,17 +131,14 @@ h3 {
     }
 }
 
-.journey-button:hover {
+.journey-button:hover, .journey-button:focus {
     background-color: $journey-purple;
     color: white;
+    outline: none;
 
     svg {
         fill: #fff;
     }
-}
-
-.journey-button:focus {
-    outline: none;
 }
 
 .header-button-container {
