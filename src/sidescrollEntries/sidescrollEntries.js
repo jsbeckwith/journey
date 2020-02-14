@@ -8,39 +8,48 @@ class SidescrollEntries extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			entries: [],
-			s: "hey"
+			entriesToRender: this.getPosts()
 		}
 	}
 
+	// queries db for posts and sets state's entriesToRender
 	getPosts = () => {
+		// TODO ADAPT FOR MULTIPLE USERS
 		axios.get("http://localhost:4000/posts/")
-			.then((response) => {
-				this.setState({entries: response.data});
-			})
-			.catch( (error) => {
-                console.log(error);
-            });
-	}
 
-	componentDidMount = () => {
-	    this.getPosts();
+		.then((response) => {
+			if (this.props.sideScrollEntriesType == "homepage") {
+				// for homepage, only get user's own posts for last ten days
+				let allSelfEntries = response.data;
+				// show only ten, unless there aren't enough
+				let numEntriesShown = response.data.length < 10
+					? response.data.length
+					: 10;
+				let start = allSelfEntries.length - numEntriesShown;
+				let mostRecentSelfEntries = allSelfEntries.slice(start).reverse();
+				console.log("case 1, mostRecentSelfEntries: ", mostRecentSelfEntries);
+				return mostRecentSelfEntries;
+			} else {
+				// for calendar, get self and all friends' posts for all time
+				// TODO 
+				console.log(" case 2 incomplete reversed data: ", response.data.reverse());
+				return response.data.reverse();
+			}
+		})
+		.catch((error) => {
+			console.log(error);
+		});
 	}
 
 	render () {
-		let entries = this.state.entries;
-		let noEntries = this.state.entries.length === 0;
-		let wrapperID = this.props.sideScrollEntriesType == "homepage"
-			? "homepage-sidescroll-entries"
-			: "calendar-sidescroll-entries";
-		let shouldRenderCalendarLink = this.props.sideScrollEntriesType == "homepage"
-			// only render calendar link panel if currently on homepage
-			? <CalendarLinkPanel/>
-			: null;
+		let entries = this.state.entriesToRender;
+		console.log("entries", entries);
+		let isHomepage = this.props.sideScrollEntriesType == "homepage";
+		let noEntries = entries.length === 0;
 		
-		if (noEntries) {  // no entries to display in panels
+		if (noEntries) {
 			return (
-				<div className="sidescroll-entries" id={wrapperID}>
+				<div className="sidescroll-entries">
 					<div className="no-entries-wrapper">
 						<div className="no-entries-text">
 							You don't have any entries to display yet.
@@ -50,25 +59,34 @@ class SidescrollEntries extends React.Component {
 					</div>
 				</div>
 			);
-		} else {
-			let start = entries.length - 10;
+		} else if (isHomepage) {
 			return (			
-				<div className="sidescroll-entries" id={wrapperID}>
-						{/* loop through all entries and pass info as props to sidescrollPanel */}
-						{entries.slice(start).reverse().map((entry) => {
+				<div className="sidescroll-entries" id={"homepage-sidescroll-entries"}>
+						{/* loop through all entries and pass info as props to sidescrollPanel*/}
+						{entries.map((entry) => {
 							return (
 								<SidescrollPanel
 									sideScrollEntriesType={this.props.sideScrollEntriesType}
-									id={entry._id}
-									author={entry.author}
-									date={entry.date}
-									content={entry.content}
+									entries={entry}  // in this homepage case, entries will be a singular entry
 								/>
-							)
+							);
 						})}
-						{shouldRenderCalendarLink}
+						<CalendarLinkPanel/>
 				</div>
 			);
+		} else {  // calendar page case
+			return (
+				<div className="sidescroll-entries" id={"calendar-sidescroll-entries"}>
+					{entries.map((dateGroup) => {
+						return (
+							<SidescrollPanel
+								sideScrollEntriesType={this.props.sideScrollEntriesType}
+								entries={dateGroup}  // in this calendar case, entries will be an array of entries made on one date
+							/>
+						);
+					})}
+				</div>
+			)
 		}
 	}
 }

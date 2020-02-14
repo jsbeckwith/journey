@@ -1,5 +1,5 @@
-import axios from 'axios';
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 class SidescrollCalendarPanelEachEntry extends React.Component {
     // for panels on the calendar page,
@@ -7,18 +7,20 @@ class SidescrollCalendarPanelEachEntry extends React.Component {
     // for each entry that should be shown
 	constructor (props) {
 		super(props);
-	}
+    }
 
 	render () {
+        let entry = this.props.entry;
+        let idString = this.props.stringify(entry);
+
         return (
             <div className="sidescroll-calendar-panel-entry">
-                {/* <Link to = {{pathname: "/post/" + idString}}> */}
-                    <div className="display-name">Julia Lohman</div>
-                    <div className="username">hypotheticalusername</div>
+                <Link to = {{pathname: "/post/" + idString}}>
+                    <div className="display-name">{entry.author}</div>
                     <div className="entry-text">
-                        Lorem ipsum dolor sit amet!
+                        <div dangerouslySetInnerHTML={this.props.renderHTML()}/>
                     </div>
-                {/* </Link> */}
+                </Link>
             </div>
         );
 	}

@@ -1,18 +1,18 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import SidescrollCalendarPanelsContent from './sidescrollCalendarPanelsContent.js';
+import SidescrollHomepagePanelsContent from './sidescrollHomepagePanelsContent.js';
 
 class SidescrollPanel extends React.Component {
 	constructor (props) {
 		super(props);
 	}
 
-	stringify = () => {
-		return this.props.id.toString();
+	stringify = (entry) => {
+		return entry.id.toString();
 	}
 
-	renderHTML = () => {
-		return {__html: this.props.content};
+	renderHTML = (entry) => {
+		return {__html: entry.content};
 	}
 
 	// correctly/nicely format dates as strings (originally: unix epoch format)
@@ -29,28 +29,38 @@ class SidescrollPanel extends React.Component {
 	}
 
 	render () {
-		let idString = this.stringify();
-		let formattedEntryDate = this.formatEntryDate(this.props.date);
-		let panelID = this.props.sideScrollEntriesType == "homepage"
+		let isHomepage = this.props.sideScrollEntriesType == "homepage";
+		// TODO refs based on panelDate?
+		let panelDate = isHomepage
+			? this.props.entries.date
+			: this.props.entries[0].date;  // since this is an array of entries with the same date, we just grab the first entry's date
+		let formattedEntryDate = this.formatEntryDate(panelDate);
+		let panelCSSID = isHomepage
 			? "homepage-sidescroll-panel"
 			: "calendar-sidescroll-panel";
-		let panelContent = this.props.sideScrollEntriesType == "homepage"
+		let panelContent = isHomepage
 			// for homepage, render singular user's entry for this day
-			?   <Link to = {{pathname: "/post/" + idString}}>
-					<div dangerouslySetInnerHTML={this.renderHTML()}/>
-				</Link>
+			? <SidescrollHomepagePanelsContent
+				stringfy={this.stringify}
+				renderHTML={this.renderHTML}
+				entry={this.props.entries}
+			/>
 			// for calendar, load all friends' entries for this day
-			: <SidescrollCalendarPanelsContent/>;
+			: <SidescrollCalendarPanelsContent
+				stringfy={this.stringify}
+				renderHTML={this.renderHTML}
+				entries={this.props.entries}
+			/>;
 
 		return (
-				<div className="sidescroll-panel" id={panelID}>
-					<div>
-						<div className="panel-date-header"> {formattedEntryDate} </div>
-						<div className="panel-content">
-							{panelContent}
-						</div>
+			<div className="sidescroll-panel" id={panelCSSID}>
+				<div>
+					<div className="panel-date-header"> {formattedEntryDate} </div>
+					<div className="panel-content">
+						{panelContent}
 					</div>
 				</div>
+			</div>
 		);
 	}
 }
