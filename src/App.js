@@ -1,6 +1,5 @@
 import React from 'react';
-import {Route, Switch, Redirect} from 'react-router-dom';
-import axios from 'axios';
+import {Route, Switch} from 'react-router-dom';
 import './universalStyle.scss';
 import Ribbon from './ribbon.js';
 import Nav from './nav.js';

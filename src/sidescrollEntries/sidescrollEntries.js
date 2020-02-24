@@ -7,8 +7,9 @@ import CalendarLinkPanel from './calendarLinkPanel';
 class SidescrollEntries extends React.Component {
 	constructor (props) {
 		super(props);
+		this.getPosts();
 		this.state = {
-			entriesToRender: this.getPosts()
+			entriesToRender: []
 		}
 	}
 
@@ -18,7 +19,7 @@ class SidescrollEntries extends React.Component {
 		axios.get("http://localhost:4000/posts/")
 
 		.then((response) => {
-			if (this.props.sideScrollEntriesType == "homepage") {
+			if (this.props.sideScrollEntriesType === "homepage") {
 				// for homepage, only get user's own posts for last ten days
 				let allSelfEntries = response.data;
 				// show only ten, unless there aren't enough
@@ -27,13 +28,12 @@ class SidescrollEntries extends React.Component {
 					: 10;
 				let start = allSelfEntries.length - numEntriesShown;
 				let mostRecentSelfEntries = allSelfEntries.slice(start).reverse();
-				console.log("case 1, mostRecentSelfEntries: ", mostRecentSelfEntries);
-				return mostRecentSelfEntries;
+				this.setState({entriesToRender: mostRecentSelfEntries});
 			} else {
 				// for calendar, get self and all friends' posts for all time
-				// TODO 
-				console.log(" case 2 incomplete reversed data: ", response.data.reverse());
-				return response.data.reverse();
+				// TODO
+				let mostRecentEntries =  response.data.reverse();
+				this.setState({entriesToRender: mostRecentEntries});
 			}
 		})
 		.catch((error) => {
@@ -43,8 +43,7 @@ class SidescrollEntries extends React.Component {
 
 	render () {
 		let entries = this.state.entriesToRender;
-		console.log("entries", entries);
-		let isHomepage = this.props.sideScrollEntriesType == "homepage";
+		let isHomepage = this.props.sideScrollEntriesType === "homepage";
 		let noEntries = entries.length === 0;
 		
 		if (noEntries) {
@@ -67,7 +66,7 @@ class SidescrollEntries extends React.Component {
 							return (
 								<SidescrollPanel
 									sideScrollEntriesType={this.props.sideScrollEntriesType}
-									entries={entry}  // in this homepage case, entries will be a singular entry
+									entries={entry}  // in homepage case, props.entries will be a singular entry
 								/>
 							);
 						})}
@@ -77,11 +76,12 @@ class SidescrollEntries extends React.Component {
 		} else {  // calendar page case
 			return (
 				<div className="sidescroll-entries" id={"calendar-sidescroll-entries"}>
+					{/* TODO group by date */}
 					{entries.map((dateGroup) => {
 						return (
 							<SidescrollPanel
 								sideScrollEntriesType={this.props.sideScrollEntriesType}
-								entries={dateGroup}  // in this calendar case, entries will be an array of entries made on one date
+								entries={dateGroup}  // in calendar case, props.entries will be an array of entries made on one date
 							/>
 						);
 					})}

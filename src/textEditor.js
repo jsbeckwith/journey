@@ -15,7 +15,6 @@ class TextEditor extends React.Component {
 
     loadEditText = () => {
         if (this.props.editMode) {
-            console.log(this.props.editText);
             this.setState({text: this.props.editText});
         }
     }
@@ -47,7 +46,6 @@ class TextEditor extends React.Component {
     // get post when page loads
 	componentDidMount = () => {
         this.loadEditText();
-        console.log(this.props.editText);
 	}
 
     render() {

@@ -20,7 +20,7 @@ class SidescrollCalendarPanelsContent extends React.Component {
                         <SidescrollCalendarPanelEachEntry
                             entry={entry}
                             stringfy={this.props.stringify}
-				            renderHTML={this.props.renderHTML}
+				            renderHTML={this.props.renderHTML(this.props.entry)}
                         />
                     );
                 })}

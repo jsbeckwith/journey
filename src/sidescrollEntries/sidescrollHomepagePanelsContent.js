@@ -14,7 +14,7 @@ class SidescrollHomepagePanelsContent extends React.Component {
         return (
             <div className="sidescroll-homepage-panel-content">
                 <Link to = {{pathname: "/post/" + idString}}>
-                    <div dangerouslySetInnerHTML={this.props.renderHTML()}/>
+                    <div dangerouslySetInnerHTML={this.props.renderHTML(this.props.entry)}/>
                 </Link>
             </div>
         );

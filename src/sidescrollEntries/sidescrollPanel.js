@@ -7,11 +7,11 @@ class SidescrollPanel extends React.Component {
 		super(props);
 	}
 
-	stringify = (entry) => {
-		return entry.id.toString();
+	stringify(entry) {
+		return entry._id.toString();
 	}
 
-	renderHTML = (entry) => {
+	renderHTML(entry) {
 		return {__html: entry.content};
 	}
 
@@ -29,6 +29,7 @@ class SidescrollPanel extends React.Component {
 	}
 
 	render () {
+		console.log("1", this.props.entries);
 		let isHomepage = this.props.sideScrollEntriesType == "homepage";
 		// TODO refs based on panelDate?
 		let panelDate = isHomepage
@@ -41,13 +42,13 @@ class SidescrollPanel extends React.Component {
 		let panelContent = isHomepage
 			// for homepage, render singular user's entry for this day
 			? <SidescrollHomepagePanelsContent
-				stringfy={this.stringify}
+				stringify={this.stringify}
 				renderHTML={this.renderHTML}
 				entry={this.props.entries}
 			/>
 			// for calendar, load all friends' entries for this day
 			: <SidescrollCalendarPanelsContent
-				stringfy={this.stringify}
+				stringify={this.stringify}
 				renderHTML={this.renderHTML}
 				entries={this.props.entries}
 			/>;
