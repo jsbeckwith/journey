@@ -7,7 +7,7 @@ const UserSchema = new Schema({
     required: true,
     default: "friend"
   },
-  email: {
+  username: {
     type: String,
     required: true
   },
