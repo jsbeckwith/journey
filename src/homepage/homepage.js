@@ -12,7 +12,6 @@ class HomePage extends React.Component {
 	}
 
 	transitionToNewEntry = () => {
-		console.log("triggered");
 		window.location = "/newEntryPage";  // redirect
 	}
 

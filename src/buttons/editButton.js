@@ -28,9 +28,7 @@ class EditButton extends React.Component {
 		axios.get("http://localhost:4000/" + idString)
 			.then((response) => {
 				// set entry state to data received
-				// console.log(response.data.content);
         this.setState({textToEdit: response.data.content});
-        console.log(this.state.textToEdit);
 			})
 			.catch( (error) => {
                 console.log(error);

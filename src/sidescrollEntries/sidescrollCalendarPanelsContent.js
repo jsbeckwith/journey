@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React from 'react';
 import SidescrollCalendarPanelEachEntry from './sidescrollCalendarPanelEachEntry.js';
 
@@ -12,14 +11,19 @@ class SidescrollCalendarPanelsContent extends React.Component {
 	}
 
 	render () {
-        // loop through all entries from friends for this date
-        // and load component for each entry
         return (
             <div className="sidescroll-calendar-panel-content">
-                {/* loop and load multiple <SidescrollCalendarPanelEachEntry/>s here */}
-                <SidescrollCalendarPanelEachEntry/>
-                <SidescrollCalendarPanelEachEntry/>
-                <SidescrollCalendarPanelEachEntry/>
+                {/* loop through all entries from friends for this date
+                and load component for each entry */}
+                {this.props.entries.map((entry) => {
+                    return (
+                        <SidescrollCalendarPanelEachEntry
+                            entry={entry}
+                            stringfy={this.props.stringify}
+				            renderHTML={this.props.renderHTML(this.props.entry)}
+                        />
+                    );
+                })}
             </div>
         );
 	}

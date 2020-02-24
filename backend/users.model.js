@@ -4,9 +4,10 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
   displayname: {
     type: String,
-    required: true
+    required: true,
+    default: "friend"
   },
-  email: {
+  username: {
     type: String,
     required: true
   },
@@ -14,5 +15,9 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
+  // friends: {
+  //   type: Array,
+  //   default: []
+  // }
 });
 module.exports = User = mongoose.model("users", UserSchema);

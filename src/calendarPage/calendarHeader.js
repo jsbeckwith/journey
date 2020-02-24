@@ -8,16 +8,15 @@ class CalendarHeader extends React.Component {
 
 		this.state = {
 			selectedDate: new Date()
-		};
-
-		this.handleDateSelect = this.handleDateSelect.bind(this);
+		}
 	}
 
-	handleDateSelect(date) {
-		this.setState({
-			startDate: date
-		});
-	}
+	// // determines the earliest date that can be selected in the popup calendar.
+	// // based on the earliest post created between the user and all the user's friends,
+	// // that is, the first post that the calendar page can show.
+	// calculateMinDate = () => {
+		
+	// }
 
 	render () {
 		// color vars
@@ -32,18 +31,14 @@ class CalendarHeader extends React.Component {
 			<div className="page-header" id="calendar-header">
 				<h2>Your Friends' Entries</h2>
 				<div className="jump-to-date-calendar">
-					{/*
-						for the below calendar component,
-						we should set minDate as the date of the oldest post
-						out of all the users friends or the users self
-					*/}
 					<ModernDatepicker
 						id={"input-button"}
-						date={this.state.startDate}
+						date={this.state.selectedDate}
 						format={'MM-DD-YYYY'}
-						onChange={(date) => this.handleDateSelect(date)}
+						onChange={(date) => this.props.handleDateSelect(date)}
 						placeholder={'Jump to a date...'}
 						maxDate={todayDate}
+						// minDate={this.calculateMinDate()}
 						primaryColor={journeyPurple}
 						secondaryColor={journeyLightGrey}
 						primaryTextColor={journeyDarkGrey}
