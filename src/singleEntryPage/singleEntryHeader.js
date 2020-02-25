@@ -1,6 +1,7 @@
 import React from 'react';
 import EditButton from '../buttons/editButton.js';
 import DeleteButton from '../buttons/deleteButton.js';
+import ToggleFriendButton from '../buttons/toggleFriendButton.js';
 
 class SingleEntryHeader extends React.Component {
 	constructor (props) {
@@ -24,10 +25,6 @@ class SingleEntryHeader extends React.Component {
 			return (
 				<div className="page-header" id="single-entry-header">
 				<h2 className="header-author">
-					{/*<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.62 24" className="user-pic">
-						<path id="user" class="cls-1" d="M1374.83,312c-0.51-4.347-2.32-8-6.83-8s-6.32,3.653-6.83,8h-1.99c0.65-5.425,3.21-10,8.82-10s8.17,4.575,8.82,10h-1.99ZM1368,300a6,6,0,1,1,6-6A6,6,0,0,1,1368,300Zm0-10a4,4,0,1,0,4,4A4,4,0,0,0,1368,290Z" transform="translate(-1359.19 -288)"/>
-					</svg>*/
-						/*add in profile pics later-- probably as separate component*/}
 					{this.props.author}
 				</h2>
 				<br/>
@@ -41,11 +38,9 @@ class SingleEntryHeader extends React.Component {
 		} else {
 			return (
 				<div className="page-header" id="single-entry-header">
+					{/* TODO: add logic to only display below button if this.props.author is not self */}
+					<ToggleFriendButton username={this.props.author}/>
 					<h2 className="header-author">
-						{/*<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.62 24" className="user-pic">
-							<path id="user" class="cls-1" d="M1374.83,312c-0.51-4.347-2.32-8-6.83-8s-6.32,3.653-6.83,8h-1.99c0.65-5.425,3.21-10,8.82-10s8.17,4.575,8.82,10h-1.99ZM1368,300a6,6,0,1,1,6-6A6,6,0,0,1,1368,300Zm0-10a4,4,0,1,0,4,4A4,4,0,0,0,1368,290Z" transform="translate(-1359.19 -288)"/>
-						</svg>*/
-							/*add in profile pics later-- probably as separate component*/}
 						{this.props.author}
 					</h2>
 					<br/>

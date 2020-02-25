@@ -1,17 +1,44 @@
 import React from 'react';
+import axios from 'axios';
 import Tooltip from '@material-ui/core/Tooltip';
 import {Link} from 'react-router-dom';
 
 class EditButton extends React.Component {
 
   constructor(props) {
-    super(props)
+    super(props);
+		this.state = {
+      // textFromChild: '',
+			// id: this.props.match.params,
+			textToEdit: ''
+    }
   }
 
+  // access id object from state and convert to string
+	getStringID() {
+		let jsonString = JSON.stringify(this.state.id);
+		// extract id from JSON string
+		let shortString = jsonString.slice(7, 31);
+		return shortString;
+	}
+
+	// get specific post using string id
+	getPostByID = () => {
+		let idString = this.props.id // this.getStringID();
+		axios.get("http://localhost:4000/" + idString)
+			.then((response) => {
+				// set entry state to data received
+        this.setState({textToEdit: response.data.content});
+			})
+			.catch( (error) => {
+                console.log(error);
+            });
+  }
+  
   render() {
     let id = this.props.id;
     return (
-      <Link to = {{pathname: "edit/" + id}}>
+      <Link to = {{pathname: "edit/" + id, state: {textToEdit : this.state.textToEdit} }}>
       <Tooltip title="edit">
         <button className="edit-button journey-button header-button">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

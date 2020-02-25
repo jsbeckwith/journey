@@ -1,6 +1,5 @@
 import React from 'react';
-import {Route, Switch, Redirect} from 'react-router-dom';
-import axios from 'axios';
+import {Route, Switch} from 'react-router-dom';
 import './universalStyle.scss';
 import Ribbon from './ribbon.js';
 import Nav from './nav.js';
@@ -11,6 +10,7 @@ import LoginPage from './auth/login/loginPage.js';
 import CreateAccountPage from './auth/createAccountPage/createAccountPage.js';
 import EditPage from './editPage/editPage.js';
 import CalendarPage from './calendarPage/calendarPage.js';
+import AddFriendPage from './addFriendPage/addFriendPage.js';
 
 class App extends React.Component {
 	constructor(props) {
@@ -45,6 +45,9 @@ class App extends React.Component {
 				<Route exact path="/calendarPage">
 					<CalendarPage/>
 				</Route>
+				<Route exact path="/addFriendPage">
+					<AddFriendPage resultsVisible={false}/>
+				</Route>
 			</Switch>
 		);
 	}
@@ -52,9 +55,11 @@ class App extends React.Component {
 	render() {
 		let todayDate = this.createTodayDate();
 
-		let entry = {'author': 'Hava',
-					 'text': 'uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu uwu ',
-					 'date': todayDate }
+		let entry = {
+						'author': 'friend',
+						'text': '',
+						'date': todayDate
+					}
 
 		let routes = this.createRoutes(entry);
 		

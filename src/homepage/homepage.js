@@ -8,12 +8,10 @@ import SidescrollEntries from '../sidescrollEntries/sidescrollEntries.js';
 class HomePage extends React.Component {
 	constructor (props) {
 		super(props);
-
 		this.transitionToNewEntry = this.transitionToNewEntry.bind(this);
 	}
 
 	transitionToNewEntry = () => {
-		console.log("triggered");
 		window.location = "/newEntryPage";  // redirect
 	}
 

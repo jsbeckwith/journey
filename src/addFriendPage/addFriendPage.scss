@@ -1,0 +1,105 @@
+@import '../vars.scss';
+
+.add-friend-page {
+    font-family: $main-font;
+    position: relative;
+    top: 215px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 40px;
+
+    .search {
+        display: block;
+
+        form {
+            margin-bottom: 30px;
+        }
+
+        .searchbar {
+            font-family: $main-font;
+            height: 60px;
+            width: 92%;
+            padding: 10px;
+            font-size: 25px;
+            border: 2px solid $journey-purple;
+            border-radius: 5px;
+            color: $journey-dark-grey;
+            box-sizing: border-box;
+        }
+
+        .searchbar::placeholder {
+            color: $journey-mid-grey;
+        }
+
+        .searchbar::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: $journey-mid-grey;
+        }
+
+        .searchbar::-moz-placeholder { /* Firefox 19+ */
+            color: $journey-mid-grey;
+        }
+
+        .searchbar:-ms-input-placeholder { /* IE 10+ */
+            color: $journey-mid-grey;
+        }
+
+        .searchbar:-moz-placeholder { /* Firefox 18- */
+            color: $journey-mid-grey;
+        }
+
+        .search-button {
+            position: relative;
+            left: -2vw;
+            height: 60px;
+            width: 60px;
+
+            svg {
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+        .friend-search-results {
+            display: block;
+            width: 70%;
+            margin: 0 auto;
+            overflow: scroll;
+
+            .search-result-item {
+                padding: 20px;
+                border-bottom: 1px solid $journey-purple;
+                height: 40px;
+
+                .search-result-content {
+                    margin: 0 auto;
+
+                    .search-result-username {
+                        padding: 5px 0px;
+                        font-size: 25px;
+                    }
+                }
+            }
+        }
+
+        .no-results-wrapper {
+            display: block;
+            width: 80%;
+            height: 70%;
+            text-align: center;
+            box-sizing: border-box;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            .no-results-text {
+                font-size: 30px;
+                display: block;
+                position: relative;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+}
