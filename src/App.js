@@ -1,6 +1,9 @@
+// packages etc
 import React from 'react';
-import {Route, Switch} from 'react-router-dom';
-import './universalStyle.scss';
+import { context, ContextConsumer, ContextProvider } from './context.js';
+import { Route, Switch } from 'react-router-dom';
+
+// components
 import Ribbon from './ribbon.js';
 import Nav from './nav.js';
 import NewEntryPage from './newEntryPage/newEntryPage.js';
@@ -12,11 +15,16 @@ import EditPage from './editPage/editPage.js';
 import CalendarPage from './calendarPage/calendarPage.js';
 import AddFriendPage from './addFriendPage/addFriendPage.js';
 
+// style
+import './universalStyle.scss';
+
 class App extends React.Component {
 	constructor(props) {
 		super(props);
+		this.createTodayDate();
 	}
 
+	// TODO delete this probably
 	// correctly/nicely format our dates as strings (originally: unix epoch format)
 	createTodayDate() {
 		let date = new Date();
@@ -24,21 +32,19 @@ class App extends React.Component {
 		const months = ["January", "February", "March", "April", "May", "June",
   						"July", "August", "September", "October", "November", "December"];
 		// create a string with the full day of the week, month, day of the month, and year
-		let todayDate = days[date.getDay()] + ", " + months[date.getMonth()] + " " + date.getDate()
+		let dateString = days[date.getDay()] + ", " + months[date.getMonth()] + " " + date.getDate()
 						+ ", " + date.getFullYear();
-		return todayDate;
+		return dateString;
 	}
 
 	createRoutes(entry) {
-		let todayDate = this.createTodayDate();
-
 		return(
 			<Switch>
 				<Route exact path="/homepage">
-					<HomePage entry={entry} todayDate={todayDate}/>
+					<HomePage entry={entry}/>
 				</Route>
 				<Route exact path="/newEntryPage">
-					<NewEntryPage todayDate={todayDate}/>
+					<NewEntryPage/>
 				</Route>
 				<Route exact path="/post/:id" component={SingleEntryPage}/>
 				<Route exact path="/post/edit/:id" component={EditPage}/>
@@ -53,33 +59,39 @@ class App extends React.Component {
 	}
 
 	render() {
-		let todayDate = this.createTodayDate();
+		let dateString = this.createTodayDate();
 
 		let entry = {
 						'author': 'friend',
 						'text': '',
-						'date': todayDate
+						'date': dateString
 					}
 
 		let routes = this.createRoutes(entry);
 		
 		return (
 			<Switch>
-				<Route exact path="/">
-					<LoginPage/>
-				</Route>
-				<Route exact path="/createAccount">
-					<CreateAccountPage/>
-				</Route>
-				<Route>
-					<div>
-						<Nav/>
-						<Ribbon/>
-						<div className="page-body">
-							{routes}
-						</div>
-					</div>
-				</Route>
+					<Route exact path="/">
+						<ContextProvider>
+							<LoginPage/>
+						</ContextProvider>
+					</Route>
+					<Route exact path="/createAccount">
+						<ContextProvider>
+							<CreateAccountPage/>
+						</ContextProvider>
+					</Route>
+					<Route>
+						<ContextProvider>
+							<div>
+								<Nav/>
+								<Ribbon/>
+								<div className="page-body">
+									{routes}
+								</div>
+							</div>
+						</ContextProvider>
+					</Route>
 			</Switch>
 		);
 	}

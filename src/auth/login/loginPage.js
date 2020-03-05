@@ -1,5 +1,6 @@
 import React from 'react';
-import {TextField} from '@material-ui/core';
+// import { context } from '../../context.js';
+import { TextField } from '@material-ui/core';
 import AuthHeader from '../authHeader.js';
 import LoginButton from '../../buttons/loginButton.js';
 import '../auth.scss';
