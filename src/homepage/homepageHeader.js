@@ -12,8 +12,7 @@ class HomepageHeader extends React.Component {
 			<ContextConsumer>
 				{(value) => (
 					<div className="page-header" id="homepage-header">
-						{/* TODO */}
-						{/* <h2>Hello, {user.displayName}!</h2> */}
+						<h2>Hello, {value.user.displayname}!</h2>
 						<br/>
 						<h3>Today is {value.dateString}.</h3>
 					</div>

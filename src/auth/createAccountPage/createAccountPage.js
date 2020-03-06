@@ -15,13 +15,14 @@ class CreateAccountPage extends React.Component {
             inputUsername: "",
             inputPassword: "",
             inputPassword2: "",
-            errors: {}
+            errors: {},
           };
     }
 
+
+
     updateDisplayName = (event) => {
         this.setState({inputDisplayName : event.target.value});
-        console.log(this.state);
 	}
 
     updateUsername = (event) => {
@@ -33,13 +34,11 @@ class CreateAccountPage extends React.Component {
     }
     
     updatePassword2 = (event) => {
-		this.setState({inputPassword2 : event.target.value});
+        this.setState({inputPassword2 : event.target.value});
     }
 
     onSubmit = () => {
-        const contextValue = React.createContext(context);
         const inputUserInfo = {
-            //state instead of props.auth
             "displayname": this.state.inputDisplayName,
             "username": this.state.inputUsername,
             "password": this.state.inputPassword,
@@ -47,32 +46,34 @@ class CreateAccountPage extends React.Component {
         };
         axios.post("http://localhost:4000/users/register", inputUserInfo)
             .then(res => {
-                contextValue.setUser(res);
-                console.log(res.data);
-                window.alert(`Account for ${res.username} successfully created.`)
+                this.props.setUser(res);
+                window.alert(`Account for ${res.username} successfully created. Welcome to your journey!`);
                 window.location = "/homepage";
             })
             .catch( (error) => {
+                this.setState({errors: error});
                 console.log(error);
             });
-        // this.props.registerUser("http://localhost:4000/register", newUser);
-            // .then( res => {
-            //     console.log(res.data);
-            //     alert("Account created!");
-            //     //window.location = "http://localhost:3000/homepage";
-            // })
-            // .catch((error) => {
-            //      console.log(error);
-            //      console.log(newUser);
-            // });
-            
-            //alert("Account created!");
-            
-            //window.location = "http://localhost:3000/homepage";
-
     };
 
+    // TODO make this print error messages from register.js
+    renderErrors = () => {
+        let stringified = JSON.stringify(this.state.errors);
+        if (stringified != '{}') {
+            return (
+                <div className={'auth-errors'}>
+                    {stringified}
+                </div>
+            )
+        } else {
+            return null;
+        }
+        
+    }
+
     render () {
+        let errors = this.renderErrors();
+
         return (
             <ContextConsumer>
 				{(value) => (
@@ -100,6 +101,7 @@ class CreateAccountPage extends React.Component {
                                 <a href="/">Log in</a>
                                 .
                             </div>
+                            {errors}
                         </div>
                     </div>
                 )}

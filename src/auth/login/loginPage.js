@@ -25,7 +25,19 @@ class LoginPage extends React.Component {
     }
 
     login = () => {
-		
+		const inputUserInfo = {
+            "username": this.state.inputUsername,
+            "password": this.state.inputPassword,
+        };
+        axios.post("http://localhost:4000/users/login", inputUserInfo)
+            .then(res => {
+                this.props.setUser(res);
+                window.location = "/homepage";
+            })
+            .catch( (error) => {
+                this.setState({errors: error});
+                console.log(error);
+            });
 	}
 
     render () {

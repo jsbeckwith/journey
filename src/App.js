@@ -1,6 +1,7 @@
 // packages etc
 import React from 'react';
 import { ContextProvider } from './context.js';
+import ContextConsumer from './context.js';
 import { Route, Switch } from 'react-router-dom';
 
 // components
@@ -71,27 +72,35 @@ class App extends React.Component {
 		
 		return (
 			<Switch>
-					<Route exact path="/">
-						<ContextProvider>
-							<LoginPage/>
-						</ContextProvider>
-					</Route>
-					<Route exact path="/createAccount">
-						<ContextProvider>
-							<CreateAccountPage/>
-						</ContextProvider>
-					</Route>
-					<Route>
-						<ContextProvider>
-							<div>
-								<Nav/>
-								<Ribbon/>
-								<div className="page-body">
-									{routes}
-								</div>
+				<Route exact path="/">
+					<ContextProvider>
+						<ContextConsumer>
+							{(value) => (
+								<LoginPage setUser={value.setUser}/>
+							)}
+						</ContextConsumer>
+					</ContextProvider>
+				</Route>
+				<Route exact path="/createAccount">
+					<ContextProvider>
+						<ContextConsumer>
+							{(value) => (
+								<CreateAccountPage setUser={value.setUser}/>
+							)}
+						</ContextConsumer>
+					</ContextProvider>
+				</Route>
+				<Route>
+					<ContextProvider>
+						<div>
+							<Nav/>
+							<Ribbon/>
+							<div className="page-body">
+								{routes}
 							</div>
-						</ContextProvider>
-					</Route>
+						</div>
+					</ContextProvider>
+				</Route>
 			</Switch>
 		);
 	}

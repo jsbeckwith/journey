@@ -15,18 +15,15 @@ const User = require("../models/users.model.js");
 // @desc Register user
 // @access Public
 router.post("/register", (req, res) => {
-	console.log("register called")
 	// Form validation
 	const { errors, isValid } = validateRegisterInput(req.body);
 	// Check validation
 		if (!isValid) {
-			console.log("not valid");
 			return res.status(400).json(errors);
 		}
 	User.findOne({ username: req.body.username })
 		.then(user => {
 			if (user) {
-				console.log("user exists");
 				return res.status(400).json({ username: "username already in use" });
 			} else {
 				const newUser = new User({
@@ -34,10 +31,8 @@ router.post("/register", (req, res) => {
 					username: req.body.username,
 					password: req.body.password
 				});
-				console.log("created user", newUser);
 				// Hash password before saving in database
 				bcrypt.genSalt(10, (err, salt) => {
-					console.log("enter hash");
 					bcrypt.hash(newUser.password, salt, (err, hash) => {
 						if (err) throw err;
 						newUser.password = hash;
@@ -47,8 +42,7 @@ router.post("/register", (req, res) => {
 							.catch(err => console.log(err));
 					});
 				});
-				res.send(newUser);  // set user in react context
-				console.log("sent")
+				res.send(newUser);
 			}
 		});
 	});
@@ -94,6 +88,7 @@ router.post("/login", (req, res) => {
 							});
 						}
 					);
+					res.send(user);
 				} else {
 					return res
 						.status(400)
