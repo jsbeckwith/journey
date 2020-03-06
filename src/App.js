@@ -1,6 +1,6 @@
 // packages etc
 import React from 'react';
-import { context, ContextConsumer, ContextProvider } from './context.js';
+import { ContextProvider } from './context.js';
 import { Route, Switch } from 'react-router-dom';
 
 // components

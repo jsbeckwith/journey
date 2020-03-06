@@ -16,7 +16,7 @@ class SidescrollEntries extends React.Component {
 	// queries db for posts and sets state's entriesToRender
 	getPosts = () => {
 		// TODO ADAPT FOR MULTIPLE USERS
-		axios.get("http://localhost:4000/posts/")
+		axios.get("http://localhost:4000/posts/posts")
 
 		.then((response) => {
 			if (this.props.sideScrollEntriesType === "homepage") {

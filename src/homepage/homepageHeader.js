@@ -8,7 +8,6 @@ class HomepageHeader extends React.Component {
 	}
 
 	render () {
-		console.log("header", this.context.dateString)
 		return (
 			<ContextConsumer>
 				{(value) => (

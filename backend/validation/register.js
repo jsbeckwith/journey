@@ -10,15 +10,15 @@ module.exports = function validateRegisterInput(data) {
 // Displayname checks
 if (Validator.isEmpty(data.displayname)) {
     errors.name = "Displayname field is required";
-  }
+}
 // username checks
-  if (Validator.isEmpty(data.username)) {
-    errors.username = "username field is required";
-  }
+if (Validator.isEmpty(data.username)) {
+  errors.username = "username field is required";
+}
 // Password checks
-  if (Validator.isEmpty(data.password)) {
-    errors.password = "Password field is required";
-  }
+if (Validator.isEmpty(data.password)) {
+  errors.password = "Password field is required";
+}
 if (Validator.isEmpty(data.password2)) {
     errors.password2 = "Confirm password field is required";
   }

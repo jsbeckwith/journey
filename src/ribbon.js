@@ -11,7 +11,6 @@ class Ribbon extends React.Component {
 		return (
 			<div className="ribbon">
                 <a href="./homepage">
-				<xml version="1.0" encoding="utf-8"/>
 					<svg className="journey-logo" version="1.1" id="Layer_1"
 						xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300">
 						<g>

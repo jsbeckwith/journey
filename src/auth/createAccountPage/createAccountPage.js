@@ -1,42 +1,56 @@
 import React from 'react';
 import axios from 'axios';
-import {TextField} from '@material-ui/core';
+import { TextField } from '@material-ui/core';
+import { context } from '../../context.js';
+import ContextConsumer from '../../context.js';
 import AuthHeader from '../authHeader.js';
-import CreateAccountButton from '../../buttons/createAccountButton.js';
+import Tooltip from '@material-ui/core/Tooltip';
 import '../auth.scss';
 
 class CreateAccountPage extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
-            name: "",
-            email: "",
-            password: "",
-            password2: "",
+            inputDisplayName: "",
+            inputUsername: "",
+            inputPassword: "",
+            inputPassword2: "",
             errors: {}
           };
     }
 
-    onChange = e => {
-        this.setState({ [e.target.id]: e.target.value });
-      };
+    updateDisplayName = (event) => {
+        this.setState({inputDisplayName : event.target.value});
+        console.log(this.state);
+	}
 
-    onSubmit = e => {
-        e.preventDefault();
-        const newUser = {
+    updateUsername = (event) => {
+		this.setState({inputUsername : event.target.value});
+    }
+    
+    updatePassword = (event) => {
+		this.setState({inputPassword : event.target.value});
+    }
+    
+    updatePassword2 = (event) => {
+		this.setState({inputPassword2 : event.target.value});
+    }
+
+    onSubmit = () => {
+        const contextValue = React.createContext(context);
+        const inputUserInfo = {
             //state instead of props.auth
-            "displayname": this.state.name,
-            "email": this.state.email,
-            "password": this.state.password,
-            "password2": this.state.password2
-            };
-        //this.props.registerUser(newUser, this.props.history);
-        // console.log("before request");
-        axios.post("http://localhost:4000/register", newUser)
+            "displayname": this.state.inputDisplayName,
+            "username": this.state.inputUsername,
+            "password": this.state.inputPassword,
+            "password2": this.state.inputPassword2
+        };
+        axios.post("http://localhost:4000/users/register", inputUserInfo)
             .then(res => {
-                // this.setState({id: res.data._id});
+                contextValue.setUser(res);
                 console.log(res.data);
-                // window.location = "/post/" + this.state.id;
+                window.alert(`Account for ${res.username} successfully created.`)
+                window.location = "/homepage";
             })
             .catch( (error) => {
                 console.log(error);
@@ -60,23 +74,36 @@ class CreateAccountPage extends React.Component {
 
     render () {
         return (
-            <div className="auth-page create-account-page">
-                <AuthHeader/>
-                <br/>
-                <div className="auth-content create-account-content">
-                    <form className="form" onSubmit={this.onSubmit}>
-                        <TextField label="Name" variant="outlined" margin="normal"/>
+            <ContextConsumer>
+				{(value) => (
+                    <div className="auth-page create-account-page">
+                        <AuthHeader/>
                         <br/>
-                        <TextField label="Username" variant="outlined" margin="normal"/>
-                        <br/>
-                        <TextField label="Password" variant="outlined" margin="normal"/>
-                        <br/>
-                        <TextField label="Confirm Password" variant="outlined" margin="normal"/>
-                    </form>
-                    <br/>
-                    <CreateAccountButton/>
-                </div>
-            </div>
+                        <div className="auth-content create-account-content">
+                            <form className="form">
+                                <TextField label="Name" variant="outlined" margin="normal" onChange={this.updateDisplayName}/>
+                                <br/>
+                                <TextField label="Username" variant="outlined" margin="normal" onChange={this.updateUsername}/>
+                                <br/>
+                                <TextField label="Password" variant="outlined" margin="normal" onChange={this.updatePassword}/>
+                                <br/>
+                                <TextField label="Confirm Password" variant="outlined" margin="normal" onChange={this.updatePassword2}/>
+                            </form>
+                            <br/>
+                            <Tooltip title="create account">
+                                <button className="create-account-button auth-button journey-button" onClick={this.onSubmit}> 
+                                    create account
+                                </button>
+                            </Tooltip>
+                            <div className="switch-auth-text">
+                                Already have an account?&nbsp;
+                                <a href="/">Log in</a>
+                                .
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </ContextConsumer>
         );
     }
 }
