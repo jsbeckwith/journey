@@ -10,11 +10,14 @@ export class ContextProvider extends React.Component {
 	
 		this.state = {
 			user: {},
-			date: new Date(),
-			dateString: this.createDateString(new Date()),
+			date: new Date(),  // unix epoch format
+			dateString: this.createDateString(new Date()),  // stringified for rendering
 		};
+
+		this.clock();
 	}
 
+	// login sets a user, logout sets user to empty object
 	setUser = (user) => {
 		this.setState({user: user});
 	}
@@ -37,6 +40,15 @@ export class ContextProvider extends React.Component {
 		let dateString = days[date.getDay()] + ", " + months[date.getMonth()] + " " + date.getDate()
 						+ ", " + date.getFullYear();
 		return dateString;
+	}
+
+	// updates dates to reflect current time
+	// we only need down to the day accuracy (not minutes or secs)
+	// so this is called every minute in case midnight has passed
+	// (still not perfect accuracy but good enough)
+	clock = () => {
+		this.setDate();
+		setTimeout("clock()", 60000); 
 	}
 
 	render() {

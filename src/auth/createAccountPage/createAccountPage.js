@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import { TextField } from '@material-ui/core';
-import { context } from '../../context.js';
 import ContextConsumer from '../../context.js';
 import AuthHeader from '../authHeader.js';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -18,8 +17,6 @@ class CreateAccountPage extends React.Component {
             errors: {},
           };
     }
-
-
 
     updateDisplayName = (event) => {
         this.setState({inputDisplayName : event.target.value});
@@ -46,9 +43,16 @@ class CreateAccountPage extends React.Component {
         };
         axios.post("http://localhost:4000/users/register", inputUserInfo)
             .then(res => {
-                this.props.setUser(res);
+                this.props.setUser(res.data);
+                sessionStorage.setItem('isAuthenticated', 'true');
                 window.alert(`Account for ${res.username} successfully created. Welcome to your journey!`);
                 window.location = "/homepage";
+                this.setState({
+                    inputDisplayName: '',
+                    inputUsername: '',
+                    inputPassword: '',
+                    inputPassword2: '',
+                });
             })
             .catch( (error) => {
                 this.setState({errors: error});
@@ -56,7 +60,7 @@ class CreateAccountPage extends React.Component {
             });
     };
 
-    // TODO make this print error messages from register.js
+    // TODO make this render error messages from register.js so user knows what's invalid
     renderErrors = () => {
         let stringified = JSON.stringify(this.state.errors);
         if (stringified != '{}') {

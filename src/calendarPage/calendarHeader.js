@@ -10,7 +10,8 @@ class CalendarHeader extends React.Component {
 			selectedDate: new Date()
 		}
 	}
-
+	
+	// TODO
 	// // determines the earliest date that can be selected in the popup calendar.
 	// // based on the earliest post created between the user and all the user's friends,
 	// // that is, the first post that the calendar page can show.

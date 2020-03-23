@@ -2,7 +2,7 @@
 import React from 'react';
 import { ContextProvider } from './context.js';
 import ContextConsumer from './context.js';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 // components
 import Ribbon from './ribbon.js';
@@ -22,53 +22,48 @@ import './universalStyle.scss';
 class App extends React.Component {
 	constructor(props) {
 		super(props);
-		this.createTodayDate();
+
+		this.state = {
+			isLoggedIn: true
+		}
 	}
 
-	// TODO delete this probably
-	// correctly/nicely format our dates as strings (originally: unix epoch format)
-	createTodayDate() {
-		let date = new Date();
-		const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-		const months = ["January", "February", "March", "April", "May", "June",
-  						"July", "August", "September", "October", "November", "December"];
-		// create a string with the full day of the week, month, day of the month, and year
-		let dateString = days[date.getDay()] + ", " + months[date.getMonth()] + " " + date.getDate()
-						+ ", " + date.getFullYear();
-		return dateString;
-	}
-
-	createRoutes(entry) {
+	createRoutes() {
 		return(
 			<Switch>
 				<Route exact path="/homepage">
-					<HomePage entry={entry}/>
+					{this.restrictProtected(<HomePage/>)}
 				</Route>
 				<Route exact path="/newEntryPage">
-					<NewEntryPage/>
+					{this.restrictProtected(<NewEntryPage/>)}
 				</Route>
 				<Route exact path="/post/:id" component={SingleEntryPage}/>
 				<Route exact path="/post/edit/:id" component={EditPage}/>
 				<Route exact path="/calendarPage">
-					<CalendarPage/>
+					{this.restrictProtected(<CalendarPage/>)}
 				</Route>
 				<Route exact path="/addFriendPage">
-					<AddFriendPage resultsVisible={false}/>
+					{this.restrictProtected(<AddFriendPage resultsVisible={false}/>)}
 				</Route>
 			</Switch>
 		);
 	}
 
+	// redirects if not logged in
+	restrictProtected = (component) => {
+		if (this.state.isLoggedIn === true) {
+			return (component);
+		} else {
+			return (
+				<Redirect to={{
+					pathname: '/'
+				}}/>
+			);
+		}
+	}
+
 	render() {
-		let dateString = this.createTodayDate();
-
-		let entry = {
-						'author': 'friend',
-						'text': '',
-						'date': dateString
-					}
-
-		let routes = this.createRoutes(entry);
+		let routes = this.createRoutes();
 		
 		return (
 			<Switch>

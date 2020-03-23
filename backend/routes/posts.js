@@ -6,7 +6,6 @@ const postModel = require('../models/posts.model.js');
 // TODO specify
 // get all posts
 router.get('/posts', async (req, res) => {
-    console.log("posts called");
     const posts = await postModel.find({});
 
     try {

@@ -10,7 +10,7 @@ class DeleteButton extends React.Component {
 
   handleDiscard = () => {
     if (this.props.qText !== "") { // if the text editor is nonempty
-      if (window.confirm("Are you sure you want to delete?")) {
+      if (window.confirm("Are you sure you want to delete this entry? It cannot be recovered.")) {
         let thisPost = {
           "id_": this.props.id,
           "author": this.props.author,

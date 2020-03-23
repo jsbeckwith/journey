@@ -42,7 +42,7 @@ class ToggleFriendButton extends React.Component {
 	}
 
     render () {
-		if (this.state.mode == 'remove') {  // if the user is already a friend, the button displays a - that allows you to remove them
+		if (this.state.mode === 'remove') {  // if the user is already a friend, the button displays a - that allows you to remove them
 			return (
 				<div className="toggle-friend-button">
 					<Tooltip title={'remove friend'} placement={'right'}>

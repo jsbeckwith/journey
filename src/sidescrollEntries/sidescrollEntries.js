@@ -20,9 +20,9 @@ class SidescrollEntries extends React.Component {
 
 		.then((response) => {
 			if (this.props.sideScrollEntriesType === "homepage") {
-				// for homepage, only get user's own posts for last ten days
+				// for homepage, only get user's own posts
 				let allSelfEntries = response.data;
-				// show only ten, unless there aren't enough
+				// show only ten most recent, unless there aren't enough
 				let numEntriesShown = response.data.length < 10
 					? response.data.length
 					: 10;
@@ -67,6 +67,7 @@ class SidescrollEntries extends React.Component {
 								<SidescrollPanel
 									sideScrollEntriesType={this.props.sideScrollEntriesType}
 									entries={entry}  // in homepage case, props.entries will be a singular entry
+									key={entry._id}
 								/>
 							);
 						})}
@@ -76,12 +77,13 @@ class SidescrollEntries extends React.Component {
 		} else {  // calendar page case
 			return (
 				<div className="sidescroll-entries" id={"calendar-sidescroll-entries"}>
-					{/* TODO group by date */}
+					{/* TODO group entries by date */}
 					{entries.map((dateGroup) => {
 						return (
 							<SidescrollPanel
 								sideScrollEntriesType={this.props.sideScrollEntriesType}
 								entries={dateGroup}  // in calendar case, props.entries will be an array of entries made on one date
+								// set panel id as dateGroup's date
 							/>
 						);
 					})}

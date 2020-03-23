@@ -18,7 +18,7 @@ class HomePage extends React.Component {
 	render () {
 		return (
 			<div>
-				<HomepageHeader entry={this.props.entry} todayDate={this.props.todayDate}/>
+				<HomepageHeader/>
 				<div onClick={this.transitionToNewEntry}>
 					<TextEditor textEditorType="homepage-text-editor"/>
 				</div>

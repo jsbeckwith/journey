@@ -1,5 +1,4 @@
 import React from 'react';
-import { context } from '../../context.js';
 import { TextField } from '@material-ui/core';
 import AuthHeader from '../authHeader.js';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -31,8 +30,10 @@ class LoginPage extends React.Component {
         };
         axios.post("http://localhost:4000/users/login", inputUserInfo)
             .then(res => {
-                this.props.setUser(res);
+                this.props.setUser(res.data);
+                sessionStorage.setItem('isAuthenticated', 'true');
                 window.location = "/homepage";
+                this.setState({inputUsername: '', inputPassword: ''});
             })
             .catch( (error) => {
                 this.setState({errors: error});
