@@ -15,7 +15,7 @@ class LogoutButton extends React.Component {
 				{(value) => (
 					<Tooltip title="logout">
 						<div className="logout-button">
-							<a onClick={() => {value.setUser({}); window.location = "/"}}>
+							<a onClick={() => {value.logoutUser(); window.location = "/"}}>
 								logout
 							</a>
 						</div>

@@ -29,7 +29,7 @@ class SidescrollPanel extends React.Component {
 	}
 
 	render () {
-		let isHomepage = this.props.sideScrollEntriesType == "homepage";
+		let isHomepage = this.props.sideScrollEntriesType === "homepage";
 		// TODO refs based on panelDate?
 		let panelDate = isHomepage
 			? this.props.entries.date

@@ -1,10 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 import { TextField } from '@material-ui/core';
-import ContextConsumer from '../../context.js';
-import AuthHeader from '../authHeader.js';
+import ContextConsumer from '../context.js';
+import AuthHeader from './authHeader.js';
 import Tooltip from '@material-ui/core/Tooltip';
-import '../auth.scss';
+import './auth.scss';
 
 class CreateAccountPage extends React.Component {
     constructor (props) {
@@ -41,18 +41,13 @@ class CreateAccountPage extends React.Component {
             "password": this.state.inputPassword,
             "password2": this.state.inputPassword2
         };
+
         axios.post("http://localhost:4000/users/register", inputUserInfo)
             .then(res => {
-                this.props.setUser(res.data);
-                sessionStorage.setItem('isAuthenticated', 'true');
-                window.alert(`Account for ${res.username} successfully created. Welcome to your journey!`);
-                window.location = "/homepage";
-                this.setState({
-                    inputDisplayName: '',
-                    inputUsername: '',
-                    inputPassword: '',
-                    inputPassword2: '',
-                });
+                const { token } = res.data;
+                console.log(token);
+                this.props.setLoggedIn(token);
+                window.alert(`Account for ${res.data.username} (${res.data.displayname}) successfully created. Welcome to your journey!`);
             })
             .catch( (error) => {
                 this.setState({errors: error});
@@ -63,7 +58,7 @@ class CreateAccountPage extends React.Component {
     // TODO make this render error messages from register.js so user knows what's invalid
     renderErrors = () => {
         let stringified = JSON.stringify(this.state.errors);
-        if (stringified != '{}') {
+        if (stringified !== '{}') {
             return (
                 <div className={'auth-errors'}>
                     {stringified}

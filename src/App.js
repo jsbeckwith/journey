@@ -10,8 +10,8 @@ import Nav from './nav.js';
 import NewEntryPage from './newEntryPage/newEntryPage.js';
 import SingleEntryPage from './singleEntryPage/singleEntryPage.js';
 import HomePage from './homepage/homepage.js';
-import LoginPage from './auth/login/loginPage.js';
-import CreateAccountPage from './auth/createAccountPage/createAccountPage.js';
+import LoginPage from './auth/loginPage.js';
+import CreateAccountPage from './auth/createAccountPage.js';
 import EditPage from './editPage/editPage.js';
 import CalendarPage from './calendarPage/calendarPage.js';
 import AddFriendPage from './addFriendPage/addFriendPage.js';
@@ -24,7 +24,7 @@ class App extends React.Component {
 		super(props);
 
 		this.state = {
-			isLoggedIn: true
+			isAuthed: !!sessionStorage.getItem("jwtToken")
 		}
 	}
 
@@ -51,7 +51,7 @@ class App extends React.Component {
 
 	// redirects if not logged in
 	restrictProtected = (component) => {
-		if (this.state.isLoggedIn === true) {
+		if (this.state.isAuthed) {
 			return (component);
 		} else {
 			return (
@@ -71,7 +71,7 @@ class App extends React.Component {
 					<ContextProvider>
 						<ContextConsumer>
 							{(value) => (
-								<LoginPage setUser={value.setUser}/>
+								<LoginPage setLoggedIn={value.setLoggedIn}/>
 							)}
 						</ContextConsumer>
 					</ContextProvider>
@@ -80,7 +80,7 @@ class App extends React.Component {
 					<ContextProvider>
 						<ContextConsumer>
 							{(value) => (
-								<CreateAccountPage setUser={value.setUser}/>
+								<CreateAccountPage setLoggedIn={value.setLoggedIn}/>
 							)}
 						</ContextConsumer>
 					</ContextProvider>

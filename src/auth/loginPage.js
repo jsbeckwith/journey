@@ -1,9 +1,9 @@
 import React from 'react';
 import { TextField } from '@material-ui/core';
-import AuthHeader from '../authHeader.js';
+import AuthHeader from './authHeader.js';
 import Tooltip from '@material-ui/core/Tooltip';
 import axios from 'axios';
-import '../auth.scss';
+import './auth.scss';
 
 class LoginPage extends React.Component {
     constructor (props) {
@@ -23,23 +23,24 @@ class LoginPage extends React.Component {
 		this.setState({inputPassword : event.target.value});
     }
 
-    login = () => {
+    onClick = () => {
 		const inputUserInfo = {
             "username": this.state.inputUsername,
             "password": this.state.inputPassword,
         };
+
         axios.post("http://localhost:4000/users/login", inputUserInfo)
             .then(res => {
-                this.props.setUser(res.data);
-                sessionStorage.setItem('isAuthenticated', 'true');
-                window.location = "/homepage";
-                this.setState({inputUsername: '', inputPassword: ''});
+                const { token } = res.data;
+                this.props.setLoggedIn(token);
             })
             .catch( (error) => {
                 this.setState({errors: error});
                 console.log(error);
             });
-	}
+    }
+    
+    // TODO render error messages
 
     render () {
         return (
@@ -54,7 +55,7 @@ class LoginPage extends React.Component {
                     </form>
                     <br/>
                     <Tooltip title="login">
-                        <button className="login-button auth-button journey-button" onClick={this.login}>
+                        <button className="login-button auth-button journey-button" onClick={this.onClick}>
                             login
                         </button>
                     </Tooltip>
