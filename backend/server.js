@@ -3,10 +3,9 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const passport = require("passport");
-const users = require("./users");
-const postRouter = require('./routes');
-const userRouter = require('./users');
 const app = express();
+const postsRouter = require('./routes/posts');
+const usersRouter = require('./routes/users');
 
 app.use(cors());
 app.use(
@@ -28,11 +27,13 @@ connection.once('open', function() {
 
 // Passport middleware
 app.use(passport.initialize());
+
 // Passport config
 require("./config/passport")(passport);
+
 // Routes
-app.use(userRouter);
-app.use(postRouter);
+app.use('/users', usersRouter);
+app.use('/posts', postsRouter);
 
 app.listen(4000, () => { console.log('Server is running...') });
 

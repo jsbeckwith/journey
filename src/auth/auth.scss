@@ -67,7 +67,13 @@
     width: 140px;
 }
 
-.create-account-text {
+.switch-auth-text {
     font-family: $main-font;
     margin: 20px;
+}
+
+.auth-errors {
+    font-family: $main-font;
+    margin: 20px;
+    color: red;
 }

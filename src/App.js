@@ -1,84 +1,100 @@
+// packages etc
 import React from 'react';
-import {Route, Switch} from 'react-router-dom';
-import './universalStyle.scss';
+import { ContextProvider } from './context.js';
+import ContextConsumer from './context.js';
+import { Route, Switch, Redirect } from 'react-router-dom';
+
+// components
 import Ribbon from './ribbon.js';
 import Nav from './nav.js';
 import NewEntryPage from './newEntryPage/newEntryPage.js';
 import SingleEntryPage from './singleEntryPage/singleEntryPage.js';
 import HomePage from './homepage/homepage.js';
-import LoginPage from './auth/login/loginPage.js';
-import CreateAccountPage from './auth/createAccountPage/createAccountPage.js';
+import LoginPage from './auth/loginPage.js';
+import CreateAccountPage from './auth/createAccountPage.js';
 import EditPage from './editPage/editPage.js';
 import CalendarPage from './calendarPage/calendarPage.js';
 import AddFriendPage from './addFriendPage/addFriendPage.js';
 
+// style
+import './universalStyle.scss';
+
 class App extends React.Component {
 	constructor(props) {
 		super(props);
+
+		this.state = {
+			isAuthed: !!sessionStorage.getItem("jwtToken")
+		}
 	}
 
-	// correctly/nicely format our dates as strings (originally: unix epoch format)
-	createTodayDate() {
-		let date = new Date();
-		const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-		const months = ["January", "February", "March", "April", "May", "June",
-  						"July", "August", "September", "October", "November", "December"];
-		// create a string with the full day of the week, month, day of the month, and year
-		let todayDate = days[date.getDay()] + ", " + months[date.getMonth()] + " " + date.getDate()
-						+ ", " + date.getFullYear();
-		return todayDate;
-	}
-
-	createRoutes(entry) {
-		let todayDate = this.createTodayDate();
-
+	createRoutes() {
 		return(
 			<Switch>
 				<Route exact path="/homepage">
-					<HomePage entry={entry} todayDate={todayDate}/>
+					{this.restrictProtected(<HomePage/>)}
 				</Route>
 				<Route exact path="/newEntryPage">
-					<NewEntryPage todayDate={todayDate}/>
+					{this.restrictProtected(<NewEntryPage/>)}
 				</Route>
 				<Route exact path="/post/:id" component={SingleEntryPage}/>
 				<Route exact path="/post/edit/:id" component={EditPage}/>
 				<Route exact path="/calendarPage">
-					<CalendarPage/>
+					{this.restrictProtected(<CalendarPage/>)}
 				</Route>
 				<Route exact path="/addFriendPage">
-					<AddFriendPage resultsVisible={false}/>
+					{this.restrictProtected(<AddFriendPage resultsVisible={false}/>)}
 				</Route>
 			</Switch>
 		);
 	}
 
+	// redirects if not logged in
+	restrictProtected = (component) => {
+		if (this.state.isAuthed) {
+			return (component);
+		} else {
+			return (
+				<Redirect to={{
+					pathname: '/'
+				}}/>
+			);
+		}
+	}
+
 	render() {
-		let todayDate = this.createTodayDate();
-
-		let entry = {
-						'author': 'friend',
-						'text': '',
-						'date': todayDate
-					}
-
-		let routes = this.createRoutes(entry);
+		let routes = this.createRoutes();
 		
 		return (
 			<Switch>
 				<Route exact path="/">
-					<LoginPage/>
+					<ContextProvider>
+						<ContextConsumer>
+							{(value) => (
+								<LoginPage setLoggedIn={value.setLoggedIn}/>
+							)}
+						</ContextConsumer>
+					</ContextProvider>
 				</Route>
 				<Route exact path="/createAccount">
-					<CreateAccountPage/>
+					<ContextProvider>
+						<ContextConsumer>
+							{(value) => (
+								<CreateAccountPage setLoggedIn={value.setLoggedIn}/>
+							)}
+						</ContextConsumer>
+					</ContextProvider>
 				</Route>
 				<Route>
-					<div>
-						<Nav/>
-						<Ribbon/>
-						<div className="page-body">
-							{routes}
+					<ContextProvider>
+						<div>
+							<Nav/>
+							<Ribbon/>
+							<div className="page-body">
+								{routes}
+							</div>
 						</div>
-					</div>
+					</ContextProvider>
 				</Route>
 			</Switch>
 		);

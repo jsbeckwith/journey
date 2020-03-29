@@ -29,8 +29,7 @@ class SidescrollPanel extends React.Component {
 	}
 
 	render () {
-		console.log("1", this.props.entries);
-		let isHomepage = this.props.sideScrollEntriesType == "homepage";
+		let isHomepage = this.props.sideScrollEntriesType === "homepage";
 		// TODO refs based on panelDate?
 		let panelDate = isHomepage
 			? this.props.entries.date
@@ -54,6 +53,7 @@ class SidescrollPanel extends React.Component {
 			/>;
 
 		return (
+			
 			<div className="sidescroll-panel" id={panelCSSID}>
 				<div>
 					<div className="panel-date-header"> {formattedEntryDate} </div>

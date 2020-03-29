@@ -10,7 +10,7 @@ class DeleteButton extends React.Component {
 
   handleDiscard = () => {
     if (this.props.qText !== "") { // if the text editor is nonempty
-      if (window.confirm("Are you sure you want to delete?")) {
+      if (window.confirm("Are you sure you want to delete this entry? It cannot be recovered.")) {
         let thisPost = {
           "id_": this.props.id,
           "author": this.props.author,
@@ -19,7 +19,7 @@ class DeleteButton extends React.Component {
           "__v": 0
         };
         let id = this.props.id;
-        axios.delete("http://localhost:4000/post/" + id, thisPost);
+        axios.delete("http://localhost:4000/posts/post" + id, thisPost);
         window.location = "/homepage"; // redirect to homepage
       }
     }

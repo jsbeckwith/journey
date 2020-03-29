@@ -23,10 +23,9 @@ class SubmitSaveButton extends React.Component {
 		}
 
 		// add item to database
-		axios.post("http://localhost:4000/post", newPost)
+		axios.post("http://localhost:4000/posts/post", newPost)
 			.then(res => {
 				this.setState({id: res.data._id});
-				console.log(res.data);
 				window.location = "/post/" + this.state.id;
 			})
 			.catch( (error) => {
@@ -43,14 +42,14 @@ class SubmitSaveButton extends React.Component {
 			"content": c
 		}
 
-		axios.patch("http://localhost:4000/post/" + id, updatePost)
+		axios.patch("http://localhost:4000/posts/post/" + id, updatePost)
 			.then(res => {
 				window.location = "/post/" + this.state.id;
 			})
 	}
 
 	clickfunction = () => {
-		if (this.props.mode == true) {
+		if (this.props.mode === true) {
 			this.post();
 		} else {
 			this.updatePost();
