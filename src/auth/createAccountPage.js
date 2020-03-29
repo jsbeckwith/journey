@@ -44,10 +44,17 @@ class CreateAccountPage extends React.Component {
 
         axios.post("http://localhost:4000/users/register", inputUserInfo)
             .then(res => {
-                const { token } = res.data;
-                console.log(token);
-                this.props.setLoggedIn(token);
-                window.alert(`Account for ${res.data.username} (${res.data.displayname}) successfully created. Welcome to your journey!`);
+                axios.post("http://localhost:4000/users/login", inputUserInfo)
+                    .then(res => {
+                        const { token } = res.data;
+                        console.log(token);
+                        this.props.setLoggedIn(token);
+                        window.alert(`Account for ${inputUserInfo.username} (${inputUserInfo.displayname}) successfully created. Welcome to your journey!`);
+                    })
+                    .catch( (error) => {
+                        this.setState({errors: error});
+                        console.log(error);
+                    });
             })
             .catch( (error) => {
                 this.setState({errors: error});

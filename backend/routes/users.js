@@ -38,33 +38,37 @@ router.post("/register", (req, res) => {
 					bcrypt.hash(newUser.password, salt, (err, hash) => {
 						if (err) throw err;
 						newUser.password = hash;
-						newUser.save()
+						newUser
+							.save()
+							.then(user => res.json(user))
+							.catch(err => console.log(err));
 					});
 				});
-				const username = req.body.username;
-				User.findOne({ username }).then(user => {
-					// Create JWT Payload
-					const payload = {
-						id: user.id,
-						username: user.username,
-						displayname: user.displayname
-					};
-					// Sign token
-					jwt.sign(
-						payload,
-						keys.secretOrKey,
-						{
-							expiresIn: 31556926 // 1 year in seconds
-						},
-						(err, token) => {
-							res.json({
-								success: true,
-								token: "Bearer " + token
-							});
-						}
-					);
-				})
-				.catch(err => console.log(err));
+				// const username = req.body.username;
+				// console.log("here");
+				// User.findOne({ username }).then(user => {
+				// 	// Create JWT Payload
+				// 	const payload = {
+				// 		id: user.id,
+				// 		username: user.username,
+				// 		displayname: user.displayname
+				// 	};
+				// 	// Sign token
+				// 	jwt.sign(
+				// 		payload,
+				// 		keys.secretOrKey,
+				// 		{
+				// 			expiresIn: 31556926 // 1 year in seconds
+				// 		},
+				// 		(err, token) => {
+				// 			res.json({
+				// 				success: true,
+				// 				token: "Bearer " + token
+				// 			});
+				// 		}
+				// 	);
+				// })
+				// .catch(err => console.log(err));
 			}
 		});
 });
