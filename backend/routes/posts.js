@@ -45,10 +45,10 @@ router.patch('/post/:id', async (req, res) => {
       await post.updateOne(req.body);
       await post.save();
       res.send(post);
-    } catch (err) {
-      res.status(500).send(err)
-    }
-  })
+  } catch (err) {
+    res.status(500).send(err)
+  }
+})
 
 // delete specific post
 router.delete('/post/:id', async (req, res) => {
@@ -62,27 +62,8 @@ router.delete('/post/:id', async (req, res) => {
     }
 })
 
-module.exports = router;
-
-
-
-
-////////////////////////////////
-
-
-
-// const express = require("express");
-// const router = express.Router();
-// const bcrypt = require("bcryptjs");
-// const jwt = require("jsonwebtoken");
-// const keys = require("./config/keys");
-// // Load Posts model
-// const Posts = require("./posts.model");
-
-
-
 // // for calendar page, group entries of self (and friends later) by date
-// app.get('/calendar', async (req, res) => {
+// router.get('/calendarposts', async (req, res) => {
 //     try {
 //       const grouped;
 //       res.send(grouped);
@@ -93,3 +74,5 @@ module.exports = router;
   
 // // https://docs.mongodb.com/manual/aggregation/
 // // https://stackoverflow.com/questions/48752893/how-to-use-aggregate-with-callback-in-mongoose-model-using-express-js
+
+module.exports = router;

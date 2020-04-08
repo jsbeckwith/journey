@@ -4,6 +4,8 @@ import jwt_decode from "jwt-decode";
 
 // global state for whole app, esp authed user
 
+// also includes util functions
+
 const context = React.createContext({});
 
 export class ContextProvider extends React.Component {
@@ -107,6 +109,52 @@ export class ContextProvider extends React.Component {
 		this.setUser({});
 	};
 
+	// get a stringified version of a post or user id
+	// for use in express queries
+	getStringID(id) {
+		let jsonString = JSON.stringify(id);
+		// extract id from JSON string
+		let shortString = jsonString.slice(7, 31);
+		return shortString;
+	}
+
+	// get specific post using string id
+	getPostByID = (id) => {
+		console.log("called with id", id);
+		let idString = this.getStringID(id);
+		axios.get("http://localhost:4000/posts/" + idString)
+			.then((response) => {
+				console.log("postbyid", response.data);
+				return response.data;
+			})
+			.catch( (error) => {
+                console.log(error);
+            });
+	}
+
+	// get specific user using string id
+	getUserByID = (id) => {
+		let idString = this.getStringID(id);
+		axios.get("http://localhost:4000/users/" + idString)
+			.then((response) => {
+				return response.data;
+			})
+			.catch( (error) => {
+                console.log(error);
+            });
+	}
+
+	// post info only includes user id,
+	// so we need to retrieve other user info (username etc)
+	getUserByPostID = (id) => {
+		console.log("calling with id", id);
+		let post = this.getPostByID(id);
+		console.log("post", this.getPostByID(id));
+		let userId = post.author;
+		return this.getUserByID(userId);
+		return this.user;
+	}
+
 	render() {
 		const { children } = this.props;
 	
@@ -117,7 +165,11 @@ export class ContextProvider extends React.Component {
 					date: new Date(),
 					dateString: this.createDateString(new Date()),
 					setLoggedIn: this.setLoggedIn,
-					logoutUser:this.logoutUser,
+					logoutUser: this.logoutUser,
+					getStringID: this.getStringID,
+					getPostByID: this.getPostByID,
+					getUserByID: this.getUserByID,
+					getUserByPostID: this.getUserByPostID,
 				}}
 			>
 				{children}

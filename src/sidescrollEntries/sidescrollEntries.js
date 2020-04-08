@@ -7,10 +7,12 @@ import CalendarLinkPanel from './calendarLinkPanel';
 class SidescrollEntries extends React.Component {
 	constructor (props) {
 		super(props);
-		this.getPosts();
+
 		this.state = {
 			entriesToRender: []
 		}
+
+		this.getPosts();
 	}
 
 	// queries db for posts and sets state's entriesToRender

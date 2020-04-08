@@ -8,31 +8,8 @@ class EditButton extends React.Component {
   constructor(props) {
     super(props);
 		this.state = {
-      // textFromChild: '',
-			// id: this.props.match.params,
 			textToEdit: ''
     }
-  }
-
-  // access id object from state and convert to string
-	getStringID() {
-		let jsonString = JSON.stringify(this.state.id);
-		// extract id from JSON string
-		let shortString = jsonString.slice(7, 31);
-		return shortString;
-	}
-
-	// get specific post using string id
-	getPostByID = () => {
-		let idString = this.props.id // this.getStringID();
-		axios.get("http://localhost:4000/posts/" + idString)
-			.then((response) => {
-				// set entry state to data received
-        this.setState({textToEdit: response.data.content});
-			})
-			.catch( (error) => {
-                console.log(error);
-            });
   }
   
   render() {

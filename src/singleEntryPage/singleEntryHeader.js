@@ -6,51 +6,61 @@ import ToggleFriendButton from '../buttons/toggleFriendButton.js';
 class SingleEntryHeader extends React.Component {
 	constructor (props) {
 		super(props);
+
+		this.state = {
+			entry: {},
+			author: {},
+		 	dateString: '',
+		}
 	}
 
-	createShortDate(entryDate) {
-		let inputDate = new Date(entryDate);
-		const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-		const months = ["January", "February", "March", "April", "May", "June",
-  						"July", "August", "September", "October", "November", "December"];
-		let shortDate = days[inputDate.getDay()] + ", " 
-						+ months[inputDate.getMonth()] + " " 
-						+ inputDate.getDate() + ", " 
-						+ inputDate.getFullYear();
-		return shortDate;
+	componentDidMount = () => {
+		this.setState({entry: this.props.getPostByID(this.props.id)});
+		this.setState({author: this.state.author = this.props.getUserByPostID(this.props.id)});
+		this.setState({dateString: this.props.createDateString(this.state.entry.date)});
+	}
+
+	selfIsAuthor = () => {
+		return (this.state.author == this.props.user);
+	}
+
+	/* this function determines whether this entry is editable
+	* based on current date vs date of entry and if the user is self
+	*/
+	determineEdit = () => {
+		let entryDate = new Date(this.state.entry.date);
+		let nowDate = new Date();
+		return (
+			(entryDate.getDate() == nowDate.getDate())
+			&& (entryDate.getMonth() == nowDate.getMonth())
+			&& (entryDate.getFullYear() == nowDate.getFullYear())
+			&& this.selfIsAuthor()
+		);
 	}
 
 	render () {
-		if (this.props.editMode) {
-			return (
-				<div className="page-header" id="single-entry-header">
-				<h2 className="header-author">
-					{this.props.author}
-				</h2>
+		let renderEditButton = this.determineEdit()
+			? <EditButton id={this.props.id}/>
+			: null;
+		let renderDeleteButton = this.selfIsAuthor()
+			? <DeleteButton id={this.props.id}/>
+			: null;
+		let renderToggleFriendButton = !this.selfIsAuthor()
+			? <ToggleFriendButton username={this.state.author.username}/>
+			: null;
+		
+		return (
+			<div className="page-header" id="single-entry-header">
+				{renderToggleFriendButton}
+				<h2 className="header-author">{this.state.author.username}</h2>
 				<br/>
-				<h3 className="header-date"> {this.createShortDate(this.props.date)} </h3>
-				<div class="header-button-container">
-					<EditButton id={this.props.id}/>
-					<DeleteButton id={this.props.id}/>
+				<h3 className="header-date"> {this.state.dateString} </h3>
+				<div className="header-button-container">
+					{renderEditButton}
+					{renderDeleteButton}
 				</div>
 			</div>
-			)
-		} else {
-			return (
-				<div className="page-header" id="single-entry-header">
-					{/* TODO: add logic to only display below button if this.props.author is not self */}
-					<ToggleFriendButton username={this.props.author}/>
-					<h2 className="header-author">
-						{this.props.author}
-					</h2>
-					<br/>
-					<h3 className="header-date"> {this.createShortDate(this.props.date)} </h3>
-					<div class="header-button-container">
-						<DeleteButton id={this.props.id}/>
-					</div>
-				</div>
-			);
-		}
+		)
 	}
 }
 

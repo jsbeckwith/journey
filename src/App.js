@@ -29,6 +29,7 @@ class App extends React.Component {
 	}
 
 	createRoutes() {
+		// TODO figure out how to restrictProtected on routes with ids
 		return(
 			<Switch>
 				<Route exact path="/homepage">
@@ -37,8 +38,15 @@ class App extends React.Component {
 				<Route exact path="/newEntryPage">
 					{this.restrictProtected(<NewEntryPage/>)}
 				</Route>
-				<Route exact path="/post/:id" component={SingleEntryPage}/>
-				<Route exact path="/post/edit/:id" component={EditPage}/>
+				<Route
+					exact path="/post/:id"
+					component={SingleEntryPage}
+				>
+				</Route>
+				<Route
+					exact path="/post/edit/:id"
+					component={EditPage}
+				/>
 				<Route exact path="/calendarPage">
 					{this.restrictProtected(<CalendarPage/>)}
 				</Route>

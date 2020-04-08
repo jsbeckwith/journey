@@ -17,7 +17,7 @@ class SubmitSaveButton extends React.Component {
 
 		// create post object to push to database
 		const newPost = {
-			"author": "username",
+			"author": this.props.author,
 			"date": Date.now(),
 			"content": c
 		}
@@ -34,6 +34,7 @@ class SubmitSaveButton extends React.Component {
 	}
 
 	updatePost = () => {
+		// TODO check for midnight
 		var c = this.props.qText;
 		var id = this.props.id;
 

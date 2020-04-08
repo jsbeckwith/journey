@@ -44,31 +44,6 @@ router.post("/register", (req, res) => {
 							.catch(err => console.log(err));
 					});
 				});
-				// const username = req.body.username;
-				// console.log("here");
-				// User.findOne({ username }).then(user => {
-				// 	// Create JWT Payload
-				// 	const payload = {
-				// 		id: user.id,
-				// 		username: user.username,
-				// 		displayname: user.displayname
-				// 	};
-				// 	// Sign token
-				// 	jwt.sign(
-				// 		payload,
-				// 		keys.secretOrKey,
-				// 		{
-				// 			expiresIn: 31556926 // 1 year in seconds
-				// 		},
-				// 		(err, token) => {
-				// 			res.json({
-				// 				success: true,
-				// 				token: "Bearer " + token
-				// 			});
-				// 		}
-				// 	);
-				// })
-				// .catch(err => console.log(err));
 			}
 		});
 });
@@ -126,6 +101,17 @@ router.post("/login", (req, res) => {
 			}
 		});
 	});
+});
+
+// get specific user
+router.get('/:id', async (req, res)  => {
+    const user = await postModel.findById(req.params.id);
+
+    try {
+        res.send(post);
+    } catch (err) {
+        res.status(500).send(err);
+    }
 });
 
 module.exports = router;
