@@ -9,7 +9,7 @@ const validateRegisterInput = require("../validation/register.js");
 const validateLoginInput = require("../validation/login.js");
 
 // Load User model
-const User = require("../models/users.model.js");
+const userModel = require("../models/users.model.js");
 
 // @route POST users/register
 // @desc Register user
@@ -105,10 +105,10 @@ router.post("/login", (req, res) => {
 
 // get specific user
 router.get('/:id', async (req, res)  => {
-    const user = await postModel.findById(req.params.id);
+    const user = await userModel.findById(req.params.id);
 
     try {
-        res.send(post);
+        res.send(user);
     } catch (err) {
         res.status(500).send(err);
     }

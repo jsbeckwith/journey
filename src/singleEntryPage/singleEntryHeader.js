@@ -1,7 +1,13 @@
+// libraries
 import React from 'react';
+
+// components
 import EditButton from '../buttons/editButton.js';
 import DeleteButton from '../buttons/deleteButton.js';
 import ToggleFriendButton from '../buttons/toggleFriendButton.js';
+
+// utils
+import {createDateString, getPostByID, getUserByPostID} from '../utils.js';
 
 class SingleEntryHeader extends React.Component {
 	constructor (props) {
@@ -14,14 +20,19 @@ class SingleEntryHeader extends React.Component {
 		}
 	}
 
-	componentDidMount = () => {
-		this.setState({entry: this.props.getPostByID(this.props.id)});
-		this.setState({author: this.state.author = this.props.getUserByPostID(this.props.id)});
-		this.setState({dateString: this.props.createDateString(this.state.entry.date)});
+	async componentDidMount() {
+		let entry = await getPostByID(this.props.id);
+		console.log("ENTRY", entry);
+		let author = await getUserByPostID(this.props.id);
+		console.log("AUTHOR", author);
+
+		this.setState({entry: entry});
+		this.setState({author: author});
+		//this.setState({dateString: createDateString(this.state.entry.date)});
 	}
 
 	selfIsAuthor = () => {
-		return (this.state.author == this.props.user);
+		return (this.state.author === this.props.user);
 	}
 
 	/* this function determines whether this entry is editable
@@ -31,9 +42,9 @@ class SingleEntryHeader extends React.Component {
 		let entryDate = new Date(this.state.entry.date);
 		let nowDate = new Date();
 		return (
-			(entryDate.getDate() == nowDate.getDate())
-			&& (entryDate.getMonth() == nowDate.getMonth())
-			&& (entryDate.getFullYear() == nowDate.getFullYear())
+			(entryDate.getDate() === nowDate.getDate())
+			&& (entryDate.getMonth() === nowDate.getMonth())
+			&& (entryDate.getFullYear() === nowDate.getFullYear())
 			&& this.selfIsAuthor()
 		);
 	}

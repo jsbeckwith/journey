@@ -35,8 +35,6 @@ class SingleEntryPage extends React.Component {
 							id={this.state.id}
 							setEntry={this.setEntry}
 							user={value.user}
-							getPostByID={value.getPostByID}
-							getUserByPostID={value.getUserByPostID}
 						/>
 					)}
 				</ContextConsumer>

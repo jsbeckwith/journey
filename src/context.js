@@ -2,6 +2,8 @@ import React from 'react';
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 
+import {createDateString} from './utils.js';
+
 // global state for whole app, esp authed user
 
 // also includes util functions
@@ -15,7 +17,7 @@ export class ContextProvider extends React.Component {
 		this.state = {
 			user: this.setUserFromStorage(),
 			date: new Date(),  // unix epoch format
-			dateString: this.createDateString(new Date()),  // stringified for rendering
+			dateString: createDateString(new Date()),  // stringified for rendering
 		};
 
 		this.clock();
@@ -43,18 +45,7 @@ export class ContextProvider extends React.Component {
 	}
 
 	setDateString = () => {
-		this.setState({dateString: this.createDateString(this.state.date)});
-	}
-
-	// correctly/nicely format any date as a string (originally: unix epoch format)
-	createDateString = (date) => {
-		const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-		const months = ["January", "February", "March", "April", "May", "June",
-						"July", "August", "September", "October", "November", "December"];
-		// create a string with the full day of the week, month, day of the month, and year
-		let dateString = days[date.getDay()] + ", " + months[date.getMonth()] + " " + date.getDate()
-						+ ", " + date.getFullYear();
-		return dateString;
+		this.setState({dateString: createDateString(this.state.date)});
 	}
 
 	// updates dates to reflect current time
@@ -109,52 +100,6 @@ export class ContextProvider extends React.Component {
 		this.setUser({});
 	};
 
-	// get a stringified version of a post or user id
-	// for use in express queries
-	getStringID(id) {
-		let jsonString = JSON.stringify(id);
-		// extract id from JSON string
-		let shortString = jsonString.slice(7, 31);
-		return shortString;
-	}
-
-	// get specific post using string id
-	getPostByID = (id) => {
-		console.log("called with id", id);
-		let idString = this.getStringID(id);
-		axios.get("http://localhost:4000/posts/" + idString)
-			.then((response) => {
-				console.log("postbyid", response.data);
-				return response.data;
-			})
-			.catch( (error) => {
-                console.log(error);
-            });
-	}
-
-	// get specific user using string id
-	getUserByID = (id) => {
-		let idString = this.getStringID(id);
-		axios.get("http://localhost:4000/users/" + idString)
-			.then((response) => {
-				return response.data;
-			})
-			.catch( (error) => {
-                console.log(error);
-            });
-	}
-
-	// post info only includes user id,
-	// so we need to retrieve other user info (username etc)
-	getUserByPostID = (id) => {
-		console.log("calling with id", id);
-		let post = this.getPostByID(id);
-		console.log("post", this.getPostByID(id));
-		let userId = post.author;
-		return this.getUserByID(userId);
-		return this.user;
-	}
-
 	render() {
 		const { children } = this.props;
 	
@@ -163,13 +108,9 @@ export class ContextProvider extends React.Component {
 				value={{
 					user: this.state.user,
 					date: new Date(),
-					dateString: this.createDateString(new Date()),
+					dateString: createDateString(new Date()),
 					setLoggedIn: this.setLoggedIn,
-					logoutUser: this.logoutUser,
-					getStringID: this.getStringID,
-					getPostByID: this.getPostByID,
-					getUserByID: this.getUserByID,
-					getUserByPostID: this.getUserByPostID,
+					logoutUser: this.logoutUser
 				}}
 			>
 				{children}
@@ -177,8 +118,6 @@ export class ContextProvider extends React.Component {
 		);
 	}
 }
-
-
 
 export { context };
 
