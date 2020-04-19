@@ -8,38 +8,48 @@ import ToggleFriendButton from '../buttons/toggleFriendButton.js';
 
 // utils
 import {createDateString, getPostByID, getUserByPostID} from '../utils.js';
+import handleError from '../handleError';
 
 class SingleEntryHeader extends React.Component {
 	constructor (props) {
 		super(props);
-
-		this.state = {
-			entry: {},
-			author: {},
-		 	dateString: '',
-		}
 	}
 
-	async componentDidMount() {
-		let entry = await getPostByID(this.props.id);
-		console.log("ENTRY", entry);
-		let author = await getUserByPostID(this.props.id);
-		console.log("AUTHOR", author);
 
-		this.setState({entry: entry});
-		this.setState({author: author});
-		//this.setState({dateString: createDateString(this.state.entry.date)});
-	}
+
+	// componentWillMount(){
+	// 	getData('positions').then((response) => {
+	// 		console.log(response)
+	// 	}).catch((error) => {
+	// 		console.log(error)
+	// 	})     
+	//   }
+
+	// componentWillMount() {
+	// 	// getPostByID(this.props.id).then((response) => {
+	// 	// 	this.setState({entry: response.data});
+	// 	// 	}).catch((error) => {
+	// 	// 	console.log(error);
+	// 	// 	})
+	// 	// console.log("ENTRY", this.props.entry);
+		// let author = await getUserByPostID(this.props.id);
+		// console.log("AUTHOR", author);
+
+		// this.setState({entry: entry});
+		// this.setState({author: author});
+		//this.setState({dateString: createDateString(this.props.entry.date)});
+	//}
 
 	selfIsAuthor = () => {
-		return (this.state.author === this.props.user);
+		return (this.props.author === this.props.user);
 	}
 
 	/* this function determines whether this entry is editable
-	* based on current date vs date of entry and if the user is self
+	* based on current date vs date of entry and if the user is self.
+	* determines if edit button should render
 	*/
 	determineEdit = () => {
-		let entryDate = new Date(this.state.entry.date);
+		let entryDate = new Date(this.props.entry.date);
 		let nowDate = new Date();
 		return (
 			(entryDate.getDate() === nowDate.getDate())
@@ -57,15 +67,15 @@ class SingleEntryHeader extends React.Component {
 			? <DeleteButton id={this.props.id}/>
 			: null;
 		let renderToggleFriendButton = !this.selfIsAuthor()
-			? <ToggleFriendButton username={this.state.author.username}/>
+			? <ToggleFriendButton username={this.props.author.username}/>
 			: null;
 		
 		return (
 			<div className="page-header" id="single-entry-header">
 				{renderToggleFriendButton}
-				<h2 className="header-author">{this.state.author.username}</h2>
+				<h2 className="header-author">{this.props.author.username}</h2>
 				<br/>
-				<h3 className="header-date"> {this.state.dateString} </h3>
+				<h3 className="header-date"> {this.props.dateString} </h3>
 				<div className="header-button-container">
 					{renderEditButton}
 					{renderDeleteButton}
