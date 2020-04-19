@@ -1,5 +1,6 @@
 // libraries
 import React from 'react';
+import axios from 'axios';
 
 // components
 import SingleEntryHeader from "./singleEntryHeader.js";
@@ -10,8 +11,7 @@ import './singleEntryPage.scss';
 import '../universalStyle.scss';
 
 // utils
-import {createDateString, getPostByID, getUserByPostID} from '../utils.js';
-import handleError from '../handleError';
+import { getStringID } from '../utils.js';
 
 class SingleEntryPage extends React.Component {
 	constructor (props) {
@@ -20,32 +20,34 @@ class SingleEntryPage extends React.Component {
 			id: this.props.match.params,
 			entry: {},
 			author: {},
-			dateString: {},
 		};
-
-		this.setEntry();
-		this.setAuthor();
 	}
 
-	setEntry = () => {
-		getPostByID(this.state.id)
+	componentDidMount = () => {
+		this.getPost();
+	}
+
+	getPost = () => {
+		let idString = getStringID(this.state.id);
+		axios.get("http://localhost:4000/posts/" + idString)
 			.then((response) => {
 				this.setState({entry: response.data});
-				let dateString = createDateString(response.data.date);
-				console.log("date", dateString);
-				this.setState({dateString: dateString});
-			}).catch((error) => {
-				error(handleError(error))
-		});
+				this.getAuthor();
+			})
+			.catch((error) => {
+                console.log(error);
+            });
 	}
 
-	setAuthor = () => {
-		getUserByPostID(this.state.id)
+	getAuthor = () => {
+		let idString = getStringID(this.state.entry.author);
+		axios.get("http://localhost:4000/users/" + idString)
 			.then((response) => {
 				this.setState({author: response.data});
-			}).catch((error) => {
-				error(handleError(error))
-		});
+			})
+			.catch((error) => {
+                console.log(error);
+            });
 	}
 
 	renderHTML = (txt) => {
@@ -58,10 +60,8 @@ class SingleEntryPage extends React.Component {
 				<ContextConsumer>
 					{(value) => (
 						<SingleEntryHeader
-							id={this.state.id}
 							entry={this.state.entry}
 							author={this.state.author}
-							dateString={this.state.dateString}
 							user={value.user}
 						/>
 					)}

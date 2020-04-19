@@ -1,5 +1,6 @@
 // libraries
 import React from 'react';
+import axios from 'axios';
 
 // components
 import EditButton from '../buttons/editButton.js';
@@ -7,46 +8,23 @@ import DeleteButton from '../buttons/deleteButton.js';
 import ToggleFriendButton from '../buttons/toggleFriendButton.js';
 
 // utils
-import {createDateString, getPostByID, getUserByPostID} from '../utils.js';
-import handleError from '../handleError';
+import { getStringID, createDateString } from '../utils.js';
 
 class SingleEntryHeader extends React.Component {
 	constructor (props) {
 		super(props);
+
+		this.state = {
+			dateString: '',
+		}
 	}
-
-
-
-	// componentWillMount(){
-	// 	getData('positions').then((response) => {
-	// 		console.log(response)
-	// 	}).catch((error) => {
-	// 		console.log(error)
-	// 	})     
-	//   }
-
-	// componentWillMount() {
-	// 	// getPostByID(this.props.id).then((response) => {
-	// 	// 	this.setState({entry: response.data});
-	// 	// 	}).catch((error) => {
-	// 	// 	console.log(error);
-	// 	// 	})
-	// 	// console.log("ENTRY", this.props.entry);
-		// let author = await getUserByPostID(this.props.id);
-		// console.log("AUTHOR", author);
-
-		// this.setState({entry: entry});
-		// this.setState({author: author});
-		//this.setState({dateString: createDateString(this.props.entry.date)});
-	//}
 
 	selfIsAuthor = () => {
 		return (this.props.author === this.props.user);
 	}
 
-	/* this function determines whether this entry is editable
+	/* this function determines whether this entry is editable (edit button should render)
 	* based on current date vs date of entry and if the user is self.
-	* determines if edit button should render
 	*/
 	determineEdit = () => {
 		let entryDate = new Date(this.props.entry.date);
