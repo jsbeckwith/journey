@@ -12,7 +12,7 @@ class SearchResultItem extends React.Component {
         return (
             <div className="search-result-item">
                 <div className="search-result-content">
-                    <ToggleFriendButton username={this.props.username}/>
+                    <ToggleFriendButton username={this.props.username} tooltipPlacement={'right'}/>
                     <div className="search-result-username">{this.props.username}</div>
                 </div>
             </div>

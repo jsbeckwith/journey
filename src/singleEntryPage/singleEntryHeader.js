@@ -1,6 +1,5 @@
 // libraries
 import React from 'react';
-import axios from 'axios';
 
 // components
 import EditButton from '../buttons/editButton.js';
@@ -13,7 +12,7 @@ class SingleEntryHeader extends React.Component {
 	}
 
 	selfIsAuthor = () => {
-		return (this.props.author === this.props.user);
+		return (this.props.author._id === this.props.user.id);
 	}
 
 	/* this function determines whether this entry is editable (edit button should render)
@@ -22,12 +21,10 @@ class SingleEntryHeader extends React.Component {
 	determineEdit = () => {
 		let entryDate = new Date(this.props.entry.date);
 		let nowDate = new Date();
-		return (
-			(entryDate.getDate() === nowDate.getDate())
-			&& (entryDate.getMonth() === nowDate.getMonth())
-			&& (entryDate.getFullYear() === nowDate.getFullYear())
-			&& this.selfIsAuthor()
-		);
+		let isSameDate = ((entryDate.getDate() === nowDate.getDate())
+						&& (entryDate.getMonth() === nowDate.getMonth())
+						&& (entryDate.getFullYear() === nowDate.getFullYear()));
+		return (isSameDate && this.selfIsAuthor());
 	}
 
 	render () {
@@ -38,16 +35,16 @@ class SingleEntryHeader extends React.Component {
 			? <DeleteButton id={this.props.id}/>
 			: null;
 		let renderToggleFriendButton = !this.selfIsAuthor()
-			? <ToggleFriendButton username={this.props.author.username}/>
+			? <ToggleFriendButton username={this.props.author.username} tooltipPlacement={'bottom'}/>
 			: null;
 		
 		return (
 			<div className="page-header" id="single-entry-header">
-				{renderToggleFriendButton}
 				<h2 className="header-author">Entry by {this.props.author.username}</h2>
 				<br/>
 				<h3 className="header-date"> {this.props.dateString} </h3>
 				<div className="header-button-container">
+					{renderToggleFriendButton}
 					{renderEditButton}
 					{renderDeleteButton}
 				</div>
