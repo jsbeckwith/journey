@@ -3,16 +3,16 @@ const Schema = mongoose.Schema;
 
 let Posts = new Schema({
     author: {
-        type: String
-    },
-    username: {
-        type: String
+        type: String,  // _id reference to user, not username or display name
+        required: true,
     },
     date: {
-        type: Date
+        type: Date,
+        required: true,
     },
     content: {
-        type: String
+        type: String,
+        required: true,
     }
 });
 

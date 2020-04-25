@@ -2,6 +2,8 @@ import React from 'react';
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 
+import { createDateString } from './utils.js';
+
 // global state for whole app, esp authed user
 
 const context = React.createContext({});
@@ -13,7 +15,7 @@ export class ContextProvider extends React.Component {
 		this.state = {
 			user: this.setUserFromStorage(),
 			date: new Date(),  // unix epoch format
-			dateString: this.createDateString(new Date()),  // stringified for rendering
+			dateString: createDateString(new Date()),  // stringified for rendering
 		};
 
 		this.clock();
@@ -41,18 +43,7 @@ export class ContextProvider extends React.Component {
 	}
 
 	setDateString = () => {
-		this.setState({dateString: this.createDateString(this.state.date)});
-	}
-
-	// correctly/nicely format any date as a string (originally: unix epoch format)
-	createDateString = (date) => {
-		const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-		const months = ["January", "February", "March", "April", "May", "June",
-						"July", "August", "September", "October", "November", "December"];
-		// create a string with the full day of the week, month, day of the month, and year
-		let dateString = days[date.getDay()] + ", " + months[date.getMonth()] + " " + date.getDate()
-						+ ", " + date.getFullYear();
-		return dateString;
+		this.setState({dateString: createDateString(this.state.date)});
 	}
 
 	// updates dates to reflect current time
@@ -115,9 +106,9 @@ export class ContextProvider extends React.Component {
 				value={{
 					user: this.state.user,
 					date: new Date(),
-					dateString: this.createDateString(new Date()),
+					dateString: createDateString(new Date()),
 					setLoggedIn: this.setLoggedIn,
-					logoutUser:this.logoutUser,
+					logoutUser: this.logoutUser
 				}}
 			>
 				{children}
@@ -125,8 +116,6 @@ export class ContextProvider extends React.Component {
 		);
 	}
 }
-
-
 
 export { context };
 

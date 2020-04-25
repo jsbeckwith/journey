@@ -12,10 +12,6 @@ class ToggleFriendButton extends React.Component {
 		this.state = {
 			mode: this.determineMode()
 		}
-
-		this.determineMode = this.determineMode.bind(this);
-		this.addFriend = this.addFriend.bind(this);
-		this.removeFriend = this.removeFriend.bind(this);
 	}
 
 	// determineMode calculates whether the button should be in add friend or remove friend mode
@@ -45,7 +41,7 @@ class ToggleFriendButton extends React.Component {
 		if (this.state.mode === 'remove') {  // if the user is already a friend, the button displays a - that allows you to remove them
 			return (
 				<div className="toggle-friend-button">
-					<Tooltip title={'remove friend'} placement={'right'}>
+					<Tooltip title={'remove friend'} placement={this.props.tooltipPlacement}>
 						<button className="add-remove-friend-button journey-button remove-friend-button" onClick={this.removeFriend}>
 							-
 						</button>
@@ -55,7 +51,7 @@ class ToggleFriendButton extends React.Component {
 		} else {  // if the user is not a friend, the button displays a + that allows you to add them
 			return (
 				<div className="toggle-friend-button">
-					<Tooltip title={'add friend'} placement={'right'}>
+					<Tooltip title={'add friend'} placement={this.props.tooltipPlacement}>
 						<button className="add-remove-friend-button journey-button add-friend-button" onClick={this.addFriend}>
 							+
 						</button>

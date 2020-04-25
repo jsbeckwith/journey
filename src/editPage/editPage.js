@@ -19,36 +19,6 @@ class EditPage extends React.Component {
 		this.setState({textFromChild: textFromQuill});
 	}
 
-	/*
-	// access id object from state and convert to string
-	getStringID() {
-		let jsonString = JSON.stringify(this.state.id);
-		// extract id from JSON string
-		let shortString = jsonString.slice(7, 31);
-		return shortString;
-	}
-
-	// get specific post using string id
-	getPostByID = () => {
-		let idString = this.getStringID();
-		axios.get("http://localhost:4000/" + idString)
-			.then((response) => {
-				// set entry state to data received
-				// console.log(response.data.content);
-				this.setState({textToEdit: response.data.content});
-			})
-			.catch( (error) => {
-                console.log(error);
-            });
-	}
-
-	// get post when page loads
-	componentDidMount = () => {
-		this.getPostByID();
-		console.log(this.state.textToEdit);
-	} */
-	
-
 	render () {
 		console.log(this.state.textToEdit);
 		return (

@@ -42,9 +42,9 @@ class CreateAccountPage extends React.Component {
             "password2": this.state.inputPassword2
         };
 
-        axios.post("http://localhost:4000/users/register", inputUserInfo)
+        axios.post("http://localhost:4000/users/register", inputUserInfo)  // create user in db
             .then(res => {
-                axios.post("http://localhost:4000/users/login", inputUserInfo)
+                axios.post("http://localhost:4000/users/login", inputUserInfo)  // once new user created, log in as that user
                     .then(res => {
                         const { token } = res.data;
                         console.log(token);

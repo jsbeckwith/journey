@@ -15,11 +15,7 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  // posts: {
-  //   type: Array,
-  //   default: []
-  // },
-  // friends: {
+  // friends: {  // array of user ids
   //   type: Array,
   //   default: []
   // }
