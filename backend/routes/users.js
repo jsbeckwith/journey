@@ -106,7 +106,6 @@ router.post("/login", (req, res) => {
 // get specific user
 router.get('/:id', async (req, res)  => {
     const user = await userModel.findById(req.params.id);
-
     try {
         res.send(user);
     } catch (err) {

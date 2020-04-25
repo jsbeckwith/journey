@@ -11,7 +11,7 @@ import './singleEntryPage.scss';
 import '../universalStyle.scss';
 
 // utils
-import { getStringID } from '../utils.js';
+import { getStringID, createDateString } from '../utils.js';
 
 class SingleEntryPage extends React.Component {
 	constructor (props) {
@@ -20,19 +20,25 @@ class SingleEntryPage extends React.Component {
 			id: this.props.match.params,
 			entry: {},
 			author: {},
+			dateString: '',
 		};
 	}
 
 	componentDidMount = () => {
 		this.getPost();
+		//this.setDateString();
 	}
 
 	getPost = () => {
 		let idString = getStringID(this.state.id);
 		axios.get("http://localhost:4000/posts/" + idString)
 			.then((response) => {
+				// set entry
 				this.setState({entry: response.data});
+				// set author of entry
 				this.getAuthor();
+				// set date of entry
+				this.setDateString();
 			})
 			.catch((error) => {
                 console.log(error);
@@ -40,14 +46,19 @@ class SingleEntryPage extends React.Component {
 	}
 
 	getAuthor = () => {
-		let idString = getStringID(this.state.entry.author);
-		axios.get("http://localhost:4000/users/" + idString)
+		axios.get("http://localhost:4000/users/" + this.state.entry.author)
 			.then((response) => {
 				this.setState({author: response.data});
 			})
 			.catch((error) => {
                 console.log(error);
             });
+	}
+
+	setDateString = () => {
+		let entryDate = new Date(this.state.entry.date);
+		let dateString = createDateString(entryDate);
+		this.setState({dateString: dateString});
 	}
 
 	renderHTML = (txt) => {
@@ -62,6 +73,7 @@ class SingleEntryPage extends React.Component {
 						<SingleEntryHeader
 							entry={this.state.entry}
 							author={this.state.author}
+							dateString={this.state.dateString}
 							user={value.user}
 						/>
 					)}

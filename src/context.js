@@ -2,11 +2,9 @@ import React from 'react';
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 
-import {createDateString} from './utils.js';
+import { createDateString } from './utils.js';
 
 // global state for whole app, esp authed user
-
-// also includes util functions
 
 const context = React.createContext({});
 

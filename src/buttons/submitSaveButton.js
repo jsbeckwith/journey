@@ -9,7 +9,7 @@ class SubmitSaveButton extends React.Component {
 		super(props);
 		this.state = {
             id: this.props.id
-        }
+		}
 	}
 	
 	post = () => {

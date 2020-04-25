@@ -7,16 +7,9 @@ import EditButton from '../buttons/editButton.js';
 import DeleteButton from '../buttons/deleteButton.js';
 import ToggleFriendButton from '../buttons/toggleFriendButton.js';
 
-// utils
-import { getStringID, createDateString } from '../utils.js';
-
 class SingleEntryHeader extends React.Component {
 	constructor (props) {
 		super(props);
-
-		this.state = {
-			dateString: '',
-		}
 	}
 
 	selfIsAuthor = () => {
@@ -51,7 +44,7 @@ class SingleEntryHeader extends React.Component {
 		return (
 			<div className="page-header" id="single-entry-header">
 				{renderToggleFriendButton}
-				<h2 className="header-author">{this.props.author.username}</h2>
+				<h2 className="header-author">Entry by {this.props.author.username}</h2>
 				<br/>
 				<h3 className="header-date"> {this.props.dateString} </h3>
 				<div className="header-button-container">
