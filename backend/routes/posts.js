@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
+const usersRouter = require('./routes/users');
+
 const postModel = require('../models/posts.model.js');
 
-// TODO specify
 // get all posts
 router.get('/posts', async (req, res) => {
     const posts = await postModel.find({});

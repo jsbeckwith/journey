@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
+const postsRouter = require('./routes/posts');
+
 // login/validation
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -8,8 +10,9 @@ const keys = require("../config/keys");
 const validateRegisterInput = require("../validation/register.js");
 const validateLoginInput = require("../validation/login.js");
 
-// Load User model
+// Load models
 const userModel = require("../models/users.model.js");
+const postModel = require('../models/posts.model.js');
 
 // @route POST users/register
 // @desc Register user
@@ -108,6 +111,28 @@ router.get('/:id', async (req, res)  => {
     const user = await userModel.findById(req.params.id);
     try {
         res.send(user);
+    } catch (err) {
+        res.status(500).send(err);
+    }
+});
+
+// TODO add one post id to user's entries list
+// used by posts.post
+router.patch('/:id/addEntry', async (req, res) => {
+	try {
+		const user = await userModel.findById(req.params.id);
+		// ?
+		await user.save();
+	} catch (err) {
+	  res.status(500).send(err)
+	}
+  })
+
+// get the ids of all posts authored by specific user
+router.get('/:id/posts', async (req, res)  => {
+    const user = await userModel.findById(req.params.id);
+    try {
+        res.send(user.entries);
     } catch (err) {
         res.status(500).send(err);
     }
